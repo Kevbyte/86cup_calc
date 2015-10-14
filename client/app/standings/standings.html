@@ -1,0 +1,47 @@
+
+<h2> Standings </h2>
+<div ng-controller="StandingsController">
+  <h4> Stock </h4>
+    <div>
+      <div ng-repeat="racer in stock.racers">
+        <div>
+          <div class="racer rank">{{racer.rank}}</div>
+          <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+          <div class="racer name">{{racer.username}}</div>
+        </div>
+      </div>
+    </div>
+
+  <h4> Street </h4>
+    <div>
+      <div ng-repeat="racer in street.racers">
+        <div>
+          <div class="racer rank">{{racer.rank}}</div>
+          <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+          <div class="racer name">{{racer.username}}</div>
+        </div>
+      </div>
+    </div>
+
+  <h4> Limited </h4>
+    <div>
+      <div ng-repeat="racer in limited.racers">
+        <div>
+          <div class="racer rank">{{racer.rank}}</div>
+          <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+          <div class="racer name">{{racer.username}}</div>
+        </div>
+      </div>
+    </div>
+
+  <h4> Unlimited </h4>
+    <div>
+      <div ng-repeat="racer in unlimited.racers">
+        <div>
+          <div class="racer rank">{{racer.rank}}</div>
+          <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+          <div class="racer name">{{racer.username}}</div>
+        </div>
+      </div>
+    </div>
+</div>

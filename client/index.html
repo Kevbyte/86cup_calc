@@ -1,0 +1,88 @@
+<!doctype html>
+<html ng-app="86cup">
+  <head>
+      <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="bower_components/rdash-ui/dist/css/rdash.min.css">
+      <link rel="stylesheet" href="styles/styles.css">
+  </head>
+
+  <body ng-controller="MasterController">
+        <div id="page-wrapper" ng-class="{'open': toggle}" ng-cloak>
+
+          <!-- Sidebar -->
+          <div id="sidebar-wrapper">
+            <ul class="sidebar">
+              <li class="sidebar-main">
+                <a ng-click="toggleSidebar()">
+                  86CUP
+                  <span class="menu-icon glyphicon glyphicon-transfer"></span>
+                </a>
+              </li>
+              <!-- Default navigation tags -->
+              <li class="sidebar-title"><span>User Info</span></li>
+              <li class="sidebar-list">
+                <a href="#/profile">Your Profile</a>
+              </li>
+              <li class="sidebar-list">
+                <a href="#/stats">Your Stats</a>
+              </li>
+              <li class="sidebar-list">
+                <a href="#/standings">Standings</a>
+              </li>
+              <li class="sidebar-list">
+                <a href="#/admin">Admin</a>
+              </li>
+              <li class="sidebar-list">
+                <a href="#/search">Search Users</a>
+              </li>
+              <!-- Popular navigation tags -->
+              <li class="sidebar-title"><span>Event Info</span></li>
+              <li class="sidebar-list">
+                <a href="#/tag/frontend">Past Events</a>
+              </li>
+              <li class="sidebar-list">
+                <a href="#/tag/backend">Future Events</a>
+              </li>
+              <li class="sidebar-list">
+                <a href="#/tag/forsale">Track Info</a>
+              </li>
+              <!-- Active users -->
+              <li class="sidebar-title"><span>Active Users</span></li>
+              <div id="users"></div>
+            </ul>
+            <div class="sidebar-footer">
+              <div class="col-xs-4">
+                <a href="#">
+                  Home
+                </a>
+              </div>
+              <div class="col-xs-4">
+                <a href="#/login">
+                  Login
+                </a>
+              </div>
+              <div class="col-xs-4">
+                <a href="#/logout">
+                  Logout
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- End Sidebar -->
+      <div ui-view></div>
+      <script src="bower_components/angular/angular.min.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <script src="bower_components/underscore/underscore-min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+      <script src="app/app.js"></script>
+      <script src="app/main/main.js"></script>
+      <script src="app/standings/standings.js"></script>
+      <script src="app/admin/admin.js"></script>
+      <script src="app/profile/profile.js"></script>
+      <script src="app/services/services.js"></script>
+      <script src="app/auth/auth.js"></script>
+      <script src="app/master/master.js"></script>
+  </body>
+</html>

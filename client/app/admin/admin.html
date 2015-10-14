@@ -1,0 +1,55 @@
+
+<h2> Admin </h2>
+<div ng-controller="AdminController">
+  <form ng-submit="addTrackEvent()">
+    <input type="number" ng-model="trackEvent.round" placeholder="round #" required></input>
+    <input type="text" ng-model="trackEvent.track" placeholder="enter track name" required></input>
+    <input type="date" ng-model="trackEvent.date" required></input>
+    <h4> Stock </h4>
+      <div>
+        <div ng-repeat="racer in trackEvent.stock.racers">
+          <div>
+            <div class="racer name">{{racer.name}}</div>
+            <input type="number" ng-model="racer.add" placeholder="enter event pts"></input>
+            <input type="text" ng-model="racer.time" placeholder="enter lap time"></input>
+          </div>
+        </div>
+      </div>
+
+    <h4> Street </h4>
+      <div>
+        <div ng-repeat="racer in trackEvent.street.racers">
+          <div>
+            <div class="racer name">{{racer.name}}</div>
+            <input type="number" ng-model="racer.add" placeholder="enter event pts"></input>
+            <input type="text" ng-model="racer.time" placeholder="enter lap time"></input>
+          </div>
+        </div>
+      </div>
+
+    <h4> Limited </h4>
+      <div>
+        <div ng-repeat="racer in trackEvent.limited.racers">
+          <div>
+            <div class="racer name">{{racer.name}}</div>
+            <input type="number" ng-model="racer.add" placeholder="enter event pts"></input>
+            <input type="text" ng-model="racer.time" placeholder="enter lap time"></input>
+          </div>
+        </div>
+      </div>
+
+    <h4> Unlimited </h4>
+      <div>
+        <div ng-repeat="racer in trackEvent.unlimited.racers">
+          <div>
+            <div class="racer name">{{racer.name}}</div>
+            <input type="number" ng-model="racer.add" placeholder="enter event pts"></input>
+            <input type="text" ng-model="racer.time" placeholder="enter lap time"></input>
+          </div>
+        </div>
+      </div>
+    
+      
+    <input type="submit" value="add">
+  </form>
+</div>
