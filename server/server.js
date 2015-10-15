@@ -19,6 +19,10 @@ var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
 mongoose.connect(mongooseUri, options);
 
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+
 // mongoose.connect('mongodb://localhost/86cup');
 
 app.set('port', (process.env.PORT || 4040));
