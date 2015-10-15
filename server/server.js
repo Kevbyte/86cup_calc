@@ -4,6 +4,20 @@ var http = require('http');
 var path = require('path');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
+var uriUtil = require('mongodb-uri');
+
+var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };       
+ 
+/*
+ * Mongoose uses a different connection string format than MongoDB's standard.
+ * Use the mongodb-uri library to help you convert from the standard format to
+ * Mongoose's format.
+ */
+var mongodbUri = 'mongodb://heroku_067m5c1d:gqdu4n5htok8tuvia3manvnok6@ds039624-a0.mongolab.com:39624,ds039624-a1.mongolab.com:39624/heroku_067m5c1d?replicaSet=rs-ds039624';
+var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+
+mongoose.connect(mongooseUri, options);
 
 // mongoose.connect('mongodb://localhost/86cup');
 
