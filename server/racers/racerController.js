@@ -6,14 +6,15 @@ var _ = require('underscore');
 var ranks = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th']
 
 module.exports = {
+  //get all registered users and send them to standings and admin controllers on front end
   racerList: function (req, res) {
     // console.log('in racerController!!!==============================')
     Racer.find({})
-      .select('-_id -salt -password')
+      .select('-_id -salt -password -avatar')
       .sort({total: +1})
       .then(function(list) {
-        // console.log(list)
         var sorted = {stock: [], street: [], limited: [], unlimited: []}
+        //categorize the users based on class first before sending
         _.each(list, function(racer){
           if(racer.modpts <= 0.5) {
             sorted.stock.push(racer);
@@ -28,7 +29,7 @@ module.exports = {
             sorted.unlimited.push(racer);
           }
         })
-
+        //also calculate every user's rank before sending
         for(var key in sorted) {
           var count = 0;
           _.each(sorted[key], function(racer){
@@ -38,10 +39,11 @@ module.exports = {
             }
           })
         }
-        res.send(sorted)
+        res.send(sorted);
       })
   },
 
+  //get a single user's information and send it to front end
   getModList: function (req, res) {
     console.log('req.query', req.query.name)
     var racer = req.query.name.toLowerCase();
@@ -49,16 +51,17 @@ module.exports = {
       .select('-_id -salt -password')
       .then(function (result) {
         // console.log('result === ', result)
-        res.send(result)
+        res.send(result);
       })
   },
 
+  //admins can update user's information like points earned at an event
   updateRacerTotals: function(req, res) {
     console.log('updating totals')
-    var stock = req.body.stock.racers
-    var street = req.body.street.racers
-    var limited = req.body.limited.racers
-    var unlimited = req.body.unlimited.racers
+    var stock = req.body.stock.racers;
+    var street = req.body.street.racers;
+    var limited = req.body.limited.racers;
+    var unlimited = req.body.unlimited.racers;
 
     _.each(stock, function (racer) {
       Racer.find({username: racer.name})
@@ -127,7 +130,7 @@ module.exports = {
         racer.modPts = modPts;
         racer.save(function(err) {
           if(err) throw err;
-          console.log("loooooooooool==============", racer)
+          // console.log("racer ========", racer);
           res.sendStatus(200);
         })
         

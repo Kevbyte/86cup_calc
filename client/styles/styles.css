@@ -1,15 +1,47 @@
 body {
   font-family: 'roboto', verdana;
-  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background06.jpg');
+/*  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background06.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 70% 90%;
+  background-repeat: no-repeat;*/
+}
+
+#profile {
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg');
   background-attachment: fixed;
   background-size: cover;
   background-position: 70% 90%;
   background-repeat: no-repeat;
 }
 
+#main {
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background03.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 70% 90%;
+  background-repeat: no-repeat;
+}
+
+.intro {
+  height: 50px;
+}
+
+.announcements {
+  height: 300px;
+}
+
+.standings {
+  height: 300px;
+}
+
+.upcoming {
+  height: 300px;
+}
+
 .maindiv {
   padding: 15px;
-  width: 800px;
+  width: 90%;
   background-color: rgba(255,255,255,0.8);
   border-radius: 10px;
   box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
@@ -41,7 +73,7 @@ ul.sidebar .sidebar-list a:hover {
 
 .category h1 {
   color: #7C0029;
-  margin: 50px;
+  margin: 5%;
 }
 
 .racer {
@@ -55,38 +87,38 @@ h4, h2, h3, h1 {
 }
 
 .userinfo {
-  width: 700px;
+  width: 90%;
   text-align:center;
   display: inline-block;
   margin: 0 auto;
 }
 
 .instructions {
-  margin-top: 50px;
+  margin-top: 5%;
   text-align: center;
 }
 
 #mod {
-  margin:10px;
+  margin: 2%;
   text-align:center;
 
 }
 
 #mod label {
   font-weight: 400;
-  width:700px;
-  margin:10px;
-  background-color:white;
-  border-radius:10px;
-  border:1px solid #D0D0D0;
+  width: 90%;
+  margin: 1%;
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid #D0D0D0;
   cursor: pointer;
   box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
 }
 
 #mod label div {
   /*text-align:center;*/
-  font-size:24px;
-  padding:5px 0px;
+  font-size:16px;
+  padding: 1% 0px;
 }
 
 #mod label input {
@@ -105,42 +137,48 @@ h4, h2, h3, h1 {
   background-color:white;
   color:#333;
   display:inline-block;
-  width: 700px;
+  width: 80%;
   vertical-align: middle;
 }
 
 .submod {
   display:inline-block;
-  width: 70px;
   vertical-align: middle;
 }
 
 .submod.name {
   display:inline-block;
-  width: 550px;
-  height: 200px;
-  margin: 5px;
+  width: 70%;
+  height: 20%;
+  margin: 1%;
 }
 
 .submod.name div {
   /*text-align: center;*/
-  position: relative;
-  top: 50%;
-  -ms-transform: translateY(-50%);
+  /*position: relative;*/
+  /*top: 50%;*/
+  /*-ms-transform: translateY(-50%);
   -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
+  transform: translateY(-50%);*/
 }
 
 .submod.value {
   vertical-align: middle;
-  height: 100px;
-  width: 100px;
-  border: 1px solid #D0D0D0;
-  border-radius: 50%;
-  margin: 5px;
+  width: 15%;
+  height: 15%;
+  margin: 1%;
 }
 
-.submod.value div {
+.circ {
+  vertical-align: middle;
+  margin: 0 auto;
+  width: 10vmin;
+  height: 10vmin;
+  border: 1px solid #D0D0D0;
+  border-radius: 50%;
+}
+
+.circ div {
   text-align: center;
   position: relative;
   top: 50%;
@@ -156,8 +194,8 @@ h4, h2, h3, h1 {
 .circles {
   display:inline-block;
   font-size: 24px;
-  width: 150px;
-  height: 150px;
+  width: 30vmin;
+  height: 30vmin;
   border-radius: 50%;
 }
 
@@ -168,9 +206,9 @@ h4, h2, h3, h1 {
   background-color: #A70138;
   color: white;
   font-weight: 600;
-  width: 150px;
-  height: 150px;
-  line-height: 150px;
+  width: 30vmin;
+  height: 30vmin;
+  line-height: 30vmin;
   text-align: center;
 }
 
@@ -187,9 +225,9 @@ h4, h2, h3, h1 {
   background-color: #A70138;
   color: white;
   font-weight: 600;
-  width: 150px;
-  height: 150px;
-  line-height: 140px;
+  width: 30vmin;
+  height: 30vmin;
+  line-height: 28vmin;
   text-align: center;
 }
 
@@ -201,17 +239,16 @@ h4, h2, h3, h1 {
 
 .avatar {
   margin-top: 25px;
-  width: 300px;
-  height: 300px;
-  line-height: 100px;
+  width: 60vmin;
+  height: 60vmin;
   text-align: center;
   cursor: pointer;
 }
 
 .avatar img {
   border: 1px solid black;
-  width: 300px;
-  height: 300px;
+  width: 60vmin;
+  height: 60vmin;
   display: inline-block;
   border-radius: 50%;
   box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
@@ -219,4 +256,10 @@ h4, h2, h3, h1 {
 
 #file {
   display: none;
+}
+
+@media only screen and (max-width: 320px) {
+
+   body { font-size: 2em; }
+
 }

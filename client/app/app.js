@@ -15,7 +15,7 @@ angular.module('86cup',
     .state('main', {
       url: '/',
       templateUrl: 'app/main/main.html',
-      controller: 'TodoListController'
+      controller: 'MainController'
     })
     .state('signup', {
       url: '/signup',

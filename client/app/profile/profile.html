@@ -1,5 +1,4 @@
-
-<div ng-controller="ProfileController">
+<div id="profile" ng-controller="ProfileController">
 <center>
 <div class="maindiv">
 <h1> {{username.name}}'s Profile </h1>
@@ -29,7 +28,7 @@
               <input type="checkbox" name="toggle" class="{{$index}}">
               <div class="box" ng-click="toggleActiveDrivetrain($index, $event)">
                 <div class="submod name"><div>{{mod.name}}</div></div>
-                <div class="submod value"><div>{{mod.value}}</div></div>
+                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
               </div>
             </label>
           </div>
@@ -44,7 +43,7 @@
               <input type="checkbox" name="toggle">
               <div ng-click="toggleActiveWheels($index)">
                 <div class="submod name"><div>{{mod.name}}</div></div>
-                <div class="submod value"><div>{{mod.value}}</div></div>
+                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
               </div>
             </label>
           </div>
@@ -59,7 +58,7 @@
               <input type="checkbox" name="toggle">
               <div ng-click="toggleActiveAero($index)">
                 <div class="submod name"><div>{{mod.name}}</div></div>
-                <div class="submod value"><div>{{mod.value}}</div></div>
+                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
               </div>
             </label>
           </div>
@@ -74,7 +73,7 @@
               <input type="checkbox" name="toggle">
               <div ng-click="toggleActiveSuspension($index)">
                 <div class="submod name"><div>{{mod.name}}</div></div>
-                <div class="submod value"><div>{{mod.value}}</div></div>
+                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
               </div>
             </label>
           </div>
