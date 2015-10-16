@@ -6,24 +6,33 @@ var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var uriUtil = require('mongodb-uri');
 
-var options = { server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
-                replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } };       
- 
-/*
- * Mongoose uses a different connection string format than MongoDB's standard.
- * Use the mongodb-uri library to help you convert from the standard format to
- * Mongoose's format.
- */
-var mongodbUri = 'mongodb://heroku_067m5c1d:gqdu4n5htok8tuvia3manvnok6@ds039624-a0.mongolab.com:39624,ds039624-a1.mongolab.com:39624/heroku_067m5c1d?replicaSet=rs-ds039624';
-var mongooseUri = uriUtil.formatMongoose(mongodbUri);
+var uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/86cup';
 
-mongoose.connect(mongooseUri, options);
+// var mongodbUri = 'mongodb://heroku_067m5c1d:gqdu4n5htok8tuvia3manvnok6@ds039624-a0.mongolab.com:39624,ds039624-a1.mongolab.com:39624/heroku_067m5c1d?replicaSet=rs-ds039624';
+// var mongooseUri = uriUtil.formatMongoose(mongodbUri);
 
-var db = mongoose.connection;
+ mongoose.connect(uristring, function (err, res) {
+      if (err) {
+      console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+      } else {
+      console.log ('Succeeded connected to: ' + uristring);
+      }
+    });
 
-db.on('error', console.error.bind(console, 'connection error:'));
+// if(process.env.MONGOLAB_URI) {
+//   mongoose.connect(mongooseUri, options);
+// }else{
+//   mongoose.connect('mongodb://localhost/86cup');
+// }
 
-// mongoose.connect('mongodb://localhost/86cup');
+// var db = mongoose.connection;
+
+// db.on('error', console.error.bind(console, 'connection error:'));
+
+
 
 app.set('port', (process.env.PORT || 4040));
 

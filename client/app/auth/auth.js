@@ -16,6 +16,7 @@ angular.module('86cup.auth', [])
   };
 
   $scope.signup = function () {
+    console.log($scope.user)
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('racepro', token);
