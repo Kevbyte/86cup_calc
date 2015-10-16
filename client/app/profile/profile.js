@@ -32,9 +32,12 @@ angular.module('86cup.profile', [])
             }
           })
         })
+        .then(function() {
+          $scope.determineClass();
+        })
     };
 
-    $scope.getModList();
+    $scope.getModList()
 
     //user clicks on mod and toggles it active/not active
     $scope.toggleActiveDrivetrain = function(i, e) {
@@ -45,7 +48,7 @@ angular.module('86cup.profile', [])
         $scope.modPts -= $scope.modList.mods.drivetrain[i].value;
       }
       $scope.modList.mods.drivetrain[i].active = !$scope.modList.mods.drivetrain[i].active;
-      $scope.class = $scope.determineClass();
+      $scope.determineClass();
     };
 
     $scope.toggleActiveWheels = function(i) {
@@ -56,7 +59,7 @@ angular.module('86cup.profile', [])
         $scope.modPts -= $scope.modList.mods.wheels[i].value;
       }
       $scope.modList.mods.wheels[i].active = !$scope.modList.mods.wheels[i].active;
-      $scope.class = $scope.determineClass();
+      $scope.determineClass();
     };
 
     $scope.toggleActiveAero = function(i) {
@@ -66,7 +69,7 @@ angular.module('86cup.profile', [])
         $scope.modPts -= $scope.modList.mods.aero[i].value;
       }
       $scope.modList.mods.aero[i].active = !$scope.modList.mods.aero[i].active;
-      $scope.class = $scope.determineClass();
+      $scope.determineClass();
     };
 
     $scope.toggleActiveSuspension = function(i) {
@@ -76,39 +79,85 @@ angular.module('86cup.profile', [])
         $scope.modPts -= $scope.modList.mods.suspension[i].value;
       }
       $scope.modList.mods.suspension[i].active = !$scope.modList.mods.suspension[i].active;
-      $scope.class = $scope.determineClass();
+      $scope.determineClass();
     };
 
     //A function to determine a user's class
     $scope.determineClass = function() {
       if($scope.modPts <= 0.5) {
-        return 'stock';
+        $scope.class = 'stock';
       }
       if($scope.modPts > 0.5 && $scope.modPts <= 4.5) {
-        return 'street';
+        $scope.class = 'street';
       }
       if($scope.modPts > 4.5 && $scope.modPts <= 6.0) {
-        return 'limited';
+        $scope.class = 'limited';
       }
       if($scope.modPts > 6.0) {
-        return 'unlimited';
+        $scope.class = 'unlimited';
       }
+      console.log($scope.class)
     };
-
-    $scope.class = $scope.determineClass();
 
     //upload a photo to be used as an avatar
     $scope.add = function() {
+      var dataurl = null;
       var preview = document.getElementById('pic');
       var f = document.getElementById('file').files[0];
+      var img = document.createElement("img");
+
       var r = new FileReader();
+
       r.onloadend = function(e){
         preview.src = e.target.result;
-        $scope.avatar = e.target.result;
+        img.src = e.target.result;
+          console.log("weee")
+          var canvas = document.createElement("canvas");
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+
+          var MAX_WIDTH = 400;
+          var MAX_HEIGHT = 300;
+          var width = img.width;
+          var height = img.height;
+
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height *= MAX_WIDTH / width;
+              width = MAX_WIDTH;
+            }
+          } else {
+            if (height > MAX_HEIGHT) {
+              width *= MAX_HEIGHT / height;
+              height = MAX_HEIGHT;
+            }
+          }
+          canvas.width = width;
+          canvas.height = height;
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+
+          dataurl = canvas.toDataURL("image/jpeg");
+        $scope.avatar = dataurl;
         console.log("avatar === ", $scope.avatar);
       };
       r.readAsDataURL( f );
     }; //adds image data to $scope.avatar
+
+    // $scope.add = function() {
+    //   var preview = document.getElementById('pic');
+    //   var f = document.getElementById('file').files[0];
+    //   var img = document.createElement("img");
+
+    //   var r = new FileReader();
+      
+    //   r.onloadend = function(e){
+    //     preview.src = e.target.result;
+    //     $scope.avatar = e.target.result;
+    //     console.log("avatar === ", $scope.avatar);
+    //   };
+    //   r.readAsDataURL( f );
+    // };
 
     //final form submission
     $scope.updateMods = function() {

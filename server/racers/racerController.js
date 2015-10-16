@@ -11,7 +11,7 @@ module.exports = {
   racerList: function (req, res) {
     // console.log('in racerController!!!==============================')
     Racer.find({})
-      .select('-_id -salt -password -avatar')
+      .select('-_id -salt -password')
       .sort({total: +1})
       .then(function(list) {
         // console.log('list === ', list)

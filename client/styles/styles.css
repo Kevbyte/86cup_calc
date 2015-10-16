@@ -7,13 +7,21 @@ body {
   background-repeat: no-repeat;*/
 }
 
-#profile {
-  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: 70% 90%;
-  background-repeat: no-repeat;
+h4, h2, h3, h1 {
+  text-align:center;
+
 }
+
+.instructions {
+  margin-top: 5%;
+  text-align: center;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+MAIN
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 #main {
   background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background03.jpg');
@@ -47,29 +55,15 @@ body {
   box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
 }
 
-.sidebar {
-  background-color: #A70138;
-}
-
-ul.sidebar .sidebar-main a {
-  background-color: #7C0029;
-}
-
-#sidebar-wrapper {
-  background-color: #7C0029;
-}
-
-ul.sidebar .sidebar-list a:hover {
-  background-color: #7C0029;
-}
-
-.glyphicon-transfer:before {
-  content: "\e178";
-}
-
 .col-xs-4 {
   background-color: #7C0029;
 }
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+PROFILE
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 .category h1 {
   color: #7C0029;
@@ -81,25 +75,17 @@ ul.sidebar .sidebar-list a:hover {
   display:inline-block;
 }
 
-h4, h2, h3, h1 {
-  text-align:center;
 
-}
-
-.userinfo {
-  width: 90%;
-  text-align:center;
-  display: inline-block;
-  margin: 0 auto;
-}
-
-.instructions {
-  margin-top: 5%;
-  text-align: center;
+#profile {
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 70% 90%;
+  background-repeat: no-repeat;
 }
 
 #mod {
-  margin: 2%;
+  margin: 1%;
   text-align:center;
 
 }
@@ -117,7 +103,6 @@ h4, h2, h3, h1 {
 
 #mod label div {
   /*text-align:center;*/
-  font-size:16px;
   padding: 1% 0px;
 }
 
@@ -147,6 +132,7 @@ h4, h2, h3, h1 {
 }
 
 .submod.name {
+  font-size:16px;
   display:inline-block;
   width: 70%;
   height: 20%;
@@ -163,6 +149,7 @@ h4, h2, h3, h1 {
 }
 
 .submod.value {
+  font-size:16px;
   vertical-align: middle;
   width: 15%;
   height: 15%;
@@ -172,8 +159,8 @@ h4, h2, h3, h1 {
 .circ {
   vertical-align: middle;
   margin: 0 auto;
-  width: 10vmin;
-  height: 10vmin;
+  width: 15vmin;
+  height: 15vmin;
   border: 1px solid #D0D0D0;
   border-radius: 50%;
 }
@@ -187,13 +174,20 @@ h4, h2, h3, h1 {
   transform: translateY(-50%);
 }
 
+.userinfo {
+  width: 90%;
+  text-align:center;
+  display: inline-block;
+  margin: 0 auto;
+}
+
 .profile1 {
   margin: 0 auto;
 }
 
 .circles {
   display:inline-block;
-  font-size: 24px;
+  font-size: 18px;
   width: 30vmin;
   height: 30vmin;
   border-radius: 50%;
@@ -201,8 +195,8 @@ h4, h2, h3, h1 {
 
 .modPts {
   /*border: 1px solid black;*/
-  margin-top: 25px;
-  margin-right:100px;
+  margin-top: 5%;
+  margin-right:10%;
   background-color: #A70138;
   color: white;
   font-weight: 600;
@@ -220,8 +214,8 @@ h4, h2, h3, h1 {
 
 .class {
   /*border: 1px solid black;*/
-  margin-top: 25px;
-  margin-left:100px;
+  margin-top: 5%;
+  margin-left:10%;
   background-color: #A70138;
   color: white;
   font-weight: 600;
@@ -260,6 +254,62 @@ h4, h2, h3, h1 {
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Standings
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#standings {
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background01.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 70% 90%;
+  background-repeat: no-repeat;
+  height: 100vmax;
+}
+
+.standingsdiv {
+  margin: 0 auto;
+  padding: 15px;
+  width: 90%;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
+  text-align: center;
+
+}
+
+.cat {
+  margin: 0 auto;
+  text-align: center;
+  padding: 1%;
+  width: 50%;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
+}
+
+.cat div {
+  margin: 0.5%;
+}
+
+.avatar2 {
+  width: 10vmin;
+  height: 10vmin;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.avatar2 img {
+  width: 10vmin;
+  height: 10vmin;
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0 0 4px 2px rgba(0,0,0, 0.5);
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 Landing
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -270,97 +320,111 @@ Landing
   background-size: cover;
   background-position: 70% 90%;
   background-repeat: no-repeat;
-  height: 100vmin;
+  height: 100vmax;
+}
+
+.landingdiv {
+  margin-top: 25vmin;
+  padding: 1%;
+  width: 90%;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
+  text-align: center;
+}
+
+.test {
+  padding: 15px;
+  width: 90%;
+  height: 100%;
 }
 
 
 .nav {
-  -webkit-box-flex: 0;
-  -webkit-flex: 0 0 100%;
-      -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
+  text-align: center;
 }
 
 .nav__items {
+  width: 50%;
+  height: 10%;
   list-style: none;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   text-align: center;
 }
 
 .nav_item {
-  float: left;
   display: inline-block;
   margin: 0 12px;
-  font-size: 22px;
+  font-size: 18px;
 }
 
-.nav__link {
+.nav_link {
   display: block;
-  padding: 0 8px;
-  color: #fff;
+  /*padding: 0 8px;*/
+  color: #337ab7;
 }
 
-.nav__link--alt {
+.nav_link:hover {
   color: red;
 }
 
-.nav__link:hover {
-  color: red;
-  background-color: #fff;
-}
-
-.nav__link--alt:hover {
-  color: #fff;
-  background-color: red;
-}
-
-@media all and (min-width: 600px) {
+/*@media all and (min-width: 600px) {
   .nav {
-    -webkit-box-flex: 1;
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
+    margin: 0 auto;
+    text-align: center;
   }
   .nav__items {
     margin: 0 0 0 24px;
     text-align: right;
   }
-}
+}*/
 
-@media only screen and (max-width: 320px) {
+@media all and (max-width: 325px) {
 
    body { font-size: 2em; }
+   #mod label {
+     font-weight: 400;
+     width: 100%;
+     margin: 2%;
+     box-shadow: 0 0 5px 2px rgba(0,0,0, 0.5);
+   }
+   .submod.value {
+     font-size: 10px;
+   }
+   .circ {
+     vertical-align: middle;
+     margin: 0 auto;
+     width: 12vmin;
+     height: 12vmin;
+     border: 1px solid #D0D0D0;
+     border-radius: 50%;
+   }
+   .modPts {
+     /*border: 1px solid black;*/
+     margin-top: 5%;
+     margin-right:0%;
+     background-color: #A70138;
+     color: white;
+     font-weight: 600;
+     width: 30vmin;
+     height: 30vmin;
+     line-height: 30vmin;
+     text-align: center;
+   }
+
+   .class {
+     /*border: 1px solid black;*/
+     margin-top: 5%;
+     margin-left:0%;
+     background-color: #A70138;
+     color: white;
+     font-weight: 600;
+     width: 30vmin;
+     height: 30vmin;
+     line-height: 28vmin;
+     text-align: center;
+   }
 
 }
 
-.containerHeader {
-  margin: 0 auto;
-  padding: 0 24px;
-  max-width: 1280px;
-}
-
-@media all and (min-width: 600px) {
-  .container {
-    padding: 0 48px;
-  }
-}
-
-.header {
-  padding: 24px 0;
-  background-color: #2B3A42;
-}
-
-.header__inner {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-flow: row wrap;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
