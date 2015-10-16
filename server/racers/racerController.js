@@ -2,6 +2,7 @@ var Racer = require('./racerModel');
 var Q = require('q');
 var jwt = require('jwt-simple');
 var _ = require('underscore');
+var path = require('path');
 
 var ranks = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th']
 
@@ -13,19 +14,20 @@ module.exports = {
       .select('-_id -salt -password -avatar')
       .sort({total: +1})
       .then(function(list) {
+        // console.log('list === ', list)
         var sorted = {stock: [], street: [], limited: [], unlimited: []}
         //categorize the users based on class first before sending
         _.each(list, function(racer){
-          if(racer.modpts <= 0.5) {
+          if(racer.modPts <= 0.5) {
             sorted.stock.push(racer);
           }
-          if(racer.modpts > 0.5 && racer.modpts <= 4.5) {
+          if(racer.modPts > 0.5 && racer.modPts <= 4.5) {
             sorted.street.push(racer);
           }
-          if(racer.modpts > 4.5 && racer.modpts <= 6.0) {
+          if(racer.modPts > 4.5 && racer.modPts <= 6.0) {
             sorted.limited.push(racer);
           }
-          if(racer.modpts > 6.0) {
+          if(racer.modPts > 6.0) {
             sorted.unlimited.push(racer);
           }
         })
@@ -39,6 +41,7 @@ module.exports = {
             }
           })
         }
+        console.log('sorted === ', sorted)
         res.send(sorted);
       })
   },

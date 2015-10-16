@@ -1,5 +1,8 @@
 angular.module('86cup.standings', [])
-  .controller('StandingsController', function ($scope, Racers) {
+  .controller('StandingsController', function ($scope, $window, $location, Racers) {
+    if(!$window.localStorage.racepro){
+      $location.path('/')
+    }
     $scope.stock = {};
     $scope.street = {};
     $scope.limited = {};

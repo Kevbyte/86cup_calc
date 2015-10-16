@@ -1,5 +1,8 @@
 angular.module('86cup.profile', [])
-  .controller('ProfileController', function ($scope, $location, $window, Racers) {
+  .controller('ProfileController', function ($scope, $window, $location, $window, Racers) {
+    if(!$window.localStorage.racepro){
+      $location.path('/')
+    }
     var user = Racers.getAuthRacer();
     $scope.username = {name: user};
     $scope.modPts = 0;

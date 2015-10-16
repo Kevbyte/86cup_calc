@@ -1,6 +1,8 @@
 var racerController = require('../racers/racerController');
 var eventController = require('../events/eventController');
 
+var path = require('path');
+
 module.exports = function (app) {
   // app.post('/totals', racerController.updateTotals);
   app.get('/racers/racerList', racerController.racerList);

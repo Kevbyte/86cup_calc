@@ -1,5 +1,6 @@
 angular.module('86cup', 
   [
+  '86cup.landing',
   '86cup.main', 
   '86cup.standings', 
   '86cup.admin', 
@@ -12,8 +13,13 @@ angular.module('86cup',
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
-    .state('main', {
+    .state('landing', {
       url: '/',
+      templateUrl: 'app/landing/landing.html',
+      controller: 'LandingController'
+    })
+    .state('main', {
+      url: '/main',
       templateUrl: 'app/main/main.html',
       controller: 'MainController'
     })
@@ -47,8 +53,8 @@ angular.module('86cup',
       templateUrl: 'app/profile/profile.html',
       controller: 'ProfileController'
     })
-
-    $urlRouterProvider.otherwise('/');
+    
+    // $urlRouterProvider.otherwise('/');
 })
 
 ////////////////////////////////////////////////////////////
@@ -130,7 +136,7 @@ angular.module('86cup',
 // run the style
 ////////////////////////////////////////////////////////////
 
-// .run(function ($rootScope, $window, $location, Auth, Users) {
+// .run(function ($rootScope, $window, $location, Auth, Racers) {
 
 
 //   ////////////////////////////////////////////////////////////
@@ -139,6 +145,7 @@ angular.module('86cup',
 
 //   $rootScope.$on('$stateChangeStart', function (evt, next, current) {
 //     // redirect home if auth required and user isn't auth
+//     console.log("next.authenticate === ", next.authenticate)
 //     if (next && next.authenticate && !Auth.isAuth()) {
 //       $location.path('/');
 //     }

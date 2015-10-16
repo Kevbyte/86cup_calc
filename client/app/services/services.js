@@ -96,7 +96,7 @@ angular.module('86cup.services', [])
 
     // helper to check if users are authorized
     var isAuth = function () {
-      return !!$window.localStorage.getItem('battlepro');
+      return !!$window.localStorage.getItem('racepro');
     };
 
     // signs out users
@@ -107,7 +107,7 @@ angular.module('86cup.services', [])
       
       return $http({
         method: 'POST',
-        url: '/auth/signout',
+        url: '/auth/logout',
         data: user
       })
       .then(function (resp) {
