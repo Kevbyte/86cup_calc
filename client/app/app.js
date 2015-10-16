@@ -54,7 +54,7 @@ angular.module('86cup',
       controller: 'ProfileController'
     })
     
-    // $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/');
 })
 
 ////////////////////////////////////////////////////////////
