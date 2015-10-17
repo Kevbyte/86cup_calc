@@ -29,28 +29,106 @@ MAIN
   background-size: cover;
   background-position: 70% 90%;
   background-repeat: no-repeat;
+  height: 100vmax;
 }
 
-.intro {
-  height: 50px;
+.header {
+  font-size: 24px;
+  color: #dededd;
+  background-color: #3E434B;
+  width: 100%;
 }
 
-.announcements {
-  height: 300px;
+.intro-profile {
+  padding: 2vmin;
+  height: 80vmin;
+  width: 100%;
+  background-color: rgba(242,242,241,0.5);
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+  vertical-align: middle;
 }
 
-.standings {
-  height: 300px;
+.intro-standings {
+  height: 80vmin;
+  width: 100%;
+  background-color: rgba(232, 232, 231,0.9);
+  display: inline-block;
+  font-size: 20px;
 }
 
-.upcoming {
-  height: 300px;
+.intro-events {
+  height: 80vmin;
+  width: 100%;
+  background-color: rgba(242,242,241,0.9);
+  display: inline-block;
+  font-size: 20px;
+}
+
+.intro-stats {
+  height: 80vmin;
+  width: 100%;
+  background-color: rgba(232, 232, 231,0.9);
+  display: inline-block;
+  font-size: 20px;
+}
+
+.intro-admin {
+  color: #F2F2F1;
+  height: 80vmin;
+  width: 100%;
+  background-color: rgba(232, 232, 231,0.5);
+  display: inline-block;
+  font-size: 20px;
+}
+
+#intro-icon {
+  margin-right: 10vmin;
+  width: 40vmin;
+  height: 76vmin;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 76vmin;
+  cursor: pointer;
+}
+
+.intro-title {
+  font-weight: 600;
+  font-size: 28px
+}
+
+/*#intro-icon div {
+  display: inline-block;
+  vertical-align: middle;
+}*/
+
+#intro-icon img{
+  border: 1px solid black;
+  width: 40vmin;
+  height: 40vmin;
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
+  vertical-align: middle;
+}
+
+#inst {
+  width:70%;
+  display: inline-block;
+  height: 50%;
+}
+
+#inst span{
+  display: block;
+  text-align: left;
 }
 
 .maindiv {
-  padding: 15px;
-  width: 90%;
-  background-color: rgba(255,255,255,0.8);
+  /*padding: 15px;*/
+  width: 100%;
+  /*background-color: rgba(255,255,255,0.8);*/
   border-radius: 10px;
   box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
 }
@@ -103,7 +181,7 @@ PROFILE
 
 #mod label div {
   /*text-align:center;*/
-  padding: 1% 0px;
+  padding: 1%;
 }
 
 #mod label input {
@@ -424,6 +502,77 @@ Landing
      height: 30vmin;
      line-height: 28vmin;
      text-align: center;
+   }
+
+   .intro {
+     font-size: 14px;
+     height: 40vmin;
+   }
+
+   .announcements {
+     font-size: 14px;
+     height: 40vmin;
+   }
+
+   .upcoming {
+     font-size: 14px;
+     height: 40vmin;
+   }
+
+   .intro-profile {
+     padding: 1%;
+     height: 80vmin;
+     width: 100%;
+     background-color: rgba(242,242,241,0.9);
+     display: inline-block;
+     margin: 0 auto;
+     text-align: center;
+     font-size: 12px;
+   }
+
+   .intro-standings {
+     height: 80vmin;
+     width: 100%;
+     background-color: rgba(232, 232, 231,0.9);
+     display: inline-block;
+     font-size: 20px;
+   }
+
+   .intro-events {
+     height: 80vmin;
+     width: 100%;
+     background-color: rgba(242,242,241,0.9);
+     display: inline-block;
+     font-size: 20px;
+   }
+
+   .intro-stats {
+     height: 80vmin;
+     width: 100%;
+     background-color: rgba(232, 232, 231,0.9);
+     display: inline-block;
+     font-size: 20px;
+   }
+
+   #intro-icon {
+     width: 25vmin;
+     display: inline-block;
+     margin: 0 auto;
+   }
+
+   #intro-icon img{
+     border: 1px solid black;
+     width: 25vmin;
+     height: 25vmin;
+     display: inline-block;
+     border-radius: 50%;
+     box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
+   }
+
+   #inst {
+     width:60%;
+     display: inline-block;
+     height: 50%;
    }
 
 }
