@@ -86,11 +86,8 @@ MAIN
 
 #intro-icon {
   margin-right: 10vmin;
-  width: 40vmin;
-  height: 76vmin;
+  max-width: 35%;
   display: inline-block;
-  vertical-align: middle;
-  line-height: 76vmin;
   cursor: pointer;
 }
 
@@ -106,8 +103,7 @@ MAIN
 
 #intro-icon img{
   border: 1px solid black;
-  width: 40vmin;
-  height: 40vmin;
+  max-width: 35%;
   display: inline-block;
   border-radius: 50%;
   box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
@@ -458,10 +454,7 @@ Landing
   }
 }*/
 
-@media all and (max-width: 325px) {
-  .lead {
-    color: red;
-  }
+@media all and (max-width: 320px) {
 
    #mod label {
      font-weight: 400;
@@ -557,27 +550,23 @@ Landing
    }
 
    #intro-icon {
-     width: 25vmin;
+     max-width: 35%;
      display: inline-block;
      margin: 0 auto;
    }
 
    #intro-icon img{
      border: 1px solid black;
-     width: 25vmin;
-     height: 25vmin;
+     max-width: 35%;
      display: inline-block;
      border-radius: 50%;
      box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
    }
 
    #inst {
-     width:60%;
+     width: 60%;
      display: inline-block;
-     height: 50%;
    }
 
 }
-
-iframe { width: 100%; }
 
