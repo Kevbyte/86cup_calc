@@ -459,8 +459,10 @@ Landing
 }*/
 
 @media all and (max-width: 325px) {
+  .lead {
+    color: red;
+  }
 
-   body { font-size: 2em; }
    #mod label {
      font-weight: 400;
      width: 100%;
