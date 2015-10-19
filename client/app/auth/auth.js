@@ -3,8 +3,10 @@ angular.module('86cup.auth', [])
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $scope.user = {};
   $('.auth__message').hide()
+  console.log("auth!")
 
   $scope.login = function () {
+    console.log("user === ", $scope.user);
     Auth.login($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('racepro', token);
