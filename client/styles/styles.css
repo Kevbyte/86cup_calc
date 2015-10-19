@@ -564,35 +564,24 @@ AUTH
    }
 
    .intro-standings {
-     height: 80vmin;
-     width: 100%;
-     background-color: rgba(232, 232, 231,0.9);
+     margin: 0;
+   }
+
+   .intro-admin {
+    margin: 0;
    }
 
    .intro-events {
-     height: 80vmin;
-     width: 100%;
-     background-color: rgba(242,242,241,0.9);
-     display: inline-block;
-     font-size: 20px;
+     margin: 0;
    }
 
    .intro-stats {
-     height: 80vmin;
-     width: 100%;
-     background-color: rgba(232, 232, 231,0.9);
-     display: inline-block;
-     font-size: 20px;
+     margin: 0;
    }
 
    .intro-icon {
      max-width: 15%;
      margin: 2%;
-   }
-
-   .intro-icon img{
-     border: 1px solid black;
-     box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
    }
 
    .inst {
