@@ -17,6 +17,12 @@ h4, h2, h3, h1 {
   text-align: center;
 }
 
+.container {
+  padding: 15px;
+  width: 90%;
+  height: 100%;
+}
+
 /*///////////////////////////////////////////////////////////////////////////////////////////////////
 
 MAIN
@@ -29,7 +35,7 @@ MAIN
   background-size: cover;
   background-position: 70% 90%;
   background-repeat: no-repeat;
-  height: 100vmax;
+  height: 100%;
 }
 
 .header {
@@ -39,56 +45,44 @@ MAIN
   width: 100%;
 }
 
-.intro-profile {
-  padding: 2vmin;
-  height: 80vmin;
+.maindiv {
+  /*padding: 15px;*/
   width: 100%;
-  background-color: rgba(242,242,241,0.5);
-  display: inline-block;
-  margin: 0 auto;
-  text-align: center;
-  font-size: 20px;
-  vertical-align: middle;
+}
+
+.intro-profile {
+  height: 50vmin;
+  margin: 2%;
+  text-align:center;
+  background-color: rgba(242,242,241,0.7);
 }
 
 .intro-standings {
-  height: 80vmin;
-  width: 100%;
+  height: 50vmin;
+  margin: 2%;
+  text-align:center;
   background-color: rgba(232, 232, 231,0.9);
-  display: inline-block;
-  font-size: 20px;
-}
-
-.intro-events {
-  height: 80vmin;
-  width: 100%;
-  background-color: rgba(242,242,241,0.9);
-  display: inline-block;
-  font-size: 20px;
-}
-
-.intro-stats {
-  height: 80vmin;
-  width: 100%;
-  background-color: rgba(232, 232, 231,0.9);
-  display: inline-block;
-  font-size: 20px;
 }
 
 .intro-admin {
-  color: #F2F2F1;
-  height: 80vmin;
-  width: 100%;
-  background-color: rgba(232, 232, 231,0.5);
-  display: inline-block;
-  font-size: 20px;
+  height: 50vmin;
+  margin: 2%;
+  text-align:center;
+  background-color: rgba(232, 232, 231,0.7);
 }
 
-#intro-icon {
-  margin-right: 10vmin;
-  max-width: 35%;
-  display: inline-block;
-  cursor: pointer;
+.intro-events {
+  height: 50vmin;
+  margin: 2%;
+  text-align:center;
+  background-color: rgba(242,242,241,0.9);
+}
+
+.intro-stats {
+  height: 50vmin;
+  margin: 2%;
+  text-align:center;
+  background-color: rgba(232, 232, 231,0.7);
 }
 
 .intro-title {
@@ -96,37 +90,39 @@ MAIN
   font-size: 28px
 }
 
-/*#intro-icon div {
-  display: inline-block;
+.intro-icon {
+  font-size:16px;
+  line-height: 45vmin;
   vertical-align: middle;
-}*/
+  width: 15%;
+  height: 15%;
+  margin: 1%;
+  display:inline-block;
+  cursor: pointer;
+}
 
-#intro-icon img{
+.intro-icon img{
   border: 1px solid black;
-  max-width: 35%;
+  max-width: 100%;
   display: inline-block;
   border-radius: 50%;
   box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
   vertical-align: middle;
 }
 
-#inst {
-  width:70%;
-  display: inline-block;
-  height: 50%;
+.inst {
+  font-size:16px;
+  display:inline-block;
+  width: 70%;
+  height: 20%;
+  margin: 1%;
+  vertical-align: middle;
+  text-align: left;
 }
 
 #inst span{
   display: block;
   text-align: left;
-}
-
-.maindiv {
-  /*padding: 15px;*/
-  width: 100%;
-  /*background-color: rgba(255,255,255,0.8);*/
-  border-radius: 10px;
-  box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
 }
 
 .col-xs-4 {
@@ -161,7 +157,6 @@ PROFILE
 #mod {
   margin: 1%;
   text-align:center;
-
 }
 
 #mod label {
@@ -407,12 +402,6 @@ Landing
   text-align: center;
 }
 
-.test {
-  padding: 15px;
-  width: 90%;
-  height: 100%;
-}
-
 
 .nav {
   text-align: center;
@@ -443,6 +432,62 @@ Landing
   color: red;
 }
 
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+AUTH
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#login {
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background08.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 70% 90%;
+  background-repeat: no-repeat;
+  height: 100vmax;
+}
+
+.logindiv {
+  margin-top: 15%;
+  padding: 1%;
+  width: 50%;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
+  text-align: center;
+}
+
+#signup {
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background07.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 70% 90%;
+  background-repeat: no-repeat;
+  height: 100vmax;
+}
+
+.signupdiv {
+  margin-top: 25vmin;
+  padding: 1%;
+  width: 90%;
+  background-color: rgba(255,255,255,0.8);
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
+  text-align: center;
+}
+
+.form-control {
+  width: 75%;
+  margin: auto;
+}
+
+.btn {
+  margin: 10px;
+}
+
+
+
+
 /*@media all and (min-width: 600px) {
   .nav {
     margin: 0 auto;
@@ -454,7 +499,7 @@ Landing
   }
 }*/
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 415px) {
 
    #mod label {
      font-weight: 400;
@@ -515,22 +560,13 @@ Landing
    }
 
    .intro-profile {
-     padding: 1%;
-     height: 80vmin;
-     width: 100%;
-     background-color: rgba(242,242,241,0.9);
-     display: inline-block;
-     margin: 0 auto;
-     text-align: center;
-     font-size: 12px;
+     margin: 0;
    }
 
    .intro-standings {
      height: 80vmin;
      width: 100%;
      background-color: rgba(232, 232, 231,0.9);
-     display: inline-block;
-     font-size: 20px;
    }
 
    .intro-events {
@@ -549,24 +585,62 @@ Landing
      font-size: 20px;
    }
 
-   #intro-icon {
-     max-width: 35%;
-     display: inline-block;
-     margin: 0 auto;
+   .intro-icon {
+     max-width: 15%;
+     margin: 2%;
    }
 
-   #intro-icon img{
+   .intro-icon img{
      border: 1px solid black;
-     max-width: 35%;
-     display: inline-block;
-     border-radius: 50%;
      box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
    }
 
-   #inst {
-     width: 60%;
-     display: inline-block;
+   .inst {
+    font-size: 14px;
    }
+
+   .intro-title {
+    font-size: 20px;
+   }
+
+   /*AUTH*/
+
+   .container {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+   }
+
+   .logindiv {
+     margin-top: 15%;
+     padding: 1%;
+     width: 100%;
+     background-color: rgba(255,255,255,0.8);
+     border-radius: 0;
+     box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
+     text-align: center;
+   }
+
+   .signupdiv {
+     margin-top: 15%;
+     padding: 1%;
+     width: 100%;
+     background-color: rgba(255,255,255,0.8);
+     border-radius: 0;
+     box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
+     text-align: center;
+   }
+
+   .landingdiv {
+     margin-top: 15%;
+     padding: 1%;
+     width: 100%;
+     background-color: rgba(255,255,255,0.8);
+     border-radius: 0;
+     box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
+     text-align: center;
+   }
+
 
 }
 
