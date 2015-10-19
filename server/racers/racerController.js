@@ -41,14 +41,14 @@ module.exports = {
             }
           })
         }
-        console.log('sorted === ', sorted)
+        // console.log('sorted === ', sorted)
         res.send(sorted);
       })
   },
 
   //get a single user's information and send it to front end
   getModList: function (req, res) {
-    console.log('req.query', req.query.name)
+    // console.log('req.query', req.query.name)
     var racer = req.query.name.toLowerCase();
     Racer.findOne({username: racer})
       .select('-_id -salt -password')
@@ -66,9 +66,17 @@ module.exports = {
     var limited = req.body.limited.racers;
     var unlimited = req.body.unlimited.racers;
 
+    if(req.body.nuke = "nuke") {
+      Racer.find({}).remove().exec();
+    }
+
     _.each(stock, function (racer) {
       Racer.find({username: racer.name})
       .then(function (user) {
+        if(racer.delete === "delete") {
+          console.log("deleting user")
+          Racer.find({username: racer.name}).remove().exec();
+        }
         if(racer.add){
           user[0].total += racer.add;
           user[0].save(function(err) {
@@ -123,7 +131,7 @@ module.exports = {
     var avatar = req.body.avatar
     var modList = req.body.modList.mods;
     var modPts = req.body.modPts;
-    console.log("mod req.body ===", req.body)
+    // console.log("mod req.body ===", req.body)
 
     Racer.findOne({username: username})
       .then(function (racer) {

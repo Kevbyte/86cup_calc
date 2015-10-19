@@ -17,7 +17,7 @@ angular.module('86cup.profile', [])
       Racers.getModList($scope.username)
         .then(function(resp){
           console.log('resp === ', resp.data)
-          if(resp.data.avatar !== '') {
+          if(resp.data.avatar !== "../assets/car-placeholder.png") {
             $scope.avatar = resp.data.avatar; 
           }
           $scope.modList.mods = resp.data.modList;

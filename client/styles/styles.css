@@ -411,6 +411,64 @@ Standings
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+Admin
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+#admin {
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg');
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 70% 90%;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+
+.admindiv {
+  margin: 0 auto;
+  padding: 15px;
+  width: 90%;
+  background-color: rgba(255,255,255,0.7);
+  border-radius: 10px;
+  box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
+  text-align: center;
+
+}
+
+.admindiv i {
+  padding: 3%;
+  width: 100%;
+  height: 5%;
+  color: #337AB7;
+  font-size: 3.5em;
+}
+
+.admin-racer {
+  margin: 1%;
+}
+
+.racer-name {
+  width:10%;
+  color: white;
+  background-color: #337AB7;
+  border: 1px solid white;
+  display:inline-block;
+}
+
+.racer-add {
+  width:10%;
+}
+
+.racer-time {
+  width:10%;
+}
+
+.racer-delete {
+  width:20%;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 Landing
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -764,6 +822,47 @@ header h1 {
 
    .standingsdiv h2 {
     margin: 0;
+   }
+
+   .admindiv {
+     margin: 0 auto;
+     padding: 0;
+     width: 100%;
+     background-color: rgba(255,255,255,0.7);
+     border-radius: 0;
+     box-shadow: 0 0 20px 5px rgba(0,0,0, 0.7);
+     text-align: center;
+
+   }
+
+   .admindiv i {
+     padding: 3%;
+     width: 100%;
+     height: 5%;
+     color: #337AB7;
+     font-size: 3.5em;
+   }
+
+   .admin-racer {
+     margin: 2%;
+   }
+
+   .racer-name {
+    width: 35%;
+    border: 1px solid white;
+   }
+
+   .racer-add {
+     width:30%;
+   }
+
+   .racer-time {
+     width:30%;
+   }
+
+   .racer-delete {
+     width:60%;
+     margin-left: 35%;
    }
 
 

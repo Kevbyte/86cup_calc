@@ -16,7 +16,7 @@ angular.module('86cup.admin', [])
 
     $scope.getRacers = function() {
       Racers.getRacerList().then(function(resp) {
-        // console.log('resp.data === ', resp.data)
+        console.log('resp.data === ', resp.data)
         $scope.stock.racers = resp.data.stock;
         $scope.street.racers = resp.data.street;
         $scope.limited.racers = resp.data.limited;
@@ -24,7 +24,7 @@ angular.module('86cup.admin', [])
 
       }).then(function(){
         _.forEach($scope.stock.racers, function(racer){
-          $scope.trackEvent.stock.racers.push({name: racer.username});
+          $scope.trackEvent.stock.racers.push({name: racer.username });
         })
         _.each($scope.street.racers, function(racer){
           $scope.trackEvent.street.racers.push({name: racer.username});

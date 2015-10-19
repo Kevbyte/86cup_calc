@@ -14,7 +14,7 @@ var RacerSchema = new mongoose.Schema({
 
   avatar: {
     type: String,
-    default: ''
+    default: "../assets/car-placeholder.png"
   },
 
   rank: {
@@ -142,6 +142,11 @@ var RacerSchema = new mongoose.Schema({
   },
   
   salt: String,
+
+  delete: {
+    type: String,
+    default: ''
+  }
 });
 
 RacerSchema.methods.comparePasswords = function (candidatePassword) {
