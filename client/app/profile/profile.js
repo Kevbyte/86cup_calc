@@ -37,7 +37,13 @@ angular.module('86cup.profile', [])
         })
     };
 
-    $scope.getModList()
+    if($window.localStorage.username !== 'admin') {
+      $scope.getModList()
+    }else{
+      $scope.avatar = "../assets/zeus.jpg";
+      alert("You are currently in admin mode. Only regular users can set a profile.");
+    }
+    
 
     //user clicks on mod and toggles it active/not active
     $scope.toggleActiveDrivetrain = function(i, e) {
@@ -167,13 +173,13 @@ angular.module('86cup.profile', [])
       
     };
 
-    var $window = $(window),
-       $stickyEl = $('.userinfo'),
-       elTop = $stickyEl.offset().top;
+    // var $window = $(window),
+    //    $stickyEl = $('.userinfo'),
+    //    elTop = $stickyEl.offset().top;
 
-    $window.scroll(function() {
-        $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
-    });
+    // $window.scroll(function() {
+    //     $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+    // });
 
 //////////////////////////////////////////////////////////////////////////////////////////
 

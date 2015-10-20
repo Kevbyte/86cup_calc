@@ -4,7 +4,8 @@ angular.module('86cup.admin', [])
       $location.path('/');
     }
     if($window.localStorage.username !== 'admin') {
-      $location.path('/');
+      $location.path('/main');
+      alert("You do not have access to this feature!");
     }
     $scope.trackEvent = {stock: {}, street: {}, limited: {}, unlimited: {}};
     $scope.trackEvent.stock.racers = [];

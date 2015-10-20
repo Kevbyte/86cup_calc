@@ -8,6 +8,10 @@ angular.module('86cup',
   '86cup.services', 
   '86cup.auth',
   '86cup.master', 
+  '86cup.stats',
+  '86cup.profiles',
+  '86cup.cevent',
+  '86cup.pevents',
   'ui.router'
   ])
 
@@ -52,6 +56,26 @@ angular.module('86cup',
       url: '/profile',
       templateUrl: 'app/profile/profile.html',
       controller: 'ProfileController'
+    })
+    .state('profiles', {
+      url: '/profiles',
+      templateUrl: 'app/profiles/profiles.html',
+      controller: 'ProfilesController'
+    })
+    .state('stats', {
+      url: '/stats',
+      templateUrl: 'app/stats/stats.html',
+      controller: 'StatsController'
+    })
+    .state('cevent', {
+      url: '/cevent',
+      templateUrl: 'app/cevent/cevent.html',
+      controller: 'CeventController'
+    })
+    .state('pevents', {
+      url: '/pevents',
+      templateUrl: 'app/pevents/pevents.html',
+      controller: 'PeventsController'
     })
     
     $urlRouterProvider.otherwise('/');
