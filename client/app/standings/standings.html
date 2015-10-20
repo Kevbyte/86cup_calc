@@ -8,8 +8,8 @@
         <div ng-repeat="racer in stock.racers">
           <div>
             <div class="racer rank">{{racer.rank}}</div>
-            <div class="racer avatar2"><image src="{{racer.avatar}}"></image></div>
-            <div class="racer name">{{racer.username}}</div>
+            <div class="racer avatar2" ng-click="redirectToUserStock($index)"><image src="{{racer.avatar}}"></image></div>
+            <div class="racer name" ng-click="redirectToUserStock($index)">{{racer.username}}</div>
             <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
           </div>
         </div>
@@ -20,8 +20,8 @@
         <div ng-repeat="racer in street.racers">
           <div>
             <div class="racer rank">{{racer.rank}}</div>
-            <div class="racer avatar2"><image src="{{racer.avatar}}"></image></div>
-            <div class="racer name">{{racer.username}}</div>
+            <div class="racer avatar2" ng-click="redirectToUserStreet($index)"><image src="{{racer.avatar}}"></image></div>
+            <div class="racer name" ng-click="redirectToUserStreet($index)">{{racer.username}}</div>
             <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
           </div>
         </div>
@@ -32,8 +32,8 @@
         <div ng-repeat="racer in limited.racers">
           <div>
             <div class="racer rank">{{racer.rank}}</div>
-            <div class="racer avatar2"><image src="{{racer.avatar}}"></image></div>
-            <div class="racer name">{{racer.username}}</div>
+            <div class="racer avatar2" ng-click="redirectToUserLimited($index)"><image src="{{racer.avatar}}"></image></div>
+            <div class="racer name" ng-click="redirectToUserLimited($index)">{{racer.username}}</div>
             <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
           </div>
         </div>
@@ -44,8 +44,8 @@
         <div ng-repeat="racer in unlimited.racers">
           <div>
             <div class="racer rank">{{racer.rank}}</div>
-            <div class="racer avatar2"><image src="{{racer.avatar}}"></image></div>
-            <div class="racer name">{{racer.username}}</div>
+            <div class="racer avatar2" ng-click="redirectToUserUnlimited($index)"><image src="{{racer.avatar}}"></image></div>
+            <div class="racer name" ng-click="redirectToUserUnlimited($index)">{{racer.username}}</div>
             <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
           </div>
         </div>

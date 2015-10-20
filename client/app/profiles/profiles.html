@@ -1,89 +1,78 @@
-<image style="width: 100vmin" src="http://www.brighthometheater.com/wp-content/uploads/2015/06/Page_under_construction.png?quality=100.3015050520570"></image>
-<!-- <div id="profile">
-<center>
-<div class="profilediv">
-  <div><i class="menu--icon  fa fa-fw fa-user"></i></div>
-<form ng-submit="updateMods()">
-<center>
-  <label class="circles avatar">
-    <image id="pic" src="{{avatar}}"></image>
-    <input  onchange="angular.element(this).scope().add()" type="file" id="file" name="file">
-  </label>
+<div id="profile">
+  <center>
+    <div class="profilediv">
+      <div><i class="menu--icon  fa fa-fw fa-user"><h3>{{username.name}}</h3></i></div>
+      <div></div>
+      <center>
+        <label class="circles avatar">
+          <image id="pic" src="{{avatar}}"></image>
+        </label>
 
-  <div id="sticky-anchor"></div>
-  <div class="userinfo">
-    <div class="circles modPts"><span>Mod Pts <br> {{modPts}}</span></div>
-    <div class="circles class"><span>{{class}}</span></div>
-  </div>
-  
-</center>
-<div class="profile1">
-  <div class="instructions">Select your mods and click 'submit' at the bottom</div>
-  
+        <div class="userinfo">
+          <div class="circles modPts"><span>Mod Pts <br> {{modPts}}</span></div>
+          <div class="circles class"><span>{{class}}</span></div>
+        </div>
+        
+      </center>
+      <div class="profile1">
+        <div class="instructions">Here are their mods:</div>
 
-    <span class="category"><h1> Engine and Drivetrain </h1></span>
-      <div id="mod-container">
-        <div ng-repeat="mod in modList.mods.drivetrain">
-          <div id="mod">
-            <label class="mod">
-              <input type="checkbox" name="toggle" class="{{$index}}">
-              <div class="box" ng-click="toggleActiveDrivetrain($index, $event)">
-                <div class="submod name"><div>{{mod.name}}</div></div>
-                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
-              </div>
-            </label>
+        <span class="category"><h1> Engine and Drivetrain </h1></span>
+        <div id="mod-container">
+          <div ng-repeat="mod in modList.mods.drivetrain">
+            <div id="mod">
+              <label class="mod">
+                <div class="box">
+                  <div class="submod name"><div>{{mod.name}}</div></div>
+                  <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <span class="category"><h1> Wheels and Tires </h1></span>
+        <div id="mod-container">
+          <div ng-repeat="mod in modList.mods.wheels">
+            <div id="mod">
+              <label class="mod">
+                <div class="box">
+                  <div class="submod name"><div>{{mod.name}}</div></div>
+                  <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <span class="category"><h1> Aerodynamics </h1></span>
+        <div id="mod-container">
+          <div ng-repeat="mod in modList.mods.aero">
+            <div id="mod">
+              <label class="mod">
+                <div class="box">
+                  <div class="submod name"><div>{{mod.name}}</div></div>
+                  <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <span class="category"><h1> Suspension </h1></span>
+        <div id="mod-container">
+          <div ng-repeat="mod in modList.mods.suspension">
+            <div id="mod">
+              <label class="mod">
+                <div class="box">
+                  <div class="submod name"><div>{{mod.name}}</div></div>
+                  <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+                </div>
+              </label>
+            </div>
           </div>
         </div>
       </div>
-
-    <span class="category"><h1> Wheels and Tires </h1></span>
-      <div id="mod-container">
-        <div ng-repeat="mod in modList.mods.wheels">
-          <div id="mod">
-            <label class="mod">
-              <input type="checkbox" name="toggle">
-              <div ng-click="toggleActiveWheels($index)">
-                <div class="submod name"><div>{{mod.name}}</div></div>
-                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
-              </div>
-            </label>
-          </div>
-        </div>
-      </div>
-
-    <span class="category"><h1> Aerodynamics </h1></span>
-      <div id="mod-container">
-        <div ng-repeat="mod in modList.mods.aero">
-          <div id="mod">
-            <label class="mod">
-              <input type="checkbox" name="toggle">
-              <div ng-click="toggleActiveAero($index)">
-                <div class="submod name"><div>{{mod.name}}</div></div>
-                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
-              </div>
-            </label>
-          </div>
-        </div>
-      </div>
-
-    <span class="category"><h1> Suspension </h1></span>
-      <div id="mod-container">
-        <div ng-repeat="mod in modList.mods.suspension">
-          <div id="mod">
-            <label class="mod">
-              <input type="checkbox" name="toggle">
-              <div ng-click="toggleActiveSuspension($index)">
-                <div class="submod name"><div>{{mod.name}}</div></div>
-                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
-              </div>
-            </label>
-          </div>
-        </div>
-      </div>
-      
-    <input type="submit" value="submit">
+    </div>
+  </center>
 </div>
-</form>
-</div>
-</center>
-</div> -->
