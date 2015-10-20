@@ -74,10 +74,11 @@ angular.module('86cup.services', [])
         data: user
       })
       .then(function (resp) {
+        console.log(resp)
         // Saving a global username to be used throughout app
         $window.localStorage.setItem('username', resp.config.data.username);
         return resp.data.token;
-      });
+      })
     };
 
     // signs users up

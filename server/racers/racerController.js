@@ -152,7 +152,7 @@ module.exports = {
   signup: function (req, res) {
     console.log('req.body.username === ', req.body.username)
     console.log('req.body.password === ', req.body.password)
-    var username  = req.body.username,
+    var username  = req.body.username.toLowerCase(),
         password  = req.body.password,
         create,
         newRacer;
@@ -187,7 +187,7 @@ module.exports = {
       });
   },
 
-  login: function (req, res) {
+  login: function (req, res, next) {
     var username = req.body.username.toLowerCase(),
         password = req.body.password;
 
@@ -195,7 +195,7 @@ module.exports = {
     findRacer({username: username})
       .then(function (racer) {
         if (!racer) {
-          next(new Error('User does not exist'));
+          response
         } else {
           return racer.comparePasswords(password)
             .then(function(foundUser) {
