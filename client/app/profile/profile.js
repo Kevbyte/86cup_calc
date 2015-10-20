@@ -170,6 +170,7 @@ angular.module('86cup.profile', [])
       Racers.updateModListAndPts({racer: $scope.username, avatar: $scope.avatar, modList: $scope.modList, modPts: $scope.modPts}).then(function(resp){
         console.log("modlist and pts updated!");
       })
+      $("body").scrollTop(0);
       
     };
 
