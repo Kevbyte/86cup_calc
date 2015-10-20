@@ -18,7 +18,7 @@ module.exports = {
         var sorted = {stock: [], street: [], limited: [], unlimited: []}
         //categorize the users based on class first before sending
         _.each(list, function(racer){
-          if(racer.modPts <= 0.5) {
+          if(racer.modPts <= 0.5 && racer.username !== "admin") {
             sorted.stock.push(racer);
           }
           if(racer.modPts > 0.5 && racer.modPts <= 4.5) {

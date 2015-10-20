@@ -1,7 +1,10 @@
 angular.module('86cup.admin', [])
   .controller('AdminController', function ($scope, $window, $location, Racers, Events) {
     if(!$window.localStorage.racepro){
-      $location.path('/')
+      $location.path('/');
+    }
+    if($window.localStorage.username !== 'admin') {
+      $location.path('/');
     }
     $scope.trackEvent = {stock: {}, street: {}, limited: {}, unlimited: {}};
     $scope.trackEvent.stock.racers = [];

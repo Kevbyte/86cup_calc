@@ -167,6 +167,14 @@ angular.module('86cup.profile', [])
       
     };
 
+    var $window = $(window),
+       $stickyEl = $('.userinfo'),
+       elTop = $stickyEl.offset().top;
+
+    $window.scroll(function() {
+        $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+    });
+
 //////////////////////////////////////////////////////////////////////////////////////////
 
   })

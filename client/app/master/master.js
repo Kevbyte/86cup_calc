@@ -1,7 +1,10 @@
 angular.module('86cup.master', [])
   .controller('MasterController', function ($scope) {
-    $scope.toggleSidebar = function() {
-            $scope.toggle = !$scope.toggle;
-            // $cookieStore.put('toggle', $scope.toggle);
-        };
+    var $window = $(window),
+       $stickyEl = $('.vertical_nav'),
+       elTop = $stickyEl.offset().top;
+
+    $window.scroll(function() {
+        $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
+    });
   });
