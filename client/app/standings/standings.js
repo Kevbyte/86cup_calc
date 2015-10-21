@@ -37,6 +37,10 @@ angular.module('86cup.standings', [])
       $window.localStorage.profiles = $scope.unlimited.racers[i].username;
       $location.path('/profiles');
     }
+
+    $('#standings').click(function() {
+        $('.vertical_nav').removeClass('vertical_nav__opened');
+    })
     
   });
 

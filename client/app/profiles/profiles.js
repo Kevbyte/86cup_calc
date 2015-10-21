@@ -56,6 +56,9 @@ angular.module('86cup.profiles', [])
       }
       console.log($scope.class)
     };
+    $('#profile').click(function() {
+        $('.vertical_nav').removeClass('vertical_nav__opened');
+    })
 
 //////////////////////////////////////////////////////////////////////////////////////////
 

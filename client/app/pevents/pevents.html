@@ -1,54 +1,55 @@
-<image style="width: 100vmin" src="http://www.brighthometheater.com/wp-content/uploads/2015/06/Page_under_construction.png?quality=100.3015050520570"></image>
-
-<!-- <div id="standings">
+<div id="pevents">
   <div class="standingsdiv">
-    <div><i class="menu--icon  fa fa-fw fa-flag"></i></div>
-    <div id="class-header"><h4> Stock </h4></div>
-      <div class="cat">
-        <div ng-repeat="racer in stock.racers">
-          <div>
-            <div class="racer rank">{{racer.rank}}</div>
-            <div class="racer avatar2"><image src="{{racer.avatar}}"></image></div>
-            <div class="racer name">{{racer.username}}</div>
-            <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
-          </div>
-        </div>
+    <div><i class="menu--icon--page  fa fa-fw fa-flag"></i></div>
+    <div id="event" ng-repeat="event in events">
+      <div id="event-details">
+        <div class="event-details">Round {{event.round}}</div>
+        <div class="event-details"> {{event.track}}</div>
+        <div class="event-details">{{event.date}}</div>
       </div>
 
-    <div id="class-header"><h4> Street </h4></div>
-      <div class="cat">
-        <div ng-repeat="racer in street.racers">
-          <div>
-            <div class="racer rank">{{racer.rank}}</div>
-            <div class="racer avatar2"><image src="{{racer.avatar}}"></image></div>
-            <div class="racer name">{{racer.username}}</div>
-            <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+      <div id="class-header"><h4> Stock </h4></div>
+        <div class="cat">
+          <div ng-repeat="racer in event.stock">
+            <div>
+              <div class="racer name">{{racer.name}}</div>
+              <div class="racer rank">{{racer.time}}</div>
+              <div class="racer pts">{{racer.add.toString() + ' pts'}}</div>
+            </div>
           </div>
         </div>
-      </div>
 
-    <div id="class-header"><h4> Limited </h4></div>
-      <div class="cat">
-        <div ng-repeat="racer in limited.racers">
-          <div>
-            <div class="racer rank">{{racer.rank}}</div>
-            <div class="racer avatar2"><image src="{{racer.avatar}}"></image></div>
-            <div class="racer name">{{racer.username}}</div>
-            <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+      <div id="class-header"><h4> Street </h4></div>
+        <div class="cat">
+          <div ng-repeat="racer in event.street">
+            <div>
+              <div class="racer name">{{racer.name}}</div>
+              <div class="racer rank">{{racer.time}}</div>
+              <div class="racer pts">{{racer.add.toString() + ' pts'}}</div>
+            </div>
           </div>
         </div>
-      </div>
 
-    <div id="class-header"><h4> Unlimited </h4></div>
-      <div class="cat">
-        <div ng-repeat="racer in unlimited.racers">
-          <div>
-            <div class="racer rank">{{racer.rank}}</div>
-            <div class="racer avatar2"><image src="{{racer.avatar}}"></image></div>
-            <div class="racer name">{{racer.username}}</div>
-            <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+      <div id="class-header"><h4> Limited </h4></div>
+        <div class="cat">
+          <div ng-repeat="racer in event.limited">
+            <div>
+              <div class="racer name">{{racer.name}}</div>
+              <div class="racer rank">{{racer.time}}</div>
+              <div class="racer pts">{{racer.add.toString() + ' pts'}}</div>
+            </div>
           </div>
         </div>
-      </div>
+
+      <div id="class-header"><h4> Unlimited </h4></div>
+        <div class="cat">
+          <div ng-repeat="racer in event.unlimited">
+            <div>
+              <div class="racer name">{{racer.name}}</div>
+              <div class="racer rank">{{racer.time}}</div>
+              <div class="racer pts">{{racer.add.toString() + ' pts'}}</div>
+            </div>
+          </div>
+        </div>
   </div>
-</div> -->
+</div>

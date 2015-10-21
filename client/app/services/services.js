@@ -67,9 +67,19 @@ angular.module('86cup.services', [])
         url: '/events/addTrackEvent',
         data: trackEvent
       })
-    }
+    };
+
+    var getEvents = function() {
+      return $http({
+        method: 'GET',
+        url: '/events/getEvents'
+      })
+    };
+
+
     return {
-      addTrackEvent: addTrackEvent
+      addTrackEvent: addTrackEvent,
+      getEvents: getEvents
     }
   })
 

@@ -94,13 +94,13 @@ angular.module('86cup.profile', [])
       if($scope.modPts <= 0.5) {
         $scope.class = 'stock';
       }
-      if($scope.modPts > 0.5 && $scope.modPts <= 4.5) {
+      if($scope.modPts > 0.5 && $scope.modPts <= 4.0) {
         $scope.class = 'street';
       }
-      if($scope.modPts > 4.5 && $scope.modPts <= 6.0) {
+      if($scope.modPts > 4.0 && $scope.modPts <= 7.0) {
         $scope.class = 'limited';
       }
-      if($scope.modPts > 6.0) {
+      if($scope.modPts > 7.0) {
         $scope.class = 'unlimited';
       }
       console.log($scope.class)
@@ -207,7 +207,9 @@ angular.module('86cup.profile', [])
     // $window.scroll(function() {
     //     $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
     // });
-
+    $('#profile').click(function() {
+      $('.vertical_nav').removeClass('vertical_nav__opened');
+    })
 //////////////////////////////////////////////////////////////////////////////////////////
 
   })

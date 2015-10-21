@@ -63,8 +63,10 @@
       </div>
 
     <input style="width:50%" type="text" ng-model="trackEvent.nuke" placeholder="type nuke to delete all users"></input><br>
+    <input style="width:50%" type="text" ng-model="trackEvent.nukeEvent" placeholder="type nuke to delete all events"></input><br>
     <input class="button red" type="submit" value="submit event">
   </form>
+  <div class="admin__message" ng-show="!!message">{{ message }}</div>
   </div>
   <!-- <div id="padding"></div> -->
 </div>

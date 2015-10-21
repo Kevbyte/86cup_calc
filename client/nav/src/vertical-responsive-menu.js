@@ -35,14 +35,6 @@ var tid = setInterval( function () {
     $('.wrapper').toggleClass('toggle-content');
   })
 
-  $('#login, #main, #profile, #standings, #admin, #stats').click(function() {
-    $('.vertical_nav').removeClass('vertical_nav__opened');
-  })
-
-  $('#main').click(function() {
-    $('.vertical_nav').removeClass('vertical_nav__opened');
-  })
-
 
   // Minify menu on menu_minifier click
   querySelector('.collapse_menu').onclick = function () {

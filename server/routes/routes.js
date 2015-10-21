@@ -12,6 +12,7 @@ module.exports = function (app) {
   app.post('/racers/updateModListAndPts', racerController.updateModListAndPts);
 
   app.post('/events/addTrackEvent', eventController.addTrackEvent);
+  app.get('/events/getEvents', eventController.getEvents);
 
   app.post('/auth/signup', racerController.signup);
   app.post('/auth/login', racerController.login);

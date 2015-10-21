@@ -21,13 +21,13 @@ module.exports = {
           if(racer.modPts <= 0.5 && racer.username !== "admin") {
             sorted.stock.push(racer);
           }
-          if(racer.modPts > 0.5 && racer.modPts <= 4.5) {
+          if(racer.modPts > 0.5 && racer.modPts <= 4.0) {
             sorted.street.push(racer);
           }
-          if(racer.modPts > 4.5 && racer.modPts <= 6.0) {
+          if(racer.modPts > 4.0 && racer.modPts <= 7.0) {
             sorted.limited.push(racer);
           }
-          if(racer.modPts > 6.0) {
+          if(racer.modPts > 7.0) {
             sorted.unlimited.push(racer);
           }
         })
@@ -186,7 +186,7 @@ module.exports = {
       })
   },
 
-  signup: function (req, res) {
+  signup: function (req, res, next) {
     console.log('req.body.username === ', req.body.username)
     console.log('req.body.password === ', req.body.password)
     var username  = req.body.username.toLowerCase(),

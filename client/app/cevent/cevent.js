@@ -21,6 +21,9 @@ angular.module('86cup.cevent', [])
     // };
 
     // $scope.getRacerList()
+    $('#cevent').click(function() {
+        $('.vertical_nav').removeClass('vertical_nav__opened');
+    })
     
   });
 

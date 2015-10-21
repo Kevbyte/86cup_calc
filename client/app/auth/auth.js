@@ -5,6 +5,12 @@ angular.module('86cup.auth', [])
   $scope.user = {};
   $('.auth__message').hide()
   console.log("auth!")
+  $('#login').click(function() {
+      $('.vertical_nav').removeClass('vertical_nav__opened');
+  })
+  $('#signup').click(function() {
+      $('.vertical_nav').removeClass('vertical_nav__opened');
+  })
 
   $scope.login = function () {
     console.log("user === ", $scope.user);

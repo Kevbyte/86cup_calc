@@ -50,18 +50,25 @@ angular.module('86cup.admin', [])
     $scope.addTrackEvent = function() {
       //send the whole track event to db including the racer list and their stats
       console.log($scope.trackEvent)
-      Events.addTrackEvent($scope.trackEvent).then(function(resp) {
-        console.log('update was successful !!!!!!!!!!!!!!!!!!!')
-      })
+      Events.addTrackEvent($scope.trackEvent)
+        .then(function(resp) {
+          console.log('trackEvent update was successful !')
+        })
+        .catch(function (error) {
+          $scope.message = "That round already exists please try again";
+          $('.admin__message').show()
+          console.error(error);
+        });
       $scope.updateRacerTotals = function() {
       //update the total points of individual racers in racer list
-        Racers.updateRacerTotals($scope.trackEvent).then(function(resp) {
-          // console.log('update was successful')
+        Racers.updateRacerTotals($scope.trackEvent)
+          .then(function(resp) {
+          console.log(resp)
 
         })
       }
       $scope.updateRacerTotals();
-      $location.path('/standings');
+      // $location.path('/standings');
       //then clear the fields
     }
 

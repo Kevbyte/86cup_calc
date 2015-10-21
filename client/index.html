@@ -8,7 +8,7 @@
       <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
       <link href='./nav/src/vendor/normalize.css/normalize.css' rel='stylesheet'>
       <link href='./nav/src/vendor/fontawesome/css/font-awesome.min.css' rel='stylesheet'>
-      <link href="./nav/vertical-responsive-menu.min.css" rel="stylesheet">
+      <link href="./nav/src/vertical-responsive-menu.css" rel="stylesheet">
   </head>
 
   <body ng-controller="MasterController">
@@ -49,16 +49,16 @@
           </li>
 
           <li class="menu--item menu--item__has_sub_menu">
-            <a href="/#/pevents"> <label class="menu--link" title="Item 3">
+            <label class="menu--link" title="Item 3">
               <i class="menu--icon  fa fa-fw fa-globe"></i>
               <span class="menu--label">Events</span>
-            </label></a>
+            </label>
             <ul class="sub_menu">
               <li class="sub_menu--item">
-                <a href="/#/cevent" class="sub_menu--link">Past Events</a>
+                <a href="/#/cevent" class="sub_menu--link">Upcoming Events</a>
               </li>
               <li class="sub_menu--item">
-                <a href="/#/pevents" class="sub_menu--link">Upcoming Events</a>
+                <a href="/#/pevents" class="sub_menu--link">Past Events</a>
               </li>
             </ul>
           </li>

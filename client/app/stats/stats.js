@@ -21,6 +21,10 @@ angular.module('86cup.stats', [])
     // };
 
     // $scope.getRacerList()
+
+    $('#stats').click(function() {
+        $('.vertical_nav').removeClass('vertical_nav__opened');
+    })
     
   });
 
