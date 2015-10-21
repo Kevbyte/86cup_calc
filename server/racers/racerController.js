@@ -64,7 +64,7 @@ module.exports = {
     Racer.findOne({username: racer})
       .select('-_id -salt -password')
       .then(function (result) {
-        console.log('result === ', result)
+        // console.log('result === ', result)
         var activeMods = {};
         activeMods.drivetrain = [];
         activeMods.wheels = [];
@@ -97,13 +97,13 @@ module.exports = {
 
   //admins can update user's information like points earned at an event
   updateRacerTotals: function(req, res) {
-    console.log('updating totals')
+    console.log('req.body.nuke === ', req.body.nuke)
     var stock = req.body.stock.racers;
     var street = req.body.street.racers;
     var limited = req.body.limited.racers;
     var unlimited = req.body.unlimited.racers;
 
-    if(req.body.nuke = "nuke") {
+    if(req.body.nuke === "nuke") {
       Racer.find({}).remove().exec();
     }
 
@@ -118,7 +118,7 @@ module.exports = {
           user[0].total += racer.add;
           user[0].save(function(err) {
             if(err) throw err;
-            console.log(user);
+            // console.log(user);
           });
         }
           
@@ -131,7 +131,7 @@ module.exports = {
             user[0].total += racer.add;
             user[0].save(function(err) {
               if(err) throw err;
-              console.log(user);
+              // console.log(user);
             });
           }
       });
@@ -143,7 +143,7 @@ module.exports = {
           user[0].total += racer.add;
           user[0].save(function(err) {
             if(err) throw err;
-            console.log(user);
+            // console.log(user);
           });
         }
       });
@@ -155,7 +155,7 @@ module.exports = {
           user[0].total += racer.add;
           user[0].save(function(err) {
             if(err) throw err;
-            console.log(user);
+            // console.log(user);
           });
         }
       });
@@ -172,7 +172,7 @@ module.exports = {
 
     Racer.findOne({username: username})
       .then(function (racer) {
-        console.log(racer)
+        // console.log(racer)
         racer.avatar = avatar;
         racer.modList = modList;
         racer.modPts = modPts;

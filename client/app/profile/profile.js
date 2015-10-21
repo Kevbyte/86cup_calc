@@ -108,47 +108,88 @@ angular.module('86cup.profile', [])
 
     //upload a photo to be used as an avatar
     $scope.add = function() {
-      var dataurl = null;
+      var file = document.getElementById('file').files[0];
       var preview = document.getElementById('pic');
-      var f = document.getElementById('file').files[0];
-      var img = document.createElement("img");
+      var fileType = file.type;
+      var reader = new FileReader();
 
-      var r = new FileReader();
-
-      r.onloadend = function(e){
+      reader.onloadend = function(e) {
+        var image = new Image();
+        image.src = reader.result;
         preview.src = e.target.result;
-        img.src = e.target.result;
-          console.log("weee")
-          var canvas = document.createElement("canvas");
-          var ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0);
+        image.onload = function() {
+          var maxWidth = 400,
+              maxHeight = 300,
+              imageWidth = image.width,
+              imageHeight = image.height;
 
-          var MAX_WIDTH = 400;
-          var MAX_HEIGHT = 300;
-          var width = img.width;
-          var height = img.height;
-
-          if (width > height) {
-            if (width > MAX_WIDTH) {
-              height *= MAX_WIDTH / width;
-              width = MAX_WIDTH;
-            }
-          } else {
-            if (height > MAX_HEIGHT) {
-              width *= MAX_HEIGHT / height;
-              height = MAX_HEIGHT;
+          if (imageWidth > imageHeight) {
+            if (imageWidth > maxWidth) {
+              imageHeight *= maxWidth / imageWidth;
+              imageWidth = maxWidth;
             }
           }
-          canvas.width = width;
-          canvas.height = height;
-          var ctx = canvas.getContext("2d");
-          ctx.drawImage(img, 0, 0, width, height);
+          else {
+            if (imageHeight > maxHeight) {
+              imageWidth *= maxHeight / imageHeight;
+              imageHeight = maxHeight;
+            }
+          }
 
-          dataurl = canvas.toDataURL("image/jpeg");
-        $scope.avatar = dataurl;
-        console.log("avatar === ", $scope.avatar);
-      };
-      r.readAsDataURL( f );
+          var canvas = document.createElement('canvas');
+          canvas.width = imageWidth;
+          canvas.height = imageHeight;
+
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(this, 0, 0, imageWidth, imageHeight);
+
+          // The resized file ready for upload
+          var finalFile = canvas.toDataURL(fileType);
+          console.log("finalFile === ", finalFile);
+          $scope.avatar = finalFile;
+        }
+      }
+    //   var dataurl = null;
+    //   var preview = document.getElementById('pic');
+    //   var f = document.getElementById('file').files[0];
+    //   var img = document.createElement("img");
+
+    //   var r = new FileReader();
+
+    //   r.onloadend = function(e){
+    //     preview.src = e.target.result;
+    //     img.src = e.target.result;
+    //       console.log("img", img)
+    //       var canvas = document.createElement("canvas");
+    //       var ctx = canvas.getContext("2d");
+    //       ctx.drawImage(img, 0, 0);
+
+    //       var MAX_WIDTH = 400;
+    //       var MAX_HEIGHT = 300;
+    //       var width = img.width;
+    //       var height = img.height;
+
+    //       if (width > height) {
+    //         if (width > MAX_WIDTH) {
+    //           height *= MAX_WIDTH / width;
+    //           width = MAX_WIDTH;
+    //         }
+    //       } else {
+    //         if (height > MAX_HEIGHT) {
+    //           width *= MAX_HEIGHT / height;
+    //           height = MAX_HEIGHT;
+    //         }
+    //       }
+    //       canvas.width = width;
+    //       canvas.height = height;
+    //       var ctx = canvas.getContext("2d");
+    //       ctx.drawImage(img, 0, 0, width, height);
+
+    //       dataurl = canvas.toDataURL("image/jpeg");
+    //     $scope.avatar = dataurl;
+    //     console.log("dataurl === ", dataurl)
+    //   };
+      reader.readAsDataURL( file );
     }; //adds image data to $scope.avatar
 
     $scope.updateMods = function() {
