@@ -38,14 +38,5 @@ angular.module('86cup.auth', [])
     $scope.user.username = $window.localStorage.getItem('username');
     console.log("inside log out ", $scope.user)
     Auth.logout($scope.user)
-    .then(function (token){    
-      //console.log('inside then: im signing out') 
-      $window.localStorage.removeItem('racepro');
-      $location.path('/login');
-    })
-    .catch(function (error) {
-        $scope.message = "Username Not Found";
-        //console.error(error);
-    });
   };
 });

@@ -115,14 +115,14 @@ angular.module('86cup.services', [])
       $window.localStorage.removeItem('racepro');
       $location.path('/login');
       
-      return $http({
-        method: 'POST',
-        url: '/auth/logout',
-        data: user
-      })
-      .then(function (resp) {
-        return resp.data.token;
-      });
+      // return $http({
+      //   method: 'POST',
+      //   url: '/auth/logout',
+      //   data: user
+      // })
+      // .then(function (resp) {
+      //   return resp.data.token;
+      // });
 
     };
 
