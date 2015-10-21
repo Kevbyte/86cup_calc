@@ -8,7 +8,8 @@ h4, h2, h3, h1 {
 }
 
 .instructions {
-  margin-top: 5%;
+  font-size: 16px;
+  margin: 5%;
   text-align: center;
   color: #3E434B;
 }
@@ -188,7 +189,7 @@ PROFILE
   font-weight: 400;
   width: 90%;
   margin: 1%;
-  background-color: rgba(255,255,255, 0.8);
+  background: radial-gradient(rgba(51,122,183,0.5), rgba(0,0,0,0.7));
   border-radius: 7px;
   border: 1px solid #D0D0D0;
   cursor: pointer;
@@ -207,7 +208,7 @@ PROFILE
 #mod input:checked + div {
   border-radius:7px;
   border:1px solid #D0D0D0;
-  background-color: #738BC0;
+  background: radial-gradient(rgba(51,122,183,0.3), rgba(51,122,183,0.7));
   color:white;
   box-shadow: 0 0 10px 3px rgba(255,255,255, 0);
 }
@@ -353,6 +354,18 @@ PROFILE
   display: none;
 }
 
+/*///////////////////////////////////////////////////////////////////////////////////////////////////
+
+PROFILES
+
+///////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.box-profiles {
+  background: radial-gradient(rgba(167,1,56,0.9), rgba(167,1,56,0.7));
+  border-radius: 7px;
+  color: white;
+}
+
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Standings
@@ -412,6 +425,7 @@ Standings
 
 .name {
   width: 25%;
+  cursor: pointer;
 }
 
 .pts {
@@ -423,6 +437,7 @@ Standings
   height: 10vmin;
   display: inline-block;
   border-radius: 50%;
+
 }
 
 .avatar2 img {
@@ -432,6 +447,7 @@ Standings
   display: inline-block;
   border-radius: 50%;
   box-shadow: 0 0 4px 2px rgba(0,0,0, 0.5);
+  cursor: pointer;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -610,6 +626,33 @@ AUTH
 
 .button {
   margin: 10px;
+  border: 0 none;
+    border-radius: 36px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    padding: 12px 45px;
+    text-transform: none;
+    
+    transition: all 100ms ease-in-out;
+
+    width: auto; /* auto */
+    text-align: center; /* DELETE WHEN WIDTH AUTO */
+}
+
+.button:hover {
+  opacity: 0.7;
+}
+
+.blue {
+  background-color: #337AB7;
+  color: white;
+}
+
+.red {
+  background-color: #A70138;
+  color: white;
 }
 
 html {
@@ -691,6 +734,12 @@ header h1 {
 }
 
 @media all and (max-width: 415px) {
+  .profilediv {
+
+    width: 100%;
+    border-radius: 0;
+  }
+
    #mod {
     margin: 3%;
    }

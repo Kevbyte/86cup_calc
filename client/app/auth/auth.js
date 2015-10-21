@@ -1,6 +1,7 @@
 angular.module('86cup.auth', [])
 
 .controller('AuthController', function ($scope, $window, $location, Auth) {
+  $("body").scrollTop(0);
   $scope.user = {};
   $('.auth__message').hide()
   console.log("auth!")

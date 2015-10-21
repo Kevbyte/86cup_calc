@@ -1,5 +1,6 @@
 angular.module('86cup.profile', [])
   .controller('ProfileController', function ($scope, $window, $location, $window, Racers) {
+    $("body").scrollTop(0);
     if(!$window.localStorage.racepro){
       $location.path('/')
     }
@@ -150,22 +151,6 @@ angular.module('86cup.profile', [])
       r.readAsDataURL( f );
     }; //adds image data to $scope.avatar
 
-    // $scope.add = function() {
-    //   var preview = document.getElementById('pic');
-    //   var f = document.getElementById('file').files[0];
-    //   var img = document.createElement("img");
-
-    //   var r = new FileReader();
-      
-    //   r.onloadend = function(e){
-    //     preview.src = e.target.result;
-    //     $scope.avatar = e.target.result;
-    //     console.log("avatar === ", $scope.avatar);
-    //   };
-    //   r.readAsDataURL( f );
-    // };
-
-    //final form submission
     $scope.updateMods = function() {
       Racers.updateModListAndPts({racer: $scope.username, avatar: $scope.avatar, modList: $scope.modList, modPts: $scope.modPts}).then(function(resp){
         console.log("modlist and pts updated!");

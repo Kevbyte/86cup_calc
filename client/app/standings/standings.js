@@ -1,5 +1,6 @@
 angular.module('86cup.standings', [])
   .controller('StandingsController', function ($scope, $window, $location, Racers) {
+    $("body").scrollTop(0);
     if(!$window.localStorage.racepro || $window.localStorage.racepro === 'undefined'){
       $location.path('/')
     }

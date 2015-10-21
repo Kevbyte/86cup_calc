@@ -3,7 +3,16 @@
   <div><i class="menu--icon  fa fa-fw fa-gear"></i></div>
   <form ng-submit="addTrackEvent()">
     <input type="number" ng-model="trackEvent.round" placeholder="round #" required></input>
-    <input type="text" ng-model="trackEvent.track" placeholder="enter track name" required></input>
+    <!-- <input type="text" ng-model="trackEvent.track" placeholder="enter track name" required></input> -->
+    <select name="select" id="aelect" ng-model="trackEvent.track">
+      <option value="">---Select track---</option>
+      <option value="BWR">BWR</option>
+      <option value="SRW">SRW</option>
+      <option value="MRLS">MRLS</option>
+      <option value="THR-2">THR-2</option>
+      <option value="THR-3">THR-3</option>
+      <option value="THR-5">THR-5</option>
+    </select>
     <input type="date" ng-model="trackEvent.date" required></input>
     <h4> Stock </h4>
       <div>
@@ -54,7 +63,7 @@
       </div>
 
     <input style="width:50%" type="text" ng-model="trackEvent.nuke" placeholder="type nuke to delete all users"></input><br>
-    <input type="submit" value="add">
+    <input class="button red" type="submit" value="submit event">
   </form>
   </div>
   <!-- <div id="padding"></div> -->

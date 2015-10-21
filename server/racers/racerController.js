@@ -58,6 +58,43 @@ module.exports = {
       })
   },
 
+  getOtherModList: function (req, res) {
+    // console.log('req.query', req.query.name)
+    var racer = req.query.name.toLowerCase();
+    Racer.findOne({username: racer})
+      .select('-_id -salt -password')
+      .then(function (result) {
+        console.log('result === ', result)
+        var activeMods = {};
+        activeMods.drivetrain = [];
+        activeMods.wheels = [];
+        activeMods.aero = [];
+        activeMods.suspension = [];
+        _.each(result.modList.drivetrain, function(mod) {
+          if(mod.active){
+            activeMods.drivetrain.push(mod);
+          }
+        })
+        _.each(result.modList.wheels, function(mod) {
+          if(mod.active){
+            activeMods.wheels.push(mod);
+          }
+        })
+        _.each(result.modList.aero, function(mod) {
+          if(mod.active){
+            activeMods.aero.push(mod);
+          }
+        })
+        _.each(result.modList.suspension, function(mod) {
+          if(mod.active){
+            activeMods.suspension.push(mod);
+          }
+        })
+        result.modList = activeMods;
+        res.send(result);
+      })
+  },
+
   //admins can update user's information like points earned at an event
   updateRacerTotals: function(req, res) {
     console.log('updating totals')

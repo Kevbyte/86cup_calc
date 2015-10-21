@@ -1,5 +1,6 @@
 angular.module('86cup.profiles', [])
   .controller('ProfilesController', function ($scope, $window, $location, $window, Racers) {
+    $("body").scrollTop(0);
     if(!$window.localStorage.racepro){
       $location.path('/')
     }
@@ -11,10 +12,10 @@ angular.module('86cup.profiles', [])
     $scope.avatar = "../assets/car-placeholder.png";
     
     //fetch a user's information from db
-    $scope.getModList = function() {
+    $scope.getOtherModList = function() {
       //fetch user modlist data
       console.log('username === ', $scope.username);
-      Racers.getModList($scope.username)
+      Racers.getOtherModList($scope.username)
         .then(function(resp){
           console.log('resp === ', resp.data)
           if(resp.data.avatar !== "../assets/car-placeholder.png") {
@@ -37,7 +38,7 @@ angular.module('86cup.profiles', [])
         })
     };
 
-    $scope.getModList()
+    $scope.getOtherModList()
 
     //A function to determine a user's class
     $scope.determineClass = function() {

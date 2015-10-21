@@ -20,6 +20,14 @@ angular.module('86cup.services', [])
       })
     };
 
+    var getOtherModList = function(racer) {
+      return $http({
+        method: 'GET',
+        url: '/racers/otherModList',
+        params: racer
+      })
+    };
+
     var updateRacerTotals = function(racers) {
       console.log('Inside updateRacerTotals')
       return $http({
@@ -46,6 +54,7 @@ angular.module('86cup.services', [])
       getAuthRacer: getAuthRacer,
       getRacerList: getRacerList,
       getModList: getModList,
+      getOtherModList: getOtherModList,
       updateRacerTotals: updateRacerTotals,
       updateModListAndPts: updateModListAndPts
     }

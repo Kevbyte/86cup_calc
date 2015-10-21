@@ -1,5 +1,6 @@
 angular.module('86cup.admin', [])
   .controller('AdminController', function ($scope, $window, $location, Racers, Events) {
+    $("body").scrollTop(0);
     if(!$window.localStorage.racepro){
       $location.path('/');
     }

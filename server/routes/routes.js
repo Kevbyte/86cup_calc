@@ -7,6 +7,7 @@ module.exports = function (app) {
   // app.post('/totals', racerController.updateTotals);
   app.get('/racers/racerList', racerController.racerList);
   app.get('/racers/modList', racerController.getModList);
+  app.get('/racers/otherModList', racerController.getOtherModList);
   app.post('/racers/updateRacerTotals', racerController.updateRacerTotals);
   app.post('/racers/updateModListAndPts', racerController.updateModListAndPts);
 

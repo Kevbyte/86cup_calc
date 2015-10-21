@@ -123,16 +123,16 @@ var RacerSchema = new mongoose.Schema({
   lap:{
     type: Object,
     default: {
-      BWR: '',
-      SRW: '',
-      MRLS: '',
-      THRE: '',
-      THRW: '',
-      THR5: '',
-      WSIR: '',
-      SOW: '',
-      CWVR: '',
-      CSW: ''
+      BWR: [],
+      SRW: [],
+      MRLS: [],
+      THRE: [],
+      THRW: [],
+      THR5: [],
+      WSIR: [],
+      SOW: [],
+      CWVR: [],
+      CSW: []
     }
   },
 

@@ -1,5 +1,6 @@
 angular.module('86cup.pevents', [])
   .controller('PeventsController', function ($scope, $window, $location, Racers) {
+    $("body").scrollTop(0);
     if(!$window.localStorage.racepro){
       $location.path('/')
     }
