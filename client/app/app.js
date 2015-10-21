@@ -12,7 +12,8 @@ angular.module('86cup',
   '86cup.profiles',
   '86cup.cevent',
   '86cup.pevents',
-  'ui.router'
+  'ui.router',
+  'ngSanitize'
   ])
 
 .config(function($stateProvider, $urlRouterProvider) {
