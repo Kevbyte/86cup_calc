@@ -28,7 +28,20 @@ var tid = setInterval( function () {
 
     wrapper.classList.toggle('toggle-content');
 
-  };
+  };  
+
+  $('.menu--item').click(function() {
+    $('.vertical_nav').toggleClass('vertical_nav__opened');
+    $('.wrapper').toggleClass('toggle-content');
+  })
+
+  $('#login, #main, #profile, #standings, #admin, #stats').click(function() {
+    $('.vertical_nav').removeClass('vertical_nav__opened');
+  })
+
+  $('#main').click(function() {
+    $('.vertical_nav').removeClass('vertical_nav__opened');
+  })
 
 
   // Minify menu on menu_minifier click
