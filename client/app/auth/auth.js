@@ -12,9 +12,12 @@ angular.module('86cup.auth', [])
       $('.vertical_nav').removeClass('vertical_nav__opened');
   })
 
+  $scope.user = {};
+
   $scope.login = function () {
     console.log("user === ", $scope.user);
-    Auth.login($scope.user)
+    var racer = {username: $scope.user.username.toLowerCase(), password: $scope.user.password};
+    Auth.login(racer)
       .then(function (token) {
         $window.localStorage.setItem('racepro', token);
         $location.path('/main');
@@ -28,6 +31,7 @@ angular.module('86cup.auth', [])
 
   $scope.signup = function () {
     console.log($scope.user)
+    var racer = {username: $scope.user.username.toLowerCase(), password: $scope.user.password};
     Auth.signup($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('racepro', token);
