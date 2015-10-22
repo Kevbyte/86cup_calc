@@ -127,6 +127,10 @@ module.exports = {
     _.each(street, function (racer) {
       Racer.find({username: racer.name})
       .then(function (user) {
+        if(racer.delete === "delete") {
+          console.log("deleting user")
+          Racer.find({username: racer.name}).remove().exec();
+        }
           if(racer.add){
             user[0].total += racer.add;
             user[0].save(function(err) {
@@ -139,6 +143,10 @@ module.exports = {
     _.each(limited, function (racer) {
       Racer.find({username: racer.name})
       .then(function (user) {
+        if(racer.delete === "delete") {
+          console.log("deleting user")
+          Racer.find({username: racer.name}).remove().exec();
+        }
           if(racer.add){
           user[0].total += racer.add;
           user[0].save(function(err) {
@@ -151,6 +159,10 @@ module.exports = {
     _.each(unlimited, function (racer) {
       Racer.find({username: racer.name})
       .then(function (user) {
+        if(racer.delete === "delete") {
+          console.log("deleting user")
+          Racer.find({username: racer.name}).remove().exec();
+        }
           if(racer.add){
           user[0].total += racer.add;
           user[0].save(function(err) {

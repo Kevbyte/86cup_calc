@@ -5,7 +5,7 @@ angular.module('86cup.stats', [])
       $location.path('/')
     }
     $scope.user = {};
-    $scope.user.username = $window.localStorage.username;
+    $scope.user.username = $window.localStorage.username.toLowerCase();
     $scope.events;
     $scope.stats = [];
     $scope.tracks = {BWR:[], MRLS:[], SRW:[], THR2:[], THR3:[], THR5:[]}
@@ -20,6 +20,7 @@ angular.module('86cup.stats', [])
           var newDate = event.date.split("").slice(0,10).join("");
           event.date = newDate;
           _.forEach(event.stock, function (racer) {
+              console.log("username === ", $scope.user.username)
               if(racer.name === $scope.user.username) {
                   $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
               }
