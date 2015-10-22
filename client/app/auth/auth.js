@@ -32,7 +32,7 @@ angular.module('86cup.auth', [])
   $scope.signup = function () {
     console.log($scope.user)
     var racer = {username: $scope.user.username.toLowerCase(), password: $scope.user.password};
-    Auth.signup($scope.user)
+    Auth.signup(racer)
       .then(function (token) {
         $window.localStorage.setItem('racepro', token);
         $location.path('/main');
