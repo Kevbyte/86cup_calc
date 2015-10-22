@@ -138,18 +138,18 @@ angular.module('86cup.services', [])
 
     // signs out users
     var logout = function (user) {
-      $window.localStorage.setItem('username', undefined);
+      $window.localStorage.setItem('username', '');
       $window.localStorage.removeItem('racepro');
       $location.path('/login');
       
-      // return $http({
-      //   method: 'POST',
-      //   url: '/auth/logout',
-      //   data: user
-      // })
-      // .then(function (resp) {
-      //   return resp.data.token;
-      // });
+      return $http({
+        method: 'POST',
+        url: '/auth/logout',
+        data: user
+      })
+      .then(function (resp) {
+        return resp.data.token;
+      });
 
     };
 

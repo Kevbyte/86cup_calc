@@ -19,5 +19,5 @@ module.exports = function (app) {
   app.post('/auth/signup', racerController.signup);
   app.post('/auth/login', racerController.login);
   app.get('/auth/loggedin', racerController.checkAuth);
-  // app.post('/auth/logout', racerController.logout);
+  app.post('/auth/logout', racerController.logout);
 };

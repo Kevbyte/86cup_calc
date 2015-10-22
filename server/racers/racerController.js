@@ -291,15 +291,15 @@ module.exports = {
     }
   },
 
-  // logout: function (req, res) {
-  //   console.log("this is req.body",req.body);
-  //   var username = req.body.username.toLowerCase();
-  //   var findUser = Q.nbind(Racer.findOne, Racer);
+  logout: function (req, res) {
+    console.log("this is req.body",req.body.username);
+    var username = req.body.username.toLowerCase();
+    var findUser = Q.nbind(Racer.findOne, Racer);
     
-  //   findUser({username: username})
-  //     .then(function (user) {
+    findUser({username: username})
+      .then(function (user) {
 
-  //       user.save();
-  //     });
-  // }
+        user.save();
+      });
+  }
 }
