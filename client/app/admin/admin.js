@@ -52,7 +52,8 @@ angular.module('86cup.admin', [])
       console.log($scope.trackEvent)
       Events.addTrackEvent($scope.trackEvent)
         .then(function(resp) {
-          console.log('trackEvent update was successful !')
+          console.log('trackEvent update was successful !');
+          alert("Track event submitted successfully");
         })
         .catch(function (error) {
           $scope.message = "That round already exists please try again";
@@ -68,17 +69,11 @@ angular.module('86cup.admin', [])
         })
       }
       $scope.updateRacerTotals();
-      // $location.path('/standings');
-      //then clear the fields
+    };
+
+    $scope.deleteTrackEvents = function() {
+      Events.deleteTrackEvents();
     }
-
-    // $scope.updateRacerTotals = function() {
-    //   //update the total points of individual racers in racer list
-    //   Racers.updateRacerTotals($scope.trackEvent).then(function(resp) {
-    //     console.log('update was successful')
-
-    //   })
-    // }
 
     
   });

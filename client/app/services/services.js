@@ -76,10 +76,27 @@ angular.module('86cup.services', [])
       })
     };
 
+    var getStats = function(racer) {
+      return $http({
+        method: 'GET',
+        url: '/events/getEvents',
+        params: racer
+      })
+    };
+
+    var deleteTrackEvents = function() {
+      return $http({
+        method: 'POST',
+        url: '/events/deleteTrackEvents'
+      })
+    };
+
 
     return {
       addTrackEvent: addTrackEvent,
-      getEvents: getEvents
+      getEvents: getEvents,
+      getStats: getStats,
+      deleteTrackEvents: deleteTrackEvents
     }
   })
 

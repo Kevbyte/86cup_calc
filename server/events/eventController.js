@@ -55,4 +55,20 @@ module.exports = {
         res.send(events);
       })
   },
+
+  getStats: function (req, res) {
+    // console.log("req.body ============ ", req.body)
+    // var username = req.body.username;
+    Event.find({})
+      // .select('-_id -salt -password')
+      .sort({round: -1})
+      .then(function(events) {
+        res.send(events);
+      })
+  },
+
+  deleteTrackEvents: function(req, res, next) {
+    Event.find({}).remove().exec();
+    res.sendStatus(200);
+  },
 }

@@ -13,6 +13,8 @@ module.exports = function (app) {
 
   app.post('/events/addTrackEvent', eventController.addTrackEvent);
   app.get('/events/getEvents', eventController.getEvents);
+  app.get('/events/getStats', eventController.getStats);
+  app.post('/events/deleteTrackEvents', eventController.deleteTrackEvents);
 
   app.post('/auth/signup', racerController.signup);
   app.post('/auth/login', racerController.login);

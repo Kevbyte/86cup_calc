@@ -9,9 +9,9 @@
       <option value="BWR">BWR</option>
       <option value="SRW">SRW</option>
       <option value="MRLS">MRLS</option>
-      <option value="THR-2">THR-2</option>
-      <option value="THR-3">THR-3</option>
-      <option value="THR-5">THR-5</option>
+      <option value="THR2">THR2</option>
+      <option value="THR3">THR3</option>
+      <option value="THR5">THR5</option>
     </select>
     <input type="date" ng-model="trackEvent.date" required></input>
     <h4> Stock </h4>
@@ -63,9 +63,10 @@
       </div>
 
     <input style="width:50%" type="text" ng-model="trackEvent.nuke" placeholder="type nuke to delete all users"></input><br>
-    <input style="width:50%" type="text" ng-model="trackEvent.nukeEvent" placeholder="type nuke to delete all events"></input><br>
     <input class="button red" type="submit" value="submit event">
   </form>
+
+  <input class="button red" type="button" value="Delete Events" ng-click="deleteTrackEvents()"></input><br>
   <div class="admin__message" ng-show="!!message">{{ message }}</div>
   </div>
   <!-- <div id="padding"></div> -->
