@@ -37,11 +37,11 @@ MAIN
 ///////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 #main {
-  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background03.jpg');
-  background-attachment: fixed;
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background03.jpg') !important;
+  background-attachment: fixed !important;
   background-size: cover !important;
-  background-position: 70% 90%;
-  background-repeat: no-repeat;
+  background-position: 70% 90% !important;
+  background-repeat: no-repeat !important;
   min-height: 100vmax;
   height: 100%;
 }
@@ -143,11 +143,11 @@ PROFILE
 ///////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 #profile {
-  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg');
-  background-attachment: fixed;
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg') !important;
+  background-attachment: fixed !important;
   background-size: cover !important;
-  background-position: 70% 90%;
-  background-repeat: no-repeat;
+  background-position: 70% 90% !important;
+  background-repeat: no-repeat !important;
   min-height: 100vmax;
   height: 100%;
 }
@@ -379,11 +379,11 @@ Standings
 /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 #standings {
-  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background01.jpg');
-  background-attachment: fixed;
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background01.jpg') !important;
+  background-attachment: fixed !important;
   background-size: cover !important;
-  background-position: 70% 90%;
-  background-repeat: no-repeat;
+  background-position: 70% 90% !important;
+  background-repeat: no-repeat !important;
   min-height: 100vmax;
   height: 100%;
 }
@@ -463,7 +463,7 @@ Admin
 /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 #admin {
-  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg') no-repeat center center fixed; 
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg') no-repeat center center fixed !important;
   background-size: cover !important;
   -moz-background-size: cover !important;
   -o-background-size: cover !important;
@@ -522,10 +522,10 @@ Landing
 
 .landing {
   background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg');
-  background-attachment: fixed;
+  background-attachment: fixed !important;
   background-size: cover !important;
-  background-position: 70% 90%;
-  background-repeat: no-repeat;
+  background-position: 70% 90% !important;
+  background-repeat: no-repeat !important;
   min-height: 100vmax;
   height: 100%;
 }
@@ -585,7 +585,7 @@ PASSED EVENTS (pevents)
 /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 #pevents {
-  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background04.jpg') no-repeat center center fixed; 
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background04.jpg') no-repeat center center fixed !important; 
   -webkit-background-size: cover !important;
   -moz-background-size: cover !important;
   -o-background-size: cover !important;
@@ -628,11 +628,11 @@ AUTH
 /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 #login {
-  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background08.jpg');
-  background-attachment: fixed;
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background08.jpg') !important;
+  background-attachment: fixed !important;
   background-size: cover !important;
-  background-position: 70% 90%;
-  background-repeat: no-repeat;
+  background-position: 70% 90% !important;
+  background-repeat: no-repeat !important;
   min-height: 100vmax;
   height: 100%;
 }
@@ -648,11 +648,11 @@ AUTH
 }
 
 #signup {
-  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background07.jpg');
-  background-attachment: fixed;
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background07.jpg') !important;
+  background-attachment: fixed !important;
   background-size: cover !important;
-  background-position: 70% 90%;
-  background-repeat: no-repeat;
+  background-position: 70% 90% !important;
+  background-repeat: no-repeat !important;
   min-height: 100vmax;
   height: 100%;
 }
