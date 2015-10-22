@@ -4,7 +4,7 @@ angular.module('86cup.profile', [])
     if(!$window.localStorage.racepro){
       $location.path('/')
     }
-    var user = $window.localStorage.usernam.toLowerCase();
+    var user = $window.localStorage.username.toLowerCase();
     $scope.username = {name: user};
     $scope.modPts = 0;
     $scope.modList = {};
