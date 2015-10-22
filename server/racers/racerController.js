@@ -248,13 +248,13 @@ module.exports = {
         } else {
           return racer.comparePasswords(password)
             .then(function(foundUser) {
-              console.log(foundUser)
+              console.log("foundUser === ", foundUser)
               if (foundUser) {
                 var token = jwt.encode(racer, 'secret');
                 res.json({token: token});
 
                 //Set the user to be online
-                racer.save();
+                // racer.save();
 
               } else {
                 return next(new Error('No user'));
