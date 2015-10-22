@@ -118,8 +118,8 @@ angular.module('86cup.profile', [])
       var fileType = file.type;
       var reader = new FileReader();
 
+      console.log("file", file);
       function get_signed_request(file){
-        console.log("file", file);
           var xhr = new XMLHttpRequest();
           xhr.open("GET", "/sign_s3?file_name="+file.name+"&file_type="+file.type);
           xhr.onreadystatechange = function(){
@@ -144,6 +144,7 @@ angular.module('86cup.profile', [])
               if (xhr.status === 200) {
                   document.getElementById("pic").src = url;
                   $scope.avatar = url;
+                  console.log("avatar === ", $scope.avatar)
               }
           };
           xhr.onerror = function() {
@@ -152,45 +153,55 @@ angular.module('86cup.profile', [])
           xhr.send(file);
       };
 
-      get_signed_request(file);
+      function dataURLtoBlob(dataurl) {
+          var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+              bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+          while(n--){
+              u8arr[n] = bstr.charCodeAt(n);
+          }
+          return new Blob([u8arr], {type:mime});
+      }
 
-      // reader.onloadend = function(e) {
-      //   var image = new Image();
-      //   image.src = reader.result;
-      //   // preview.src = e.target.result;
-      //   image.onload = function() {
-      //     var maxWidth = 100,
-      //         maxHeight = 75,
-      //         imageWidth = image.width,
-      //         imageHeight = image.height;
+      reader.onloadend = function(e) {
+        var image = new Image();
+        image.src = reader.result;
+        // preview.src = e.target.result;
+        image.onload = function() {
+          var maxWidth = 200,
+              maxHeight = 200,
+              imageWidth = image.width,
+              imageHeight = image.height;
 
-      //     if (imageWidth > imageHeight) {
-      //       if (imageWidth > maxWidth) {
-      //         imageHeight *= maxWidth / imageWidth;
-      //         imageWidth = maxWidth;
-      //       }
-      //     }
-      //     else {
-      //       if (imageHeight > maxHeight) {
-      //         imageWidth *= maxHeight / imageHeight;
-      //         imageHeight = maxHeight;
-      //       }
-      //     }
+          if (imageWidth > imageHeight) {
+            if (imageWidth > maxWidth) {
+              imageHeight *= maxWidth / imageWidth;
+              imageWidth = maxWidth;
+            }
+          }
+          else {
+            if (imageHeight > maxHeight) {
+              imageWidth *= maxHeight / imageHeight;
+              imageHeight = maxHeight;
+            }
+          }
 
-      //     var canvas = document.createElement('canvas');
-      //     canvas.width = imageWidth;
-      //     canvas.height = imageHeight;
+          var canvas = document.createElement('canvas');
+          canvas.width = imageWidth;
+          canvas.height = imageHeight;
 
-      //     var ctx = canvas.getContext("2d");
-      //     ctx.drawImage(this, 0, 0, imageWidth, imageHeight);
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(this, 0, 0, imageWidth, imageHeight);
 
-      //     // The resized file ready for upload
-      //     var finalFile = canvas.toDataURL(fileType);
-      //     console.log("finalFile === ", finalFile);
-      //     // $scope.avatar = finalFile;
+          // The resized file ready for upload
+          var finalFile = canvas.toDataURL(fileType);
 
-      //   }
-      // }
+          var blob = dataURLtoBlob(finalFile);
+          console.log("blob == ", blob)
+          
+          get_signed_request(blob);
+
+        }
+      }
       reader.readAsDataURL( file );
     }; //adds image data to $scope.avatar
 
