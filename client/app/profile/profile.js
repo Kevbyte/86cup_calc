@@ -113,6 +113,7 @@ angular.module('86cup.profile', [])
 
     // upload a photo to be used as an avatar
     $scope.add = function() {
+      $('.button').hide();
       var file = document.getElementById('file').files[0];
       // var preview = document.getElementById('pic');
       var fileType = file.type;
@@ -142,9 +143,10 @@ angular.module('86cup.profile', [])
           xhr.setRequestHeader('x-amz-acl', 'public-read');
           xhr.onload = function() {
               if (xhr.status === 200) {
-                  document.getElementById("pic").src = url;
                   $scope.avatar = url;
-                  console.log("avatar === ", $scope.avatar)
+                  console.log("avatar === ", $scope.avatar);
+                  $('.button').show();
+                  document.getElementById("pic").src = url;
               }
           };
           xhr.onerror = function() {
@@ -196,6 +198,7 @@ angular.module('86cup.profile', [])
           var finalFile = canvas.toDataURL(fileType);
 
           var blob = dataURLtoBlob(finalFile);
+          blob.name = '' + Math.random()*1000000000000000000;
           console.log("blob == ", blob)
           
           get_signed_request(blob);
