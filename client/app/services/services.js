@@ -17,7 +17,9 @@ angular.module('86cup.services', [])
       return $http({
         method: 'GET',
         url: '/racers/modList',
-        params: racer
+        params: racer,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
       })
     };
 
@@ -107,7 +109,9 @@ angular.module('86cup.services', [])
       return $http({
         method: 'POST',
         url: '/auth/login',
-        data: user
+        data: user,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
       })
       .then(function (resp) {
         console.log(resp)
@@ -145,7 +149,9 @@ angular.module('86cup.services', [])
       return $http({
         method: 'POST',
         url: '/auth/logout',
-        data: user
+        data: user,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
       })
       .then(function (resp) {
         return resp.data.token;
