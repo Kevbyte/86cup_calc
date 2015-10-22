@@ -169,8 +169,8 @@ angular.module('86cup.profile', [])
         image.src = reader.result;
         // preview.src = e.target.result;
         image.onload = function() {
-          var maxWidth = 200,
-              maxHeight = 200,
+          var maxWidth = 400,
+              maxHeight = 400,
               imageWidth = image.width,
               imageHeight = image.height;
 
