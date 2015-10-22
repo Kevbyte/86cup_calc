@@ -51,7 +51,7 @@ module.exports = {
     console.log('req.query.name', req.query.name)
     var racer = req.query.name.toLowerCase();
     Racer.findOne({username: racer})
-      .select('-_id -salt -password')
+      .select('-_id -salt -password -avatar')
       .then(function (result) {
         // console.log('result === ', result)
         res.send(result);
@@ -189,9 +189,13 @@ module.exports = {
         racer.modList = modList;
         racer.modPts = modPts;
         racer.save(function(err) {
-          if(err) {throw err;}
-          // console.log("racer ========", racer);
-          else{res.sendStatus(200);}
+          console.log("racer ========", racer);
+          if(err) {
+            console.log(err);
+          }
+          else{
+            res.sendStatus(200);
+          }
         })
         
         
