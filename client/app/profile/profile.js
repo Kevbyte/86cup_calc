@@ -18,9 +18,10 @@ angular.module('86cup.profile', [])
       Racers.getModList($scope.username)
         .then(function(resp){
           console.log('resp === ', resp.data)
-          if(resp.data.avatar !== "../assets/car-placeholder.png") {
-            $scope.avatar = resp.data.avatar; 
-          }
+          // if(resp.data.avatar !== "../assets/car-placeholder.png") {
+          //   $scope.avatar = resp.data.avatar; 
+          // }
+          $scope.avatar = resp.data.avatar;
           $scope.modList.mods = resp.data.modList;
           $scope.modPts = resp.data.modPts;
         })
@@ -110,14 +111,14 @@ angular.module('86cup.profile', [])
     //upload a photo to be used as an avatar
     $scope.add = function() {
       var file = document.getElementById('file').files[0];
-      var preview = document.getElementById('pic');
+      // var preview = document.getElementById('pic');
       var fileType = file.type;
       var reader = new FileReader();
 
       reader.onloadend = function(e) {
         var image = new Image();
         image.src = reader.result;
-        preview.src = e.target.result;
+        // preview.src = e.target.result;
         image.onload = function() {
           var maxWidth = 100,
               maxHeight = 75,
@@ -194,7 +195,7 @@ angular.module('86cup.profile', [])
     }; //adds image data to $scope.avatar
 
     $scope.updateMods = function() {
-      Racers.updateModListAndPts({racer: $scope.username, avatar: $scope.avatar, modList: $scope.modList, modPts: $scope.modPts}).then(function(resp){
+      Racers.updateModListAndPts({racer: $scope.username, avatar: "https://www.petfinder.com/wp-content/uploads/2012/11/140272627-grooming-needs-senior-cat-632x475.jpg", modList: $scope.modList, modPts: $scope.modPts}).then(function(resp){
         console.log("modlist and pts updated!");
       })
       $("body").scrollTop(0);

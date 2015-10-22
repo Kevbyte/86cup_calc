@@ -51,7 +51,7 @@ module.exports = {
     console.log('req.query.name', req.query.name)
     var racer = req.query.name.toLowerCase();
     Racer.findOne({username: racer})
-      .select('-_id -salt -password -avatar')
+      .select('-_id -salt -password')
       .then(function (result) {
         // console.log('result === ', result)
         res.send(result);
