@@ -49,7 +49,9 @@ angular.module('86cup.services', [])
                 avatar: data.avatar,
                 modList: data.modList,
                 modPts: data.modPts
-              }
+              },
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
       })
     };
 
@@ -146,16 +148,16 @@ angular.module('86cup.services', [])
       $window.localStorage.removeItem('racepro');
       $location.path('/login');
       
-      return $http({
-        method: 'POST',
-        url: '/auth/logout',
-        data: user,
-        contentType: "application/json; charset=utf-8",
-        dataType: "json"
-      })
-      .then(function (resp) {
-        return resp.data.token;
-      });
+      // return $http({
+      //   method: 'POST',
+      //   url: '/auth/logout',
+      //   data: user,
+      //   contentType: "application/json; charset=utf-8",
+      //   dataType: "json"
+      // })
+      // .then(function (resp) {
+      //   return resp.data.token;
+      // });
 
     };
 

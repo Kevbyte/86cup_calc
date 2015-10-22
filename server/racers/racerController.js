@@ -189,9 +189,9 @@ module.exports = {
         racer.modList = modList;
         racer.modPts = modPts;
         racer.save(function(err) {
-          if(err) throw err;
+          if(err) {throw err;}
           // console.log("racer ========", racer);
-          res.sendStatus(200);
+          else{res.sendStatus(200);}
         })
         
         
