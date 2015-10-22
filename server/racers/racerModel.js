@@ -120,22 +120,6 @@ var RacerSchema = new mongoose.Schema({
     default: 0
   },
 
-  lap:{
-    type: Object,
-    default: {
-      BWR: [],
-      SRW: [],
-      MRLS: [],
-      THRE: [],
-      THRW: [],
-      THR5: [],
-      WSIR: [],
-      SOW: [],
-      CWVR: [],
-      CSW: []
-    }
-  },
-
   password: {
     type: String,
     required: true

@@ -1,5 +1,5 @@
 angular.module('86cup.profiles', [])
-  .controller('ProfilesController', function ($scope, $window, $location, $window, Racers) {
+  .controller('ProfilesController', function ($scope, $window, $location, $window, Racers, Events) {
     $("body").scrollTop(0);
     if(!$window.localStorage.racepro){
       $location.path('/')
@@ -61,6 +61,73 @@ angular.module('86cup.profiles', [])
     })
 
 //////////////////////////////////////////////////////////////////////////////////////////
+    
+    $scope.user = {};
+    $scope.user.username = $window.localStorage.username.toLowerCase();
+    $scope.events;
+    $scope.stats = [];
+    $scope.tracks = {BWR:[], MRLS:[], SRW:[], THR2:[], THR3:[], THR5:[]}
+
+    $scope.getStats = function() {
+      Events.getStats().then(function(resp) {
+        console.log('resp.datassss === ', resp.data)
+        $scope.events = resp.data;
+      })
+      .then(function() {
+        _.forEach($scope.events, function (event) {
+          var newDate = event.date.split("").slice(0,10).join("");
+          event.date = newDate;
+          _.forEach(event.stock, function (racer) {
+              console.log("username === ", $scope.user.username)
+              if(racer.name === $scope.user.username) {
+                  $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
+              }
+          })
+          _.forEach(event.street, function (racer) {
+              if(racer.name === $scope.user.username) {
+                  $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
+              }
+          })
+          _.forEach(event.limited, function (racer) {
+              if(racer.name === $scope.user.username) {
+                  $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
+              }
+          })
+          _.forEach(event.unlimited, function (racer) {
+              if(racer.name === $scope.user.username) {
+                  $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
+              }
+          })
+          console.log($scope.stats);
+        })
+      })
+      .then(function() {
+        _.forEach($scope.stats, function (event){
+          console.log("event", event)
+          if(event.track === "BWR") {
+            $scope.tracks.BWR.push(event);
+          }
+          if(event.track === "MRLS") {
+            $scope.tracks.MRLS.push(event);
+          }
+          if(event.track === "SRW") {
+            $scope.tracks.SRW.push(event);
+          }
+          if(event.track === "THR2") {
+            $scope.tracks.THR2.push(event);
+          }
+          if(event.track === "THR3") {
+            $scope.tracks.THR3.push(event);
+          }
+          if(event.track === "THR5") {
+            $scope.tracks.THR5.push(event);
+          }
+          console.log($scope.tracks)
+        })
+      })
+    };
+
+    $scope.getStats()
 
   })
 

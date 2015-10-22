@@ -176,6 +176,12 @@ PROFILE
   margin: 5%;
 }
 
+.category-other h1 {
+  color: #A70138;
+  font-weight: 600;
+  margin: 5%;
+}
+
 .racer {
   width:100px;
   display:inline-block;
@@ -313,9 +319,28 @@ PROFILE
   height: 200px;
   line-height: 200px;
   text-align: center;
+  box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
+}
+
+.modPts-other {
+  /*border: 1px solid black;*/
+  margin-top: 5%;
+  background-color: #3E434B;
+  color: white;
+  font-weight: 600;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
 }
 
 .modPts span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal; 
+}
+
+.modPts-other span {
   display: inline-block;
   vertical-align: middle;
   line-height: normal; 
@@ -331,9 +356,28 @@ PROFILE
   height: 200px;
   line-height: 200px;
   text-align: center;
+  box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
+}
+
+.class-other {
+  /*border: 1px solid black;*/
+  margin-top: 5%;
+  background-color: #3E434B;
+  color: white;
+  font-weight: 600;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
 }
 
 .class span {
+  display: inline-block;
+  vertical-align: middle;
+  line-height: normal; 
+}
+
+.class-other span {
   display: inline-block;
   vertical-align: middle;
   line-height: normal; 
@@ -787,7 +831,7 @@ header h1 {
 
 }
 
-@media all and (max-width: 415px) {
+@media all and (max-width: 737px) {
   .profilediv {
 
     width: 100%;
@@ -840,6 +884,19 @@ header h1 {
      text-align: center;
    }
 
+   .modPts-other {
+     /*border: 1px solid black;*/
+     display: inline-block;
+     margin-top: 5%;
+     background-color: #3E434B;
+     color: white;
+     font-weight: 600;
+     width: 30vmin;
+     height: 30vmin;
+     line-height: 30vmin;
+     text-align: center;
+   }
+
    .class {
      /*border: 1px solid black;*/
      margin-top: 5%;
@@ -848,9 +905,21 @@ header h1 {
      font-weight: 600;
      width: 30vmin;
      height: 30vmin;
-     line-height: 28vmin;
+     line-height: 30vmin;
      text-align: center;
-     z-index: 1000;
+   }
+
+   .class-other {
+     /*border: 1px solid black;*/
+     display: inline-block;
+     margin-top: 5%;
+     background-color: #3E434B;
+     color: white;
+     font-weight: 600;
+     width: 30vmin;
+     height: 30vmin;
+     line-height: 30vmin;
+     text-align: center;
    }
 
    .userinfo.sticky {
