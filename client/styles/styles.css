@@ -578,6 +578,12 @@ Landing
   color: red;
 }
 
+.menu--item--events {
+  position: relative;
+  min-height: 40px;
+  line-height: 40px;
+}
+
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 PASSED EVENTS (pevents)
