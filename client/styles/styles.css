@@ -39,7 +39,7 @@ MAIN
 #main {
   background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background03.jpg');
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover !important;
   background-position: 70% 90%;
   background-repeat: no-repeat;
   min-height: 100vmax;
@@ -145,7 +145,7 @@ PROFILE
 #profile {
   background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg');
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover !important;
   background-position: 70% 90%;
   background-repeat: no-repeat;
   min-height: 100vmax;
@@ -381,7 +381,7 @@ Standings
 #standings {
   background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background01.jpg');
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover !important;
   background-position: 70% 90%;
   background-repeat: no-repeat;
   min-height: 100vmax;
@@ -464,10 +464,9 @@ Admin
 
 #admin {
   background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
   min-height: 100vmax;
   height: 100%;
 }
@@ -524,7 +523,7 @@ Landing
 .landing {
   background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background05.jpg');
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover !important;
   background-position: 70% 90%;
   background-repeat: no-repeat;
   min-height: 100vmax;
@@ -587,10 +586,10 @@ PASSED EVENTS (pevents)
 
 #pevents {
   background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background04.jpg') no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
   min-height: 100vmax;
   height: 100%;
 }
@@ -631,7 +630,7 @@ AUTH
 #login {
   background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background08.jpg');
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover !important;
   background-position: 70% 90%;
   background-repeat: no-repeat;
   min-height: 100vmax;
@@ -651,7 +650,7 @@ AUTH
 #signup {
   background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background07.jpg');
   background-attachment: fixed;
-  background-size: cover;
+  background-size: cover !important;
   background-position: 70% 90%;
   background-repeat: no-repeat;
   min-height: 100vmax;
