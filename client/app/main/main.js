@@ -8,7 +8,7 @@ angular.module('86cup.main', [])
       console.log("no token")
       $location.path('/')
     }
-    var user = Racers.getAuthRacer();
+    var user = $window.localStorage.username.toLowerCase();
     $scope.username = {name: user};
     
   });

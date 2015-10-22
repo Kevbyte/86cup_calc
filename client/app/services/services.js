@@ -1,9 +1,9 @@
 angular.module('86cup.services', [])
   .factory('Racers', function ($http) {
     // gets the currently logged in user
-    var getAuthRacer = function() {
-      return window.localStorage.getItem('username');
-    };
+    // var getAuthRacer = function() {
+    //   return window.localStorage.getItem('username');
+    // };
 
     var getRacerList = function() {
       return $http({
@@ -51,7 +51,6 @@ angular.module('86cup.services', [])
     };
 
     return {
-      getAuthRacer: getAuthRacer,
       getRacerList: getRacerList,
       getModList: getModList,
       getOtherModList: getOtherModList,
