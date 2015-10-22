@@ -180,7 +180,7 @@ module.exports = {
     var avatar = req.body.avatar
     var modList = req.body.modList.mods;
     var modPts = req.body.modPts;
-    console.log("mod req.body ===", req.body)
+    console.log("modlistandpts req.body ===", req.body)
 
     Racer.findOne({username: username})
       .then(function (racer) {
@@ -257,7 +257,7 @@ module.exports = {
                 res.json({token: token});
 
                 //Set the user to be online
-                // racer.save();
+                racer.save();
 
               } else {
                 return next(new Error('No user'));

@@ -121,7 +121,8 @@ angular.module('86cup.services', [])
         console.log(resp)
         // Saving a global username to be used throughout app
         $window.localStorage.setItem('username', resp.config.data.username);
-        return resp.data.token;
+        $window.localStorage.setItem('racepro', resp.data.token);
+        $location.path('/main');
       })
     };
 

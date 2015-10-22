@@ -36,6 +36,9 @@ angular.module('86cup.profile', [])
         .then(function() {
           $scope.determineClass();
         })
+        .catch(function(error){
+          console.log(error);
+        })
     };
 
     if($window.localStorage.username !== 'admin') {
@@ -107,62 +110,89 @@ angular.module('86cup.profile', [])
       console.log($scope.class)
     };
 
+
+    // upload a photo to be used as an avatar
     $scope.add = function() {
-        var preview = document.getElementById('pic');
-        var f = document.getElementById('file').files[0];
-        var r = new FileReader();
-        r.onloadend = function(e){
-          preview.src = e.target.result;
-          $scope.avatar = e.target.result;
-        };
-        r.readAsDataURL( f );
+      var file = document.getElementById('file').files[0];
+      // var preview = document.getElementById('pic');
+      var fileType = file.type;
+      var reader = new FileReader();
+
+      function get_signed_request(file){
+        console.log("file", file);
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", "/sign_s3?file_name="+file.name+"&file_type="+file.type);
+          xhr.onreadystatechange = function(){
+              if(xhr.readyState === 4){
+                  if(xhr.status === 200){
+                      var response = JSON.parse(xhr.responseText);
+                      upload_file(file, response.signed_request, response.url);
+                  }
+                  else{
+                      alert("Could not get signed URL.");
+                  }
+              }
+          };
+          xhr.send();
       };
 
-    //upload a photo to be used as an avatar
-    // $scope.add = function() {
-    //   var file = document.getElementById('file').files[0];
-    //   // var preview = document.getElementById('pic');
-    //   var fileType = file.type;
-    //   var reader = new FileReader();
+      function upload_file(file, signed_request, url){
+          var xhr = new XMLHttpRequest();
+          xhr.open("PUT", signed_request);
+          xhr.setRequestHeader('x-amz-acl', 'public-read');
+          xhr.onload = function() {
+              if (xhr.status === 200) {
+                  document.getElementById("pic").src = url;
+                  $scope.avatar = url;
+              }
+          };
+          xhr.onerror = function() {
+              alert("Could not upload file.");
+          };
+          xhr.send(file);
+      };
 
-    //   reader.onloadend = function(e) {
-    //     var image = new Image();
-    //     image.src = reader.result;
-    //     // preview.src = e.target.result;
-    //     image.onload = function() {
-    //       var maxWidth = 100,
-    //           maxHeight = 75,
-    //           imageWidth = image.width,
-    //           imageHeight = image.height;
+      get_signed_request(file);
 
-    //       if (imageWidth > imageHeight) {
-    //         if (imageWidth > maxWidth) {
-    //           imageHeight *= maxWidth / imageWidth;
-    //           imageWidth = maxWidth;
-    //         }
-    //       }
-    //       else {
-    //         if (imageHeight > maxHeight) {
-    //           imageWidth *= maxHeight / imageHeight;
-    //           imageHeight = maxHeight;
-    //         }
-    //       }
+      // reader.onloadend = function(e) {
+      //   var image = new Image();
+      //   image.src = reader.result;
+      //   // preview.src = e.target.result;
+      //   image.onload = function() {
+      //     var maxWidth = 100,
+      //         maxHeight = 75,
+      //         imageWidth = image.width,
+      //         imageHeight = image.height;
 
-    //       var canvas = document.createElement('canvas');
-    //       canvas.width = imageWidth;
-    //       canvas.height = imageHeight;
+      //     if (imageWidth > imageHeight) {
+      //       if (imageWidth > maxWidth) {
+      //         imageHeight *= maxWidth / imageWidth;
+      //         imageWidth = maxWidth;
+      //       }
+      //     }
+      //     else {
+      //       if (imageHeight > maxHeight) {
+      //         imageWidth *= maxHeight / imageHeight;
+      //         imageHeight = maxHeight;
+      //       }
+      //     }
 
-    //       var ctx = canvas.getContext("2d");
-    //       ctx.drawImage(this, 0, 0, imageWidth, imageHeight);
+      //     var canvas = document.createElement('canvas');
+      //     canvas.width = imageWidth;
+      //     canvas.height = imageHeight;
 
-    //       // The resized file ready for upload
-    //       var finalFile = canvas.toDataURL(fileType);
-    //       console.log("finalFile === ", finalFile);
-    //       $scope.avatar = finalFile;
-    //     }
-    //   }
-    //   reader.readAsDataURL( file );
-    // }; //adds image data to $scope.avatar
+      //     var ctx = canvas.getContext("2d");
+      //     ctx.drawImage(this, 0, 0, imageWidth, imageHeight);
+
+      //     // The resized file ready for upload
+      //     var finalFile = canvas.toDataURL(fileType);
+      //     console.log("finalFile === ", finalFile);
+      //     // $scope.avatar = finalFile;
+
+      //   }
+      // }
+      reader.readAsDataURL( file );
+    }; //adds image data to $scope.avatar
 
     $scope.updateMods = function() {
       Racers.updateModListAndPts({racer: $scope.username, avatar: $scope.avatar, modList: $scope.modList, modPts: $scope.modPts}).then(function(resp){
@@ -172,13 +202,6 @@ angular.module('86cup.profile', [])
       
     };
 
-    // var $window = $(window),
-    //    $stickyEl = $('.userinfo'),
-    //    elTop = $stickyEl.offset().top;
-
-    // $window.scroll(function() {
-    //     $stickyEl.toggleClass('sticky', $window.scrollTop() > elTop);
-    // });
     $('#profile').click(function() {
       $('.vertical_nav').removeClass('vertical_nav__opened');
     })

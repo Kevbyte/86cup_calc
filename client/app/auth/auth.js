@@ -18,10 +18,10 @@ angular.module('86cup.auth', [])
     console.log("user === ", $scope.user);
     var racer = {username: $scope.user.username.toLowerCase(), password: $scope.user.password};
     Auth.login(racer)
-      .then(function (token) {
-        $window.localStorage.setItem('racepro', token);
-        $location.path('/main');
-      })
+      // .then(function (token) {
+      //   $window.localStorage.setItem('racepro', token);
+      //   $location.path('/main');
+      // })
       .catch(function (error) {
         $scope.message = "Invalid Username or Password";
         $('.auth__message').show()
