@@ -12,7 +12,7 @@ module.exports = {
     // console.log('in racerController!!!==============================')
     Racer.find({})
       .select('-_id -salt -password')
-      .sort({total: +1})
+      .sort({total: -1})
       .then(function(list) {
         // console.log('list === ', list)
         var sorted = {stock: [], street: [], limited: [], unlimited: []}
