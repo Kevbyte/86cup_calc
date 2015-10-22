@@ -13,6 +13,7 @@ angular.module('86cup.services', [])
     };
 
     var getModList = function(racer) {
+      console.log("get mod list")
       return $http({
         method: 'GET',
         url: '/racers/modList',

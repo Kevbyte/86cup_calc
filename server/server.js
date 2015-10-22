@@ -36,8 +36,8 @@ var uristring =
 
 app.set('port', (process.env.PORT || 4040));
 
-app.use(bodyParser.urlencoded({extended: true, limit: '50mb'}));
-app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({extended: true, limit: '500mb'}));
+app.use(bodyParser.json({limit: '500mb'}));
 
 require('./routes/routes.js')(app);
 

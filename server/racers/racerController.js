@@ -48,7 +48,7 @@ module.exports = {
 
   //get a single user's information and send it to front end
   getModList: function (req, res) {
-    // console.log('req.query', req.query.name)
+    console.log('req.query.name', req.query.name)
     var racer = req.query.name.toLowerCase();
     Racer.findOne({username: racer})
       .select('-_id -salt -password')
@@ -180,7 +180,7 @@ module.exports = {
     var avatar = req.body.avatar
     var modList = req.body.modList.mods;
     var modPts = req.body.modPts;
-    // console.log("mod req.body ===", req.body)
+    console.log("mod req.body ===", req.body)
 
     Racer.findOne({username: username})
       .then(function (racer) {
@@ -231,17 +231,16 @@ module.exports = {
         var token = jwt.encode(racer, 'secret');
         res.json({token: token});
       })
-      .fail(function (error) {
-        next(error);
-      });
+      // .fail(function (error) {
+      //   next(error);
+      // });
   },
 
   login: function (req, res, next) {
     var username = req.body.username.toLowerCase(),
         password = req.body.password;
 
-    var findRacer = Q.nbind(Racer.findOne, Racer);
-    findRacer({username: username})
+    Racer.findOne({username: username})
       .then(function (racer) {
         if (!racer) {
           next(new Error('User does not exist'));
@@ -262,9 +261,9 @@ module.exports = {
             });
         }
       })
-      .fail(function (error) {
-        next(error);
-      });
+      // .fail(function (error) {
+      //   next(error);
+      // });
   },
 
   checkAuth: function (req, res) {
@@ -286,9 +285,9 @@ module.exports = {
             res.send(401);
           }
         })
-        .fail(function (error) {
-          next(error);
-        });
+        // .fail(function (error) {
+        //   next(error);
+        // });
     }
   },
 

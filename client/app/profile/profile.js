@@ -39,6 +39,7 @@ angular.module('86cup.profile', [])
     };
 
     if($window.localStorage.username !== 'admin') {
+      console.log("not admin so go get mod list")
       $scope.getModList()
     }else{
       $scope.avatar = "../assets/zeus.jpg";
