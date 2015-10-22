@@ -8,7 +8,8 @@ angular.module('86cup.services', [])
     var getRacerList = function() {
       return $http({
         method: 'GET',
-        url: '/racers/racerList'
+        url: '/racers/racerList',
+        timeout: 2000
       })
     };
 
@@ -18,6 +19,7 @@ angular.module('86cup.services', [])
         method: 'GET',
         url: '/racers/modList',
         params: racer,
+        timeout: 2000,
         contentType: "application/json; charset=utf-8",
         dataType: "json"
       })
