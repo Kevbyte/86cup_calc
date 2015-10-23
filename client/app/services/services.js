@@ -57,12 +57,20 @@ angular.module('86cup.services', [])
       })
     };
 
+    var deleteUsers = function() {
+      return $http({
+        method: 'POST',
+        url: '/racers/deleteUsers'
+      })
+    };
+
     return {
       getRacerList: getRacerList,
       getModList: getModList,
       getOtherModList: getOtherModList,
       updateRacerTotals: updateRacerTotals,
-      updateModListAndPts: updateModListAndPts
+      updateModListAndPts: updateModListAndPts,
+      deleteUsers: deleteUsers
     }
   })
 

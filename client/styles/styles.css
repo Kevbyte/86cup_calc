@@ -30,6 +30,8 @@ h4, h2, h3, h1 {
   font-size: 12px;
 }
 
+
+
 /*///////////////////////////////////////////////////////////////////////////////////////////////////
 
 MAIN
@@ -188,8 +190,7 @@ PROFILE
 }
 
 #mod-container {
-  max-height: 80vmin;
-  overflow: scroll;
+
 }
 
 #mod {
@@ -560,6 +561,10 @@ Admin
   width:20%;
 }
 
+.nuke {
+  width: 250px !important;
+}
+
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 Landing
@@ -800,6 +805,39 @@ header h1 {
   clear: both;
 }
 
+.phead {
+  top:-100px;
+}
+
+.phead.sticky {
+ position: fixed !important;
+ top:0 !important;
+}
+
+.info {
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  float: right;
+  margin: 2px;
+  margin-right: 220px;
+  visibility: hidden;
+}
+
+.info.visible {
+  visibility: visible;
+}
+
+.class-head {
+  color: #ba0941;
+  font-weight: 600;
+}
+
+.modPts-head {
+  color: #C8CAC9;
+  font-weight: 600;
+}
+
 
 /* Small devices (tablets)
 ==========================*/
@@ -930,6 +968,11 @@ header h1 {
      position: fixed;
      top: 0;
      left: 4%;
+   }
+
+   .header.sticky {
+    position: fixed !important;
+    top:0 !important;
    }
 
    .intro {
@@ -1082,6 +1125,14 @@ header h1 {
    .racer-delete {
      width:60%;
      margin-left: 35%;
+   }
+
+   .nuke {
+     width: 65% !important;
+   }
+
+   .info {
+     margin-right: 2%;
    }
 
 

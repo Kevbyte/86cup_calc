@@ -10,6 +10,7 @@ module.exports = function (app) {
   app.get('/racers/otherModList', racerController.getOtherModList);
   app.post('/racers/updateRacerTotals', racerController.updateRacerTotals);
   app.post('/racers/updateModListAndPts', racerController.updateModListAndPts);
+  app.post('/racers/deleteUsers', racerController.deleteUsers);
 
   app.post('/events/addTrackEvent', eventController.addTrackEvent);
   app.get('/events/getEvents', eventController.getEvents);

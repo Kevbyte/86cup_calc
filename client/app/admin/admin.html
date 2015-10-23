@@ -62,11 +62,20 @@
         </div>
       </div>
 
-    <input style="width:50%" type="text" ng-model="trackEvent.nuke" placeholder="type nuke to delete all users"></input><br>
     <input class="button red" type="submit" value="submit event">
   </form>
 
-  <input class="button red" type="button" value="Delete Events" ng-click="deleteTrackEvents()"></input><br>
+  <input class="button red controls" style="margin-top: 5%; color:orange" type="button" value="Reveal Nukes" ng-click="nukeControls()"></input><br>
+  <button class="button red nuke" ng-click="deleteUsers()">
+    <span><i style="color:orange;width:auto;font-size:20px" class="fa fa-fw fa-exclamation-circle"></i></span>
+    <span style="display:inline-block;width:auto">Delete Users</span>
+  </button><br>
+
+  <button class="button red nuke" ng-click="deleteTrackEvents()">
+    <span><i style="color:orange;width:auto;font-size:20px" class="fa fa-fw fa-exclamation-circle"></i></span>
+    <span style="display:inline-block;width:auto">Delete Events</span>
+  </button><br>
+
   <div class="admin__message" ng-show="!!message">{{ message }}</div>
   </div>
   <!-- <div id="padding"></div> -->

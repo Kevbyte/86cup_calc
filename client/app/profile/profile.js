@@ -1,6 +1,7 @@
 angular.module('86cup.profile', [])
   .controller('ProfileController', function ($scope, $window, $location, $window, Racers) {
     $("body").scrollTop(0);
+
     if(!$window.localStorage.racepro){
       $location.path('/')
     }
@@ -14,10 +15,10 @@ angular.module('86cup.profile', [])
     //fetch a user's information from db
     $scope.getModList = function() {
       //fetch user modlist data
-      console.log('username === ', $scope.username);
+      // console.log('username === ', $scope.username);
       Racers.getModList($scope.username)
         .then(function(resp){
-          console.log('resp === ', resp.data)
+          // console.log('resp === ', resp.data)
           if(resp.data.avatar !== "../assets/car-placeholder.png") {
             $scope.avatar = resp.data.avatar; 
           }
@@ -42,11 +43,13 @@ angular.module('86cup.profile', [])
     };
 
     if($window.localStorage.username !== 'admin') {
-      console.log("not admin so go get mod list")
       $scope.getModList()
     }else{
       $scope.avatar = "../assets/zeus.jpg";
+      $('.userinfo, .button, .instructions, .category').hide();
       alert("You are currently in admin mode. Only regular users can set a profile.");
+      $('.userinfo').removeClass('userinfo');
+
     }
     
 
@@ -54,7 +57,7 @@ angular.module('86cup.profile', [])
     $scope.toggleActiveDrivetrain = function(i, e) {
       if($scope.modList.mods.drivetrain[i].active === false) {
         $scope.modPts += $scope.modList.mods.drivetrain[i].value;
-        console.log($scope.modPts);
+        // console.log($scope.modPts);
       }else{
         $scope.modPts -= $scope.modList.mods.drivetrain[i].value;
       }
@@ -65,7 +68,7 @@ angular.module('86cup.profile', [])
     $scope.toggleActiveWheels = function(i) {
       if($scope.modList.mods.wheels[i].active === false) {
         $scope.modPts += $scope.modList.mods.wheels[i].value;
-        console.log($scope.modPts);
+        // console.log($scope.modPts);
       }else{
         $scope.modPts -= $scope.modList.mods.wheels[i].value;
       }
@@ -96,18 +99,18 @@ angular.module('86cup.profile', [])
     //A function to determine a user's class
     $scope.determineClass = function() {
       if($scope.modPts <= 0.5) {
-        $scope.class = 'stock';
+        $scope.class = 'Stock';
       }
       if($scope.modPts > 0.5 && $scope.modPts <= 4.0) {
-        $scope.class = 'street';
+        $scope.class = 'Street';
       }
       if($scope.modPts > 4.0 && $scope.modPts <= 7.0) {
-        $scope.class = 'limited';
+        $scope.class = 'Limited';
       }
       if($scope.modPts > 7.0) {
-        $scope.class = 'unlimited';
+        $scope.class = 'Unlimited';
       }
-      console.log($scope.class)
+      // console.log($scope.class)
     };
 
 
@@ -119,7 +122,6 @@ angular.module('86cup.profile', [])
       var fileType = file.type;
       var reader = new FileReader();
 
-      console.log("file", file);
       function get_signed_request(file){
           var xhr = new XMLHttpRequest();
           xhr.open("GET", "/sign_s3?file_name="+file.name+"&file_type="+file.type);
@@ -144,7 +146,6 @@ angular.module('86cup.profile', [])
           xhr.onload = function() {
               if (xhr.status === 200) {
                   $scope.avatar = url;
-                  console.log("avatar === ", $scope.avatar);
                   $('.button').show();
                   document.getElementById("pic").src = url;
               }
@@ -199,7 +200,6 @@ angular.module('86cup.profile', [])
 
           var blob = dataURLtoBlob(finalFile);
           blob.name = '' + Math.random()*1000000000000000000;
-          console.log("blob == ", blob)
           
           get_signed_request(blob);
 
@@ -219,6 +219,17 @@ angular.module('86cup.profile', [])
     $('#profile').click(function() {
       $('.vertical_nav').removeClass('vertical_nav__opened');
     })
+
+    if($window.localStorage.username !== 'admin') {
+      var $window = $(window),
+         $stickyEl = $('.userinfo'),
+         elTop = $stickyEl.offset().top;
+
+        $window.scroll(function() {
+            $('.phead').toggleClass('sticky', $window.scrollTop() > elTop);
+            $('.info').toggleClass('visible', $window.scrollTop() > elTop);
+        });
+    }
 //////////////////////////////////////////////////////////////////////////////////////////
 
   })

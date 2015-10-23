@@ -43,16 +43,16 @@ angular.module('86cup.profiles', [])
     //A function to determine a user's class
     $scope.determineClass = function() {
       if($scope.modPts <= 0.5) {
-        $scope.class = 'stock';
+        $scope.class = 'Stock';
       }
       if($scope.modPts > 0.5 && $scope.modPts <= 4.5) {
-        $scope.class = 'street';
+        $scope.class = 'Street';
       }
       if($scope.modPts > 4.5 && $scope.modPts <= 6.0) {
-        $scope.class = 'limited';
+        $scope.class = 'Limited';
       }
       if($scope.modPts > 6.0) {
-        $scope.class = 'unlimited';
+        $scope.class = 'Unlimited';
       }
       console.log($scope.class)
     };
@@ -60,10 +60,9 @@ angular.module('86cup.profiles', [])
         $('.vertical_nav').removeClass('vertical_nav__opened');
     })
 
-
+// STATS
     
-    $scope.user = {};
-    $scope.user.username = $window.localStorage.username.toLowerCase();
+    
     $scope.events;
     $scope.stats = [];
     $scope.tracks = {BWR:[], MRLS:[], SRW:[], THR2:[], THR3:[], THR5:[]}
@@ -78,7 +77,6 @@ angular.module('86cup.profiles', [])
           var newDate = event.date.split("").slice(0,10).join("");
           event.date = newDate;
           _.forEach(event.stock, function (racer) {
-              console.log("username === ", $scope.user.username)
               if(racer.name === user) {
                   $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
               }

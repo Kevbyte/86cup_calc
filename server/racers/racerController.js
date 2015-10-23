@@ -202,6 +202,11 @@ module.exports = {
       })
   },
 
+  deleteUsers: function(req, res) {
+    Racer.find({}).remove().exec();
+    res.sendStatus(200);
+  },
+
   signup: function (req, res, next) {
     console.log('req.body.username === ', req.body.username)
     console.log('req.body.password === ', req.body.password)
