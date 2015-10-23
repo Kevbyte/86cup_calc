@@ -43,7 +43,7 @@ angular.module('86cup.profile', [])
           _.forEach($scope.modList.mods.aero, function(mod, i) {
             if(mod.active === true) {
               setTimeout(function() {
-                $('aero.'+i).prop('checked', 'checked')
+                $('.aero.'+i).prop('checked', 'checked')
               }, 10)
             }
           })
