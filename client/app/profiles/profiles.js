@@ -60,7 +60,7 @@ angular.module('86cup.profiles', [])
         $('.vertical_nav').removeClass('vertical_nav__opened');
     })
 
-//////////////////////////////////////////////////////////////////////////////////////////
+
     
     $scope.user = {};
     $scope.user.username = $window.localStorage.username.toLowerCase();
@@ -79,22 +79,22 @@ angular.module('86cup.profiles', [])
           event.date = newDate;
           _.forEach(event.stock, function (racer) {
               console.log("username === ", $scope.user.username)
-              if(racer.name === $scope.user.username) {
+              if(racer.name === user) {
                   $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
               }
           })
           _.forEach(event.street, function (racer) {
-              if(racer.name === $scope.user.username) {
+              if(racer.name === user) {
                   $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
               }
           })
           _.forEach(event.limited, function (racer) {
-              if(racer.name === $scope.user.username) {
+              if(racer.name === user) {
                   $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
               }
           })
           _.forEach(event.unlimited, function (racer) {
-              if(racer.name === $scope.user.username) {
+              if(racer.name === user) {
                   $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
               }
           })
