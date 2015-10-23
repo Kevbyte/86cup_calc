@@ -29,7 +29,28 @@ angular.module('86cup.profile', [])
           _.forEach($scope.modList.mods.drivetrain, function(mod, i) {
             if(mod.active === true) {
               setTimeout(function() {
-                $('.'+i).prop('checked', 'checked')
+                $('.drivetrain.'+i).prop('checked', 'checked')
+              }, 10)
+            }
+          })
+          _.forEach($scope.modList.mods.wheels, function(mod, i) {
+            if(mod.active === true) {
+              setTimeout(function() {
+                $('.wheels.'+i).prop('checked', 'checked')
+              }, 10)
+            }
+          })
+          _.forEach($scope.modList.mods.aero, function(mod, i) {
+            if(mod.active === true) {
+              setTimeout(function() {
+                $('aero.'+i).prop('checked', 'checked')
+              }, 10)
+            }
+          })
+          _.forEach($scope.modList.mods.suspension, function(mod, i) {
+            if(mod.active === true) {
+              setTimeout(function() {
+                $('.suspension.'+i).prop('checked', 'checked')
               }, 10)
             }
           })
@@ -217,10 +238,6 @@ angular.module('86cup.profile', [])
       
     };
 
-    $('#profile').click(function() {
-      $('.vertical_nav').removeClass('vertical_nav__opened');
-    })
-
     if($window.localStorage.username !== 'admin') {
       var $window = $(window),
          $stickyEl = $('.userinfo'),
@@ -231,6 +248,70 @@ angular.module('86cup.profile', [])
             $('.info').toggleClass('visible', $window.scrollTop() > elTop);
         });
     }
+
+
+    $('#profile').click(function() {
+      $('.vertical_nav').removeClass('vertical_nav__opened');
+      $('.vertical_nav').removeClass('vertical_nav__opened2');
+    })
+
+    var querySelector = document.querySelector.bind(document);
+
+    var nav = document.querySelector('.vertical_nav');
+    var wrapper = document.querySelector('.wrapper');
+
+    var menu = document.getElementById("js-menu");
+    var subnavs = menu.querySelectorAll('.menu--item__has_sub_menu');
+
+
+    $('.toggle_menu2').click(function () {
+      console.log("click");
+      setTimeout(function() {
+        $('.vertical_nav').toggleClass('vertical_nav__opened2');
+        wrapper.classList.toggle('toggle-content');
+      }, 100);
+
+    });  
+
+    $('.menu--item').click(function() {
+      setTimeout(function() {
+        $('.vertical_nav').removeClass('vertical_nav__opened2');
+        $('.wrapper').removeClass('toggle-content');
+      }, 100);
+    })
+
+    $('.sub_menu--item').click(function() {
+      setTimeout(function() {
+        $('.vertical_nav').removeClass('vertical_nav__opened2');
+        $('.wrapper').removeClass('toggle-content');
+      }, 100);
+    })
+
+
+    // Open Sub Menu
+    for (var i = 0; i < subnavs.length; i++) {
+
+      if (subnavs[i].classList.contains('menu--item__has_sub_menu') ) {
+
+        subnavs[i].addEventListener('click', function (e) {
+
+          for (var j = 0; j < subnavs.length; j++) {
+
+            if(this != subnavs[j])
+              subnavs[j].classList.remove('menu--subitens__opened');
+            
+
+          }
+
+          this.classList.toggle('menu--subitens__opened');
+
+        }, false);
+
+      }
+    }
+
+
+    // }, 100 );
 //////////////////////////////////////////////////////////////////////////////////////////
 
   })

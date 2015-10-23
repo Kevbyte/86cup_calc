@@ -1,6 +1,6 @@
 <div id="profile">
   <header class="header clearfix phead">
-    <button type="button" id="toggleMenu" class="toggle_menu">
+    <button type="button" id="toggleMenu2" class="toggle_menu2">
       <i class="fa fa-bars"></i>
     </button>
     <a href="/#/main"><h1>86Cup</h1></a>
@@ -36,7 +36,7 @@
         <div ng-repeat="mod in modList.mods.drivetrain">
           <div id="mod">
             <label class="mod">
-              <input type="checkbox" name="toggle" class="{{$index}}">
+              <input type="checkbox" name="toggle" class="drivetrain {{$index}}">
               <div class="box" ng-click="toggleActiveDrivetrain($index, $event)">
                 <div class="submod name"><div>{{mod.name}}</div></div>
                 <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
@@ -51,7 +51,7 @@
         <div ng-repeat="mod in modList.mods.wheels">
           <div id="mod">
             <label class="mod">
-              <input type="checkbox" name="toggle">
+              <input type="checkbox" name="toggle" class="wheels {{$index}}">
               <div ng-click="toggleActiveWheels($index)">
                 <div class="submod name"><div>{{mod.name}}</div></div>
                 <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
@@ -66,7 +66,7 @@
         <div ng-repeat="mod in modList.mods.aero">
           <div id="mod">
             <label class="mod">
-              <input type="checkbox" name="toggle">
+              <input type="checkbox" name="toggle" class="aero {{$index}}">
               <div ng-click="toggleActiveAero($index)">
                 <div class="submod name"><div>{{mod.name}}</div></div>
                 <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
@@ -81,7 +81,7 @@
         <div ng-repeat="mod in modList.mods.suspension">
           <div id="mod">
             <label class="mod">
-              <input type="checkbox" name="toggle">
+              <input type="checkbox" name="toggle" class="suspension {{$index}}">
               <div ng-click="toggleActiveSuspension($index)">
                 <div class="submod name"><div>{{mod.name}}</div></div>
                 <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>

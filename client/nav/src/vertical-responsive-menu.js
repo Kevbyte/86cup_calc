@@ -31,13 +31,13 @@ var tid = setInterval( function () {
   };  
 
   $('.menu--item').click(function() {
-    $('.vertical_nav').toggleClass('vertical_nav__opened');
-    $('.wrapper').toggleClass('toggle-content');
+    $('.vertical_nav').removeClass('vertical_nav__opened');
+    $('.wrapper').removeClass('toggle-content');
   })
 
   $('.sub_menu--item').click(function() {
-    $('.vertical_nav').toggleClass('vertical_nav__opened');
-    $('.wrapper').toggleClass('toggle-content');
+    $('.vertical_nav').removeClass('vertical_nav__opened');
+    $('.wrapper').removeClass('toggle-content');
   })
 
 
