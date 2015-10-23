@@ -58,26 +58,29 @@ var tid = setInterval( function () {
 
 
   // Open Sub Menu
-  for (var i = 0; i < subnavs.length; i++) {
+  $('.menu--item__has_sub_menu').click(function() {
+    $('.menu--item__has_sub_menu').toggleClass('menu--subitens__opened');
+  });
+  // for (var i = 0; i < subnavs.length; i++) {
 
-    if (subnavs[i].classList.contains('menu--item__has_sub_menu') ) {
+  //   if (subnavs[i].classList.contains('menu--item__has_sub_menu') ) {
 
-      subnavs[i].addEventListener('click', function (e) {
+  //     subnavs[i].addEventListener('click', function (e) {
 
-        for (var j = 0; j < subnavs.length; j++) {
+  //       for (var j = 0; j < subnavs.length; j++) {
 
-          if(this != subnavs[j])
-            subnavs[j].classList.remove('menu--subitens__opened');
+  //         if(this != subnavs[j])
+  //           subnavs[j].classList.remove('menu--subitens__opened');
           
 
-        }
+  //       }
 
-        this.classList.toggle('menu--subitens__opened');
+  //       this.classList.toggle('menu--subitens__opened');
 
-      }, false);
+  //     }, false);
 
-    }
-  }
+  //   }
+  // }
 
 
 }, 100 );
