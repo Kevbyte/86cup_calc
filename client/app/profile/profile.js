@@ -211,6 +211,7 @@ angular.module('86cup.profile', [])
     $scope.updateMods = function() {
       Racers.updateModListAndPts({racer: $scope.username, avatar: $scope.avatar, modList: $scope.modList, modPts: $scope.modPts}).then(function(resp){
         console.log("modlist and pts updated!");
+        alert("Successfully updated modifications and picture!")
       })
       $("body").scrollTop(0);
       

@@ -1,7 +1,7 @@
 <div id="admin">
   <div class="admindiv">
   <div><i class="menu--icon  fa fa-fw fa-gear"></i></div>
-  <form ng-submit="addTrackEvent()">
+  <form id="form" ng-submit="addTrackEvent()">
     <input type="number" ng-model="trackEvent.round" placeholder="round #" required></input>
     <!-- <input type="text" ng-model="trackEvent.track" placeholder="enter track name" required></input> -->
     <select name="select" id="aelect" ng-model="trackEvent.track">

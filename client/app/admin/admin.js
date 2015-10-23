@@ -104,6 +104,10 @@ angular.module('86cup.admin', [])
         })
       }
       $scope.updateRacerTotals();
+      $('#form input[type="text"]').val('');
+      $('#form input[type="number"]').val('');
+      $('#form input[type="date"]').val('');
+      $('#form textarea').val('');
     };
 
     $('.nuke').hide();
