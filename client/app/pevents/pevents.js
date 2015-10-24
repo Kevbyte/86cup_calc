@@ -20,6 +20,25 @@ angular.module('86cup.pevents', [])
     };
 
     $scope.getEvents()
+
+    $scope.redirectToUserStock = function(e) {
+      console.log(e.target.innerText)
+      $window.localStorage.profiles = e.target.innerText;
+      $location.path('/profiles');
+    }
+    $scope.redirectToUserStreet = function(e) {
+      $window.localStorage.profiles = e.target.innerText;
+      $location.path('/profiles');
+    }
+    $scope.redirectToUserLimited = function(e) {
+      $window.localStorage.profiles = e.target.innerText;
+      $location.path('/profiles');
+    }
+    $scope.redirectToUserUnlimited = function(e) {
+      $window.localStorage.profiles = e.target.innerText;
+      $location.path('/profiles');
+    }
+
     $('#pevents').click(function() {
         $('.vertical_nav').removeClass('vertical_nav__opened');
     })

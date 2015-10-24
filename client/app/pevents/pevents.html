@@ -12,7 +12,7 @@
         <div class="cat">
           <div ng-repeat="racer in event.stock">
             <div>
-              <div class="racer name">{{racer.name}}</div>
+              <div class="racer name" ng-click="redirectToUserStock($event)">{{racer.name}}</div>
               <div class="racer rank">{{racer.time}}</div>
               <div class="racer pts">{{racer.add.toString() + ' pts'}}</div>
             </div>
@@ -23,7 +23,7 @@
         <div class="cat">
           <div ng-repeat="racer in event.street">
             <div>
-              <div class="racer name">{{racer.name}}</div>
+              <div class="racer name" ng-click="redirectToUserStreet($event)">{{racer.name}}</div>
               <div class="racer rank">{{racer.time}}</div>
               <div class="racer pts">{{racer.add.toString() + ' pts'}}</div>
             </div>
@@ -34,7 +34,7 @@
         <div class="cat">
           <div ng-repeat="racer in event.limited">
             <div>
-              <div class="racer name">{{racer.name}}</div>
+              <div class="racer name" ng-click="redirectToUserLimited($event)">{{racer.name}}</div>
               <div class="racer rank">{{racer.time}}</div>
               <div class="racer pts">{{racer.add.toString() + ' pts'}}</div>
             </div>
@@ -45,7 +45,7 @@
         <div class="cat">
           <div ng-repeat="racer in event.unlimited">
             <div>
-              <div class="racer name">{{racer.name}}</div>
+              <div class="racer name" ng-click="redirectToUserUnlimited($event)">{{racer.name}}</div>
               <div class="racer rank">{{racer.time}}</div>
               <div class="racer pts">{{racer.add.toString() + ' pts'}}</div>
             </div>

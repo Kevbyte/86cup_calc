@@ -96,7 +96,7 @@ angular.module('86cup.profiles', [])
                   $scope.stats.push({round:event.round, track:event.track, date:event.date, racer:racer})
               }
           })
-          console.log($scope.stats);
+          console.log("$scope.stats ",$scope.stats);
         })
       })
       .then(function() {
