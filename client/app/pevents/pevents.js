@@ -15,6 +15,30 @@ angular.module('86cup.pevents', [])
         _.forEach($scope.events, function(event) {
             var newDate = event.date.split("").slice(0,10).join("");
             event.date = newDate;
+            if(event.track === 'BWR') {
+              event.track = 'BW13CW';
+            }
+            if(event.track === 'MRLS') {
+              event.track = 'Laguna S';
+            }
+            if(event.track === 'SRW') {
+              event.track = 'Sonoma R';
+            }
+            if(event.track === 'THR2') {
+              event.track = 'T-Hill W';
+            }
+            if(event.track === 'THR3C') {
+              event.track = 'T-Hill Cyc';
+            }
+            if(event.track === 'THR3B') {
+              event.track = 'T-Hill Byp';
+            }
+            if(event.track === 'THR3') {
+              event.track = 'T-Hill E';
+            }
+            if(event.track === 'THR5') {
+              event.track = 'T-Hill 5';
+            }
         })
       })
     };
