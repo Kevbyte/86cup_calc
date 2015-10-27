@@ -32,16 +32,16 @@ angular.module('86cup.admin', [])
       })
       .then(function() {
         _.forEach($scope.stock.racers, function(racer){
-          $scope.trackEvent.stock.racers.push({name: racer.username });
+          $scope.trackEvent.stock.racers.push({name: racer.username, add: 0});
         })
         _.each($scope.street.racers, function(racer){
-          $scope.trackEvent.street.racers.push({name: racer.username});
+          $scope.trackEvent.street.racers.push({name: racer.username, add: 0});
         })
         _.each($scope.limited.racers, function(racer){
-          $scope.trackEvent.limited.racers.push({name: racer.username});
+          $scope.trackEvent.limited.racers.push({name: racer.username, add: 0});
         })
         _.each($scope.unlimited.racers, function(racer){
-          $scope.trackEvent.unlimited.racers.push({name: racer.username});
+          $scope.trackEvent.unlimited.racers.push({name: racer.username, add: 0});
         })
       })
       .then(function() {
@@ -50,6 +50,130 @@ angular.module('86cup.admin', [])
     };
 
     $scope.getRacers();
+
+    //automatically calculate points to add from lap time
+    $scope.calculated = false;
+    $scope.calculate = function() {
+      var points = [10, 7, 5, 4, 3, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+      _.forEach($scope.trackEvent.stock.racers, function(racer) {
+        if(!racer.time) {
+          racer.seconds = 100000;
+        }else{
+          var split = racer.time.split(':')
+          if(split.length < 2) {
+            split.push('00');
+            split.push('00');
+            console.log(split);
+          }
+          if(split.length < 3) {
+            split.push('00');
+            console.log(split);
+          }
+          racer.seconds = Number(split[0])*60 + Number(split[1]) + Number(split[2])/60  
+        }
+      })
+      _.forEach($scope.trackEvent.street.racers, function(racer) {
+        if(!racer.time) {
+          racer.seconds = 100000;
+        }else{
+          var split = racer.time.split(':')
+          if(split.length < 2) {
+            split.push('00');
+            split.push('00');
+            console.log(split);
+          }
+          if(split.length < 3) {
+            split.push('00');
+            console.log(split);
+          }
+          racer.seconds = Number(split[0])*60 + Number(split[1]) + Number(split[2])/60  
+        }
+      })
+      _.forEach($scope.trackEvent.limited.racers, function(racer) {
+        if(!racer.time) {
+          racer.seconds = 100000;
+        }else{
+          var split = racer.time.split(':')
+          if(split.length < 2) {
+            split.push('00');
+            split.push('00');
+            console.log(split);
+          }
+          if(split.length < 3) {
+            split.push('00');
+            console.log(split);
+          }
+          racer.seconds = Number(split[0])*60 + Number(split[1]) + Number(split[2])/60  
+        }
+      })
+      _.forEach($scope.trackEvent.unlimited.racers, function(racer) {
+        if(!racer.time) {
+          racer.seconds = 100000;
+        }else{
+          var split = racer.time.split(':')
+          if(split.length < 2) {
+            split.push('00');
+            split.push('00');
+            console.log(split);
+          }
+          if(split.length < 3) {
+            split.push('00');
+            console.log(split);
+          }
+          racer.seconds = Number(split[0])*60 + Number(split[1]) + Number(split[2])/60  
+        }
+      })
+      $scope.trackEvent.stock.racers.sort(function(a,b) {
+        if (a.seconds > b.seconds) {return 1;}
+        if (a.seconds < b.seconds) {return -1;}
+        return 0;
+      })
+      var count = 0;
+      _.forEach($scope.trackEvent.stock.racers, function(racer) {
+        if(racer.seconds !== 100000) {
+          racer.add = points[count];
+          count++;
+        }
+      })
+      $scope.trackEvent.street.racers.sort(function(a,b) {
+        if (a.seconds > b.seconds) {return 1;}
+        if (a.seconds < b.seconds) {return -1;}
+        return 0;
+      })
+      var count = 0;
+      _.forEach($scope.trackEvent.street.racers, function(racer) {
+        if(racer.seconds !== 100000) {
+          racer.add = points[count];
+          count++;
+        }
+      })
+      $scope.trackEvent.limited.racers.sort(function(a,b) {
+        if (a.seconds > b.seconds) {return 1;}
+        if (a.seconds < b.seconds) {return -1;}
+        return 0;
+      })
+      var count = 0;
+      _.forEach($scope.trackEvent.limited.racers, function(racer) {
+        if(racer.seconds !== 100000) {
+          racer.add = points[count];
+          count++;
+        }
+      })
+      $scope.trackEvent.unlimited.racers.sort(function(a,b) {
+        if (a.seconds > b.seconds) {return 1;}
+        if (a.seconds < b.seconds) {return -1;}
+        return 0;
+      })
+      var count = 0;
+      _.forEach($scope.trackEvent.unlimited.racers, function(racer) {
+        if(racer.seconds !== 100000) {
+          racer.add = points[count];
+          count++;
+        }
+      })
+      $scope.calculated = true;
+      $scope.message = "Click 'Submit Event' if everything looks correct"
+    }
 //////////////////////////////////////////////////////////////////////////////////////////
 
     $scope.addTrackEvent = function() {
@@ -58,7 +182,7 @@ angular.module('86cup.admin', [])
       _.forEach($scope.trackEvent, function(cat) {
         console.log("class = ", cat)
         _.forEach(cat.racers, function(racer) {
-          if(racer.add) {
+          if(racer.add > 0) {
             if(count === 0){
               console.log(racer)
               $scope.submit.stock.racers.push(racer);
@@ -89,6 +213,22 @@ angular.module('86cup.admin', [])
         .then(function(resp) {
           console.log('trackEvent update was successful !');
           alert("Track event submitted successfully");
+          _.forEach($scope.trackEvent.stock.racers, function(racer){
+            racer.add = 0;
+            racer.seconds = 100000;
+          })
+          _.forEach($scope.trackEvent.street.racers, function(racer){
+            racer.add = 0;
+            racer.seconds = 100000;
+          })
+          _.forEach($scope.trackEvent.limited.racers, function(racer){
+            racer.add = 0;
+            racer.seconds = 100000;
+          })
+          _.forEach($scope.trackEvent.unlimited.racers, function(racer){
+            racer.add = 0;
+            racer.seconds = 100000;
+          })
         })
         .catch(function (error) {
           $scope.message = "That round already exists please try again";
@@ -110,11 +250,13 @@ angular.module('86cup.admin', [])
       $('#form textarea').val('');
     };
 
-    $('.nuke').hide();
+    $scope.revealButton = true;
+
+    $scope.nukesRevealed = false;
 
     $scope.nukeControls = function() {
-      $('.nuke').show();
-      $('.controls').hide()
+      $scope.nukesRevealed = true;
+      $scope.revealButton = false;
       alert("How easy it is to judge rightly after one sees what evil comes from judging wrongly.")
     }
 

@@ -3,7 +3,6 @@
   <div><i class="menu--icon  fa fa-fw fa-gear"></i></div>
   <form id="form" ng-submit="addTrackEvent()">
     <input type="number" ng-model="trackEvent.round" placeholder="round #" required></input>
-    <!-- <input type="text" ng-model="trackEvent.track" placeholder="enter track name" required></input> -->
     <select name="select" id="aelect" ng-model="trackEvent.track">
       <option value="">---Select track---</option>
       <option value="BWR">BWR</option>
@@ -20,7 +19,7 @@
         <div ng-repeat="racer in trackEvent.stock.racers">
           <div class="admin-racer">
             <div class="racer-name">{{racer.name}}</div>
-            <input class="racer-add" type="number" ng-model="racer.add" placeholder="event pts"></input>
+            <div class="racer-add">{{racer.add}}</div>
             <input class="racer-time" type="text" ng-model="racer.time" placeholder="lap time"></input>
             <input class="racer-delete" type="text" ng-model="racer.delete" placeholder="type delete here to del user"></input>
           </div>
@@ -32,7 +31,7 @@
         <div ng-repeat="racer in trackEvent.street.racers">
           <div class="admin-racer">
             <div class="racer-name">{{racer.name}}</div>
-            <input class="racer-add" type="number" ng-model="racer.add" placeholder="event pts"></input>
+            <div class="racer-add">{{racer.add}}</div>
             <input class="racer-time" type="text" ng-model="racer.time" placeholder="lap time"></input>
             <input class="racer-delete" type="text" ng-model="racer.delete" placeholder="type delete here to del user"></input>
           </div>
@@ -44,7 +43,7 @@
         <div ng-repeat="racer in trackEvent.limited.racers">
           <div class="admin-racer">
             <div class="racer-name">{{racer.name}}</div>
-            <input class="racer-add" type="number" ng-model="racer.add" placeholder="event pts"></input>
+            <div class="racer-add">{{racer.add}}</div>
             <input class="racer-time" type="text" ng-model="racer.time" placeholder="lap time"></input>
             <input class="racer-delete" type="text" ng-model="racer.delete" placeholder="type delete here to del user"></input>
           </div>
@@ -56,28 +55,29 @@
         <div ng-repeat="racer in trackEvent.unlimited.racers">
           <div class="admin-racer">
             <div class="racer-name">{{racer.name}}</div>
-            <input class="racer-add" type="number" ng-model="racer.add" placeholder="event pts"></input>
+            <div class="racer-add">{{racer.add}}</div>
             <input class="racer-time" type="text" ng-model="racer.time" placeholder="lap time"></input>
             <input class="racer-delete" type="text" ng-model="racer.delete" placeholder="type delete here to del user"></input>
           </div>
         </div>
       </div>
-
-    <input class="button red" type="submit" value="submit event">
+      <div class="calc__message">After entering in lap times, click 'Calculate Points'</div>
+      <input class="button blue" style="margin-top: 20px; color:white" type="button" value="Calculate Points" ng-click="calculate()"></input><br>
+      <input class="button blue" type="submit" value="Submit Event" ng-show="calculated">
   </form>
+  <div class="admin__message" ng-show="!!message">{{ message }}</div>
 
-  <input class="button red controls" style="margin-top: 5%; color:orange" type="button" value="Reveal Nukes" ng-click="nukeControls()"></input><br>
-  <button class="button red nuke" ng-click="deleteUsers()">
+  <input class="button red controls" style="margin-top: 20px; color:orange" type="button" value="Reveal Nukes" ng-click="nukeControls()" ng-show="revealButton"></input><br>
+  <button class="button red nuke" ng-click="deleteUsers()" ng-show="nukesRevealed">
     <span><i style="color:orange;width:auto;font-size:20px" class="fa fa-fw fa-exclamation-circle"></i></span>
     <span style="display:inline-block;width:auto">Delete Users</span>
   </button><br>
 
-  <button class="button red nuke" ng-click="deleteTrackEvents()">
+  <button class="button red nuke" ng-click="deleteTrackEvents()" ng-show="nukesRevealed">
     <span><i style="color:orange;width:auto;font-size:20px" class="fa fa-fw fa-exclamation-circle"></i></span>
     <span style="display:inline-block;width:auto">Delete Events</span>
   </button><br>
 
-  <div class="admin__message" ng-show="!!message">{{ message }}</div>
   </div>
   <!-- <div id="padding"></div> -->
 </div>

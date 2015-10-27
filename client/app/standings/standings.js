@@ -16,6 +16,19 @@ angular.module('86cup.standings', [])
         $scope.street.racers = resp.data.street;
         $scope.limited.racers = resp.data.limited;
         $scope.unlimited.racers = resp.data.unlimited;
+
+        if(resp.data.stock.length > 0) {
+          $scope.stock.hasStock = true;
+        }
+        if(resp.data.street.length > 0) {
+          $scope.street.hasStreet = true;
+        }
+        if(resp.data.limited.length > 0) {
+          $scope.limited.hasLimited = true;
+        }
+        if(resp.data.unlimited.length > 0) {
+          $scope.unlimited.hasUnlimited = true;
+        }
       })
     };
 

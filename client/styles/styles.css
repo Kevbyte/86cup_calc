@@ -570,6 +570,10 @@ Admin
 
 .racer-add {
   width:10%;
+  color: white;
+  background-color: #337AB7;
+  border: 1px solid white;
+  display:inline-block;
 }
 
 .racer-time {
@@ -751,18 +755,18 @@ AUTH
 .button {
   margin: 10px;
   border: 0 none;
-    border-radius: 36px;
-    color: #fff;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 14px;
-    padding: 12px 45px;
-    text-transform: none;
-    
-    transition: all 100ms ease-in-out;
+  border-radius: 36px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 12px 45px;
+  text-transform: none;
+  
+  transition: all 100ms ease-in-out;
 
-    width: auto; /* auto */
-    text-align: center; /* DELETE WHEN WIDTH AUTO */
+  width: auto; /* auto */
+  text-align: center; /* DELETE WHEN WIDTH AUTO */
 }
 
 .button:hover {
@@ -1151,7 +1155,7 @@ header h1 {
    }
 
    .nuke {
-     width: 65% !important;
+     width: 60% !important;
    }
 
    .info {

@@ -15,6 +15,21 @@ angular.module('86cup.pevents', [])
         _.forEach($scope.events, function(event) {
             var newDate = event.date.split("").slice(0,10).join("");
             event.date = newDate;
+            
+            if(event.stock.length > 0) {
+              console.log("true!")
+              event.hasStock = true;
+            }
+            if(event.street.length > 0) {
+              event.hasStreet = true;
+            }
+            if(event.limited.length > 0) {
+              event.hasLimited = true;
+            }
+            if(event.unlimited.length > 0) {
+              event.hasUnlimited = true;
+            }
+
             if(event.track === 'BWR') {
               event.track = 'BW13CW';
             }
@@ -62,6 +77,7 @@ angular.module('86cup.pevents', [])
       $window.localStorage.profiles = e.target.innerText;
       $location.path('/profiles');
     }
+
 
     $('#pevents').click(function() {
         $('.vertical_nav').removeClass('vertical_nav__opened');

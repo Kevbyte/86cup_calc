@@ -8,7 +8,7 @@ angular.module('86cup.stats', [])
     $scope.user.username = $window.localStorage.username.toLowerCase();
     $scope.events;
     $scope.stats = [];
-    $scope.tracks = {BWR:[], MRLS:[], SRW:[], THR2:[], THR3:[], THR5:[]}
+    $scope.tracks = {BWR:{events:[]},MRLS:{events:[]},SRW:{events:[]},THR2:{events:[]},THR3C:{events:[]},THR3B:{events:[]},THR3:{events:[]},THR5:{events:[]}};
 
     $scope.getStats = function() {
       Events.getStats().then(function(resp) {
@@ -47,22 +47,36 @@ angular.module('86cup.stats', [])
         _.forEach($scope.stats, function (event){
           console.log("event", event)
           if(event.track === "BWR") {
-            $scope.tracks.BWR.push(event);
+            $scope.tracks.BWR.events.push(event);
+            $scope.tracks.BWR.hasEvent = true;
           }
           if(event.track === "MRLS") {
-            $scope.tracks.MRLS.push(event);
+            $scope.tracks.MRLS.events.push(event);
+            $scope.tracks.MRLS.hasEvent = true;
           }
           if(event.track === "SRW") {
-            $scope.tracks.SRW.push(event);
+            $scope.tracks.SRW.events.push(event);
+            $scope.tracks.SRW.hasEvent = true;
           }
           if(event.track === "THR2") {
-            $scope.tracks.THR2.push(event);
+            $scope.tracks.THR2.events.push(event);
+            $scope.tracks.THR2.hasEvent = true;
+          }
+          if(event.track === "THR3C") {
+            $scope.tracks.THR3C.events.push(event);
+            $scope.tracks.THR3C.hasEvent = true;
+          }
+          if(event.track === "THR3D") {
+            $scope.tracks.THR3D.events.push(event);
+            $scope.tracks.THR3D.hasEvent = true;
           }
           if(event.track === "THR3") {
-            $scope.tracks.THR3.push(event);
+            $scope.tracks.THR3.events.push(event);
+            $scope.tracks.THR3.hasEvent = true;
           }
           if(event.track === "THR5") {
-            $scope.tracks.THR5.push(event);
+            $scope.tracks.THR5.events.push(event);
+            $scope.tracks.THR5.hasEvent = true;
           }
           console.log($scope.tracks)
         })
