@@ -8,6 +8,11 @@ angular.module('86cup.main', [])
       console.log("no token")
       $location.path('/')
     }
+    if($window.localStorage.username !== 'admin'){
+      $('.admin-button').hide();
+    }else{
+      $('.admin-button').show();
+    }
     var user = $window.localStorage.username.toLowerCase();
     $scope.username = {name: user};
     

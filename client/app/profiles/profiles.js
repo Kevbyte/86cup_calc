@@ -4,6 +4,9 @@ angular.module('86cup.profiles', [])
     if(!$window.localStorage.racepro){
       $location.path('/')
     }
+    if($window.localStorage.username !== 'admin'){
+      $('.admin-button').hide();
+    }
     var user = $window.localStorage.profiles;
     $scope.username = {name: user};
     $scope.modPts = 0;

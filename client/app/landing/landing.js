@@ -4,4 +4,7 @@ angular.module('86cup.landing', [])
     $('.landing').click(function() {
       $('.vertical_nav').removeClass('vertical_nav__opened');
     })
+    if($window.localStorage.username !== 'admin'){
+      $('.admin-button').hide();
+    }
   });

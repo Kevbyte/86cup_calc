@@ -1,5 +1,8 @@
 angular.module('86cup.master', [])
-  .controller('MasterController', function ($scope) {
+  .controller('MasterController', function ($scope, $window) {
+    if($window.localStorage.username !== 'admin'){
+      $('.admin-button').hide();
+    }
     var $window = $(window),
        $stickyEl = $('.vertical_nav'),
        elTop = $stickyEl.offset().top;

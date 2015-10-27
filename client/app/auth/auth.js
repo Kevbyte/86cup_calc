@@ -4,18 +4,19 @@ angular.module('86cup.auth', [])
   $("body").scrollTop(0);
   $scope.user = {};
   $('.auth__message').hide()
-  console.log("auth!")
   $('#login').click(function() {
       $('.vertical_nav').removeClass('vertical_nav__opened');
   })
   $('#signup').click(function() {
       $('.vertical_nav').removeClass('vertical_nav__opened');
   })
+  if($window.localStorage.username !== 'admin'){
+    $('.admin-button').hide();
+  }
 
   $scope.user = {};
 
   $scope.login = function () {
-    console.log("user === ", $scope.user);
     var racer = {username: $scope.user.username.toLowerCase(), password: $scope.user.password};
     Auth.login(racer)
       // .then(function (token) {
@@ -30,7 +31,6 @@ angular.module('86cup.auth', [])
   };
 
   $scope.signup = function () {
-    console.log($scope.user)
     var racer = {username: $scope.user.username.toLowerCase(), password: $scope.user.password};
     Auth.signup(racer)
       .then(function (token) {

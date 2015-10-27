@@ -4,6 +4,9 @@ angular.module('86cup.standings', [])
     if(!$window.localStorage.racepro || $window.localStorage.racepro === 'undefined'){
       $location.path('/')
     }
+    if($window.localStorage.username !== 'admin'){
+      $('.admin-button').hide();
+    }
     $scope.stock = {};
     $scope.street = {};
     $scope.limited = {};

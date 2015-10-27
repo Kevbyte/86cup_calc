@@ -4,6 +4,9 @@ angular.module('86cup.stats', [])
     if(!$window.localStorage.racepro){
       $location.path('/')
     }
+    if($window.localStorage.username !== 'admin'){
+      $('.admin-button').hide();
+    }
     $scope.user = {};
     $scope.user.username = $window.localStorage.username.toLowerCase();
     $scope.events;
