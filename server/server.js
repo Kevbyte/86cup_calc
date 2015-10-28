@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var uriUtil = require('mongodb-uri');
 var aws = require('aws-sdk');
 var dotenv = require('dotenv');
+var favicon = require('serve-favicon');
 dotenv.load();
 
 var app = express();
@@ -45,6 +46,7 @@ app.use(bodyParser.json({limit: '500mb'}));
 require('./routes/routes.js')(app);
 
 app.use(express.static('client'));
+app.use(favicon('./client/myIcon.ico'));
 
 var AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY_ID;
 var AWS_SECRET_KEY = process.envAWS_SECRET_ACCESS_KEY;
