@@ -1,3 +1,8 @@
 node_modules/
 .env
 .DS_STORE
+86cup_io.ca-bundle
+86cup_io.crt
+server.key
+server.csr
+server.pass.key
