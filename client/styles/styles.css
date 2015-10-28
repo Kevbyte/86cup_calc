@@ -30,6 +30,12 @@ h4, h2, h3, h1 {
   font-size: 12px;
 }
 
+#logo {
+  width:45px;
+  margin:2.5px; 
+  margin-left:2%;
+}
+
 
 
 /*///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -899,6 +905,7 @@ header h1 {
 }
 
 @media all and (max-width: 737px) {
+
   .profilediv {
 
     width: 100%;
