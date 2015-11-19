@@ -43,6 +43,14 @@ angular.module('86cup.standings', [])
     $scope.archive.limited = $scope.limited;
     $scope.archive.unlimited = $scope.unlimited;
 
+    $scope.revealButton = false;
+
+    if($window.localStorage.username === 'admin'){
+      $scope.revealButton = true;
+    }
+
+    $scope.nukesRevealed = false;
+
     $scope.archiveStandings = function() {
       Racers.archiveStandings($scope.archive).then(function(resp) {
         alert("Archive successful!")

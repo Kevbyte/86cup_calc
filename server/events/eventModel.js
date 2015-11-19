@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var EventSchema = new mongoose.Schema({
   round: {
     type: Number,
-    unique: true,
     required: true
   },
 

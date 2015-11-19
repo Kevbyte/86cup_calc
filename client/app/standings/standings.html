@@ -28,7 +28,7 @@
         </div>
       </div>
 
-    <div id="class-header" ng-show="limited.haslimited"><h4> Limited </h4></div>
+    <div id="class-header" ng-show="limited.hasLimited"><h4> Limited </h4></div>
       <div class="cat" ng-show="limited.hasLimited">
         <div ng-repeat="racer in limited.racers">
           <div>
@@ -53,7 +53,7 @@
       </div>
       <br>
 
-      <form ng-submit="archiveStandings()"> Archive these standings to prepare for a new season? <br>
+      <form ng-submit="archiveStandings()" ng-show="revealButton"> Archive these standings to prepare for a new season? <br>
         <input type="text" ng-model="archive.year" placeholder="enter year (ex. '2015')" required></input>
         <input type="submit" value="Archive!" > </input>
       </form>
