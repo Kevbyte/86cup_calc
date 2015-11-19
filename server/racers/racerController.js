@@ -121,6 +121,13 @@ module.exports = {
             // console.log(user);
           });
         }
+        if(racer.reset) {
+          user[0].total = 0;
+          user[0].save(function(err) {
+            if(err) throw err;
+            // console.log(user);
+          });
+        }
           
       });
     })
@@ -138,6 +145,13 @@ module.exports = {
               // console.log(user);
             });
           }
+          if(racer.reset) {
+            user[0].total = 0;
+            user[0].save(function(err) {
+              if(err) throw err;
+              // console.log(user);
+            });
+          }
       });
     })
     _.each(limited, function (racer) {
@@ -148,12 +162,19 @@ module.exports = {
           Racer.find({username: racer.name}).remove().exec();
         }
           if(racer.add){
-          user[0].total += racer.add;
-          user[0].save(function(err) {
-            if(err) throw err;
-            // console.log(user);
-          });
-        }
+            user[0].total += racer.add;
+            user[0].save(function(err) {
+              if(err) throw err;
+              // console.log(user);
+            });
+          }
+          if(racer.reset) {
+            user[0].total = 0;
+            user[0].save(function(err) {
+              if(err) throw err;
+              // console.log(user);
+            });
+          }
       });
     })
     _.each(unlimited, function (racer) {
@@ -164,12 +185,19 @@ module.exports = {
           Racer.find({username: racer.name}).remove().exec();
         }
           if(racer.add){
-          user[0].total += racer.add;
-          user[0].save(function(err) {
-            if(err) throw err;
-            // console.log(user);
-          });
-        }
+            user[0].total += racer.add;
+            user[0].save(function(err) {
+              if(err) throw err;
+              // console.log(user);
+            });
+          }
+          if(racer.reset) {
+            user[0].total = 0;
+            user[0].save(function(err) {
+              if(err) throw err;
+              // console.log(user);
+            });
+          }
       });
     })
     res.sendStatus(200);

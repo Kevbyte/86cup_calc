@@ -57,6 +57,30 @@ angular.module('86cup.services', [])
       })
     };
 
+    var archiveStandings = function(data) {
+      return $http({
+        method: 'POST',
+        url: '/standings/archiveStandings',
+        data: data,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+      })
+    };
+
+    var getArchive = function() {
+      return $http({
+        method: 'GET',
+        url: '/standings/getArchive'
+      })
+    }
+
+    var deleteArchive = function() {
+      return $http({
+        method: 'POST',
+        url: '/standings/deleteArchive'
+      })
+    }
+
     var deleteUsers = function() {
       return $http({
         method: 'POST',
@@ -70,6 +94,9 @@ angular.module('86cup.services', [])
       getOtherModList: getOtherModList,
       updateRacerTotals: updateRacerTotals,
       updateModListAndPts: updateModListAndPts,
+      archiveStandings: archiveStandings,
+      getArchive: getArchive,
+      deleteArchive: deleteArchive,
       deleteUsers: deleteUsers
     }
   })

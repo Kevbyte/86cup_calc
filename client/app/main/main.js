@@ -15,5 +15,6 @@ angular.module('86cup.main', [])
     }
     var user = $window.localStorage.username.toLowerCase();
     $scope.username = {name: user};
+    // $scope.foobar = {name: 'FOOBAR'};
     
   });

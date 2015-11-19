@@ -1,5 +1,6 @@
 var racerController = require('../racers/racerController');
 var eventController = require('../events/eventController');
+var standingsController = require('../standings/standingsController');
 
 var path = require('path');
 
@@ -11,6 +12,9 @@ module.exports = function (app) {
   app.post('/racers/updateRacerTotals', racerController.updateRacerTotals);
   app.post('/racers/updateModListAndPts', racerController.updateModListAndPts);
   app.post('/racers/deleteUsers', racerController.deleteUsers);
+  app.post('/standings/archiveStandings', standingsController.archiveStandings);
+  app.get('/standings/getArchive', standingsController.getArchive);
+  app.post('/standings/deleteArchive', standingsController.deleteArchive);
 
   app.post('/events/addTrackEvent', eventController.addTrackEvent);
   app.get('/events/getEvents', eventController.getEvents);

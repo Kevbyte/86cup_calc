@@ -4,7 +4,7 @@
   <div class="standingsdiv">
     <div><i class="menu--icon--page  fa fa-fw fa-flag"><h3>Standings</h3></i></div>
     <div class="instructions">Click on a competitor to see their profile</div>
-    <div id="class-header" ng-show="unlimited.hasUnlimited"><h4> Stock </h4></div>
+    <div id="class-header" ng-show="stock.hasStock"><h4> Stock </h4></div>
       <div class="cat" ng-show="stock.hasStock">
         <div ng-repeat="racer in stock.racers">
           <div>
@@ -16,7 +16,7 @@
         </div>
       </div>
 
-    <div id="class-header" ng-show="unlimited.hasUnlimited"><h4> Street </h4></div>
+    <div id="class-header" ng-show="street.hasStreet"><h4> Street </h4></div>
       <div class="cat" ng-show="street.hasStreet">
         <div ng-repeat="racer in street.racers">
           <div>
@@ -28,7 +28,7 @@
         </div>
       </div>
 
-    <div id="class-header" ng-show="unlimited.hasUnlimited"><h4> Limited </h4></div>
+    <div id="class-header" ng-show="limited.haslimited"><h4> Limited </h4></div>
       <div class="cat" ng-show="limited.hasLimited">
         <div ng-repeat="racer in limited.racers">
           <div>
@@ -51,5 +51,11 @@
           </div>
         </div>
       </div>
+      <br>
+
+      <form ng-submit="archiveStandings()"> Archive these standings to prepare for a new season? <br>
+        <input type="text" ng-model="archive.year" placeholder="enter year (ex. '2015')" required></input>
+        <input type="submit" value="Archive!" > </input>
+      </form>
   </div>
 </div>

@@ -261,7 +261,7 @@ angular.module('86cup.admin', [])
     }
 
     $scope.deleteUsers = function() {
-      Events.deleteTrackEvents();
+      Racers.deleteUsers();
       alert("You just deleted all users!")
     }
 

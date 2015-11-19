@@ -3,6 +3,7 @@ angular.module('86cup',
   '86cup.landing',
   '86cup.main', 
   '86cup.standings', 
+  '86cup.archive',
   '86cup.admin', 
   '86cup.profile',
   '86cup.services', 
@@ -47,6 +48,11 @@ angular.module('86cup',
       url: '/standings',
       templateUrl: 'app/standings/standings.html',
       controller: 'StandingsController'
+    })
+    .state('archive', {
+      url: '/archive',
+      templateUrl: 'app/archive/archive.html',
+      controller: 'ArchiveController'
     })
     .state('admin', {
       url: '/admin',
@@ -125,6 +131,16 @@ angular.module('86cup',
       userInfo: '=userInfo'
     },
     templateUrl: 'app/directives/header-main.html'
+  };
+})
+
+.directive('userInfo', function() {
+  return {
+    restrict: 'E',
+    scope: {
+      userInfo: '=info'
+    },
+    templateUrl: 'app/directives/user-info.html'
   };
 })
 

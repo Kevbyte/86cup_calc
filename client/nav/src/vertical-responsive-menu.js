@@ -61,6 +61,10 @@ var tid = setInterval( function () {
   $('.menu--item__has_sub_menu').click(function() {
     $('.menu--item__has_sub_menu').toggleClass('menu--subitens__opened');
   });
+
+  $('.menu--item__has_sub_menu2').click(function() {
+    $('.menu--item__has_sub_menu2').toggleClass('menu--subitens__opened');
+  });
   // for (var i = 0; i < subnavs.length; i++) {
 
   //   if (subnavs[i].classList.contains('menu--item__has_sub_menu') ) {

@@ -37,6 +37,18 @@ angular.module('86cup.standings', [])
 
     $scope.getRacerList()
 
+    $scope.archive = {year: ''};
+    $scope.archive.stock = $scope.stock;
+    $scope.archive.street = $scope.street;
+    $scope.archive.limited = $scope.limited;
+    $scope.archive.unlimited = $scope.unlimited;
+
+    $scope.archiveStandings = function() {
+      Racers.archiveStandings($scope.archive).then(function(resp) {
+        alert("Archive successful!")
+      })
+    };
+
     $scope.redirectToUserStock = function(i) {
       $window.localStorage.profiles = $scope.stock.racers[i].username;
       $location.path('/profiles');
