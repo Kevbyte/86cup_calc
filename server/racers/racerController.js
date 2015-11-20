@@ -3,6 +3,7 @@ var Q = require('q');
 var jwt = require('jwt-simple');
 var _ = require('underscore');
 var path = require('path');
+var nodemailer = require('nodemailer');
 
 var ranks = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th']
 
@@ -10,6 +11,7 @@ module.exports = {
   //get all registered users and send them to standings and admin controllers on front end
   racerList: function (req, res) {
     // console.log('in racerController!!!==============================')
+
     Racer.find({})
       .select('-_id -salt -password')
       .sort({total: -1})
@@ -240,6 +242,7 @@ module.exports = {
     console.log('req.body.password === ', req.body.password)
     var username  = req.body.username.toLowerCase(),
         password  = req.body.password,
+        email = req.body.email,
         create,
         newRacer;
 
@@ -255,7 +258,8 @@ module.exports = {
           create = Q.nbind(Racer.create, Racer);
           newRacer = {
             username: username,
-            password: password
+            password: password,
+            email: email
           };
           return create(newRacer);
         }
@@ -282,6 +286,7 @@ module.exports = {
         if (!racer) {
           next(new Error('User does not exist'));
         } else {
+          // console.log(racer)
           return racer.comparePasswords(password)
             .then(function(foundUser) {
               console.log("foundUser === ", foundUser)
@@ -338,5 +343,77 @@ module.exports = {
 
         user.save();
       });
+  },
+
+  email: function (req, res) {
+    var email = req.body.email.toLowerCase();
+    var code = Math.floor(10000 * Math.random());
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        auth: {
+            user: '86cup.io@gmail.com',
+            pass: '38637oversteer'
+        }
+    });
+     
+    // NB! No need to recreate the transporter object. You can use 
+    // the same transporter object for all e-mails 
+     
+    // setup e-mail data with unicode symbols 
+    var mailOptions = {
+        from: '86cup.io ✔ <86cup.io@gmail.com>', // sender address 
+        to: email, // list of receivers 
+        subject: 'Password Reset', // Subject line 
+        text: 'You can now reset your password with this access code: '+ code +' DO NOT REPLY TO THIS MESSAGE!', // plaintext body 
+        html: '<b>You can now reset your password with this access code: '+ code +' DO NOT REPLY TO THIS MESSAGE!</b>' // html body 
+    };
+
+    Racer.findOne({email: email})
+    .then(function(user) {
+      user.code = code;
+      user.save();
+      console.log(user)
+      return user;
+    })
+    .then(function(user) {
+      transporter.sendMail(mailOptions, function(error, info){
+          if(error){
+              return console.log(error);
+          }
+          console.log('Message sent: ' + info.response);
+          res.sendStatus(200);
+       
+      });
+      setTimeout(function(){
+        console.log('setting user.code to null ', user.code)
+        user.code = null;
+      }, 100000)
+    }).catch(function(error) {
+      console.log('email error ', error)
+    })
+    // send mail with defined transport object 
+
+        
+  },
+
+  changePassword: function(req, res) {
+    console.log(req.body.data)
+    var code = req.body.data.code;
+    var password = req.body.data.password;
+    var username = req.body.data.username.toLowerCase();
+
+    Racer.findOne({username: username}).then(function(user) {
+      console.log('user.code = ', user.code)
+      if(code && code === user.code) {
+        user.password = password;
+        return user;
+      }else{
+        console.log('code does not match')
+        res.sendStatus(500);
+      }
+    }).then(function(updatedUser) {
+      updatedUser.save();
+      res.sendStatus(200);
+    })
   }
 }

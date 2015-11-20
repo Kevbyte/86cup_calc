@@ -17,6 +17,7 @@
     "jwt-simple": "^0.3.1",
     "mongodb-uri": "^0.9.7",
     "mongoose": "^4.1.9",
+    "nodemailer": "^1.10.0",
     "q": "^1.4.1",
     "serve-favicon": "^2.3.0",
     "underscore": "^1.8.3"

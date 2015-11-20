@@ -25,4 +25,6 @@ module.exports = function (app) {
   app.post('/auth/login', racerController.login);
   app.get('/auth/loggedin', racerController.checkAuth);
   app.post('/auth/logout', racerController.logout);
+  app.post('/auth/email', racerController.email);
+  app.post('/auth/changePassword', racerController.changePassword);
 };

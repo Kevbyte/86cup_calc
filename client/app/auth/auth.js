@@ -31,7 +31,7 @@ angular.module('86cup.auth', [])
   };
 
   $scope.signup = function () {
-    var racer = {username: $scope.user.username.toLowerCase(), password: $scope.user.password};
+    var racer = {username: $scope.user.username.toLowerCase(), email: $scope.user.email, password: $scope.user.password};
     Auth.signup(racer)
       .then(function (token) {
         $window.localStorage.setItem('racepro', token);
@@ -46,7 +46,36 @@ angular.module('86cup.auth', [])
   $scope.logout = function() {
     //console.log('calling log out');
     $scope.user.username = $window.localStorage.getItem('username');
-    console.log("inside log out ", $scope.user)
+    // console.log("inside log out ", $scope.user)
     Auth.logout($scope.user)
+  };
+
+  ///////////////////////////////////////////////////////////////////////////
+
+  $scope.forgot = {email: '', code: null, password: '', username: ''};
+  $scope.revealChangePass = false;
+
+  $scope.revealForgot = function() {
+    $scope.revealChangePass = true;
+  };
+
+  $scope.email = function() {
+    // console.log($scope.forgot)
+    Auth.email($scope.forgot.email).then(function() {
+      alert('An email has been sent to you')
+    })
+    .catch(function (error) {
+      alert('That email is not registered.')
+    })
+  };
+
+  $scope.changePassword = function() {
+
+    Auth.changePassword($scope.forgot).then(function() {
+      alert('Your password has been changed')
+    })
+    .catch(function (error) {
+      alert('Wrong code or username.')
+    })
   };
 });

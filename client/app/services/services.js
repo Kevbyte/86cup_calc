@@ -199,11 +199,29 @@ angular.module('86cup.services', [])
 
     };
 
+    var email = function(email) {
+      return $http({
+        method: 'POST',
+        url: '/auth/email',
+        data: {email: email}
+      })
+    };
+
+    var changePassword = function(data) {
+      return $http({
+        method: 'POST',
+        url: '/auth/changePassword',
+        data: {data}
+      })
+    };
+
     // return all funcs as an obj
     return {
       login: login,
       signup: signup,
       isAuth: isAuth,
-      logout: logout
+      logout: logout,
+      email: email,
+      changePassword: changePassword
     };
   })

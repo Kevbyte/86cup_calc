@@ -12,6 +12,25 @@ var RacerSchema = new mongoose.Schema({
     lowercase: true
   },
 
+  email: {
+    type: String,
+    required: true,
+    unique:true,
+    lowercase:true
+  },
+
+  password: {
+    type: String,
+    required: true
+  },
+
+  code: {
+    type: Number,
+    default: null
+  },
+  
+  salt: String,
+
   avatar: {
     type: String,
     default: "../assets/car-placeholder.png"
@@ -119,13 +138,6 @@ var RacerSchema = new mongoose.Schema({
     type: Number,
     default: 0
   },
-
-  password: {
-    type: String,
-    required: true
-  },
-  
-  salt: String,
 
   delete: {
     type: String,
