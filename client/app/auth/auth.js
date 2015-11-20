@@ -3,7 +3,7 @@ angular.module('86cup.auth', [])
 .controller('AuthController', function ($scope, $window, $location, Auth) {
   $("body").scrollTop(0);
   $scope.user = {};
-  $('.auth__message').hide()
+  // $('.auth__message').hide()
   $('#login').click(function() {
       $('.vertical_nav').removeClass('vertical_nav__opened');
   })
@@ -24,8 +24,8 @@ angular.module('86cup.auth', [])
       //   $location.path('/main');
       // })
       .catch(function (error) {
-        $scope.message = "Invalid Username or Password";
-        $('.auth__message').show()
+        $scope.message = error.data;
+        // $('.auth__message').show()
         console.error(error);
       });
   };
@@ -38,7 +38,8 @@ angular.module('86cup.auth', [])
         $location.path('/main');
       })
       .catch(function (error) {
-        $scope.message = "Username Already Taken";
+        $scope.message = error.data;
+        // $('.auth__message').show()
         console.error(error);
       });
   };
@@ -75,7 +76,8 @@ angular.module('86cup.auth', [])
       alert('Your password has been changed')
     })
     .catch(function (error) {
-      alert('Wrong code or username.')
+      console.log(error)
+      alert(error.data)
     })
   };
 });

@@ -249,29 +249,38 @@ module.exports = {
     var findOne = Q.nbind(Racer.findOne, Racer);
 
     // check to see if user already exists
-    findOne({username: username})
+    findOne({email: email})
       .then(function (racer) {
-        if (racer) {
-          next(new Error('Racer already exists!'));
-        } else {
-          // make a new user if not one
-          create = Q.nbind(Racer.create, Racer);
-          newRacer = {
-            username: username,
-            password: password,
-            email: email
-          };
-          return create(newRacer);
+        if(racer) {
+          res.status(500).send('That email is already registered!');
+        }else{
+          findOne({username: username})
+            .then(function (racer) {
+              if (racer) {
+                res.status(500).send('That username already exists!');
+              } else {
+                // make a new user if not one
+                create = Q.nbind(Racer.create, Racer);
+                newRacer = {
+                  username: username,
+                  password: password,
+                  email: email
+                };
+                return create(newRacer);
+              }
+            })
+            .then(function (racer) {
+              
+              racer.save();
+
+              // create token to send back for auth
+              var token = jwt.encode(racer, 'secret');
+              res.json({token: token});
+            })
         }
       })
-      .then(function (racer) {
-        
-        racer.save();
 
-        // create token to send back for auth
-        var token = jwt.encode(racer, 'secret');
-        res.json({token: token});
-      })
+    
       // .fail(function (error) {
       //   next(error);
       // });
@@ -284,7 +293,7 @@ module.exports = {
     Racer.findOne({username: username})
       .then(function (racer) {
         if (!racer) {
-          next(new Error('User does not exist'));
+          res.status(500).send('Invalid username!');
         } else {
           // console.log(racer)
           return racer.comparePasswords(password)
@@ -298,7 +307,7 @@ module.exports = {
                 racer.save();
 
               } else {
-                return next(new Error('No user'));
+                res.status(500).send('Invalid password!')
               }
             });
         }
@@ -347,7 +356,19 @@ module.exports = {
 
   email: function (req, res) {
     var email = req.body.email.toLowerCase();
-    var code = Math.floor(10000 * Math.random());
+    var array = [];
+    
+
+    var generateCode = function() {
+      var result = [];
+      for(var i=0; i<4; i++) {
+        result.push(Math.floor(9 * Math.random()));
+      }
+      return result.join('');
+    }
+
+    var code = generateCode();
+
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         auth: {
@@ -404,12 +425,24 @@ module.exports = {
 
     Racer.findOne({username: username}).then(function(user) {
       console.log('user.code = ', user.code)
-      if(code && code === user.code) {
-        user.password = password;
-        return user;
+      if(user.attempts === 0) {
+        res.status(500).send('Sorry you have maxed out your attempts. Please try again in 30 mins.');
+        setTimeout(function(){
+          user.attempts = 3;
+          user.save();
+        }, 3000)
+        // 1800000
       }else{
-        console.log('code does not match')
-        res.sendStatus(500);
+        if(code && code === user.code) {
+          user.password = password;
+          return user;
+        }else{
+          console.log('code does not match')
+          res.status(500).send('The code you entered does not match');
+          user.attempts--;
+          user.save()
+          console.log(user.attempts)
+        }
       }
     }).then(function(updatedUser) {
       updatedUser.save();

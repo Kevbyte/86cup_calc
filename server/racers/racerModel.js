@@ -28,6 +28,11 @@ var RacerSchema = new mongoose.Schema({
     type: Number,
     default: null
   },
+
+  attempts: {
+    type: Number,
+    default: 3
+  },
   
   salt: String,
 
