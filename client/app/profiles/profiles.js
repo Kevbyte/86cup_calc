@@ -1,9 +1,9 @@
 angular.module('86cup.profiles', [])
   .controller('ProfilesController', function ($scope, $window, $location, $window, Racers, Events) {
     $("body").scrollTop(0);
-    if(!$window.localStorage.racepro){
-      $location.path('/')
-    }
+    // if(!$window.localStorage.racepro){
+    //   $location.path('/')
+    // }
     if($window.localStorage.username !== 'admin'){
       $('.admin-button').hide();
     }

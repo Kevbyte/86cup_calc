@@ -1,12 +1,7 @@
 angular.module('86cup.standings', [])
-  .controller('StandingsController', function ($scope, $window, $location, Racers) {
+  .controller('StandingsController', function ($scope, $window, $location, Racers, Auth) {
     $("body").scrollTop(0);
-    if(!$window.localStorage.racepro || $window.localStorage.racepro === 'undefined'){
-      $location.path('/')
-    }
-    if($window.localStorage.username !== 'admin'){
-      $('.admin-button').hide();
-    }
+
     $scope.stock = {};
     $scope.street = {};
     $scope.limited = {};
@@ -45,9 +40,10 @@ angular.module('86cup.standings', [])
 
     $scope.revealButton = false;
 
-    if($window.localStorage.username === 'admin'){
-      $scope.revealButton = true;
-    }
+    Auth.isAdmin().then(function() {
+        $scope.revealButton = true;
+        console.log('You are admin!');
+    })
 
     $scope.nukesRevealed = false;
 

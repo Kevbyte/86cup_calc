@@ -19,13 +19,8 @@ angular.module('86cup.auth', [])
   $scope.login = function () {
     var racer = {username: $scope.user.username.toLowerCase(), password: $scope.user.password};
     Auth.login(racer)
-      // .then(function (token) {
-      //   $window.localStorage.setItem('racepro', token);
-      //   $location.path('/main');
-      // })
       .catch(function (error) {
         $scope.message = error.data;
-        // $('.auth__message').show()
         console.error(error);
       });
   };
@@ -34,12 +29,9 @@ angular.module('86cup.auth', [])
     var racer = {username: $scope.user.username.toLowerCase(), email: $scope.user.email, password: $scope.user.password};
     Auth.signup(racer)
       .then(function (token) {
-        $window.localStorage.setItem('racepro', token);
-        $location.path('/main');
       })
       .catch(function (error) {
         $scope.message = error.data;
-        // $('.auth__message').show()
         console.error(error);
       });
   };
@@ -48,7 +40,10 @@ angular.module('86cup.auth', [])
     //console.log('calling log out');
     $scope.user.username = $window.localStorage.getItem('username');
     // console.log("inside log out ", $scope.user)
-    Auth.logout($scope.user)
+    Auth.logout($scope.user).then(function (data) {
+      console.log('wtfffff')
+      $location.path('/login');
+    })
   };
 
   ///////////////////////////////////////////////////////////////////////////

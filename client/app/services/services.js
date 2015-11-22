@@ -13,12 +13,11 @@ angular.module('86cup.services', [])
       })
     };
 
-    var getModList = function(racer) {
+    var getModList = function() {
       console.log("get mod list")
       return $http({
         method: 'GET',
         url: '/racers/modList',
-        params: racer,
         timeout: 2000,
         contentType: "application/json; charset=utf-8",
         dataType: "json"
@@ -47,7 +46,6 @@ angular.module('86cup.services', [])
         method: 'POST',
         url: '/racers/updateModListAndPts',
         data: {
-                racer: data.racer,
                 avatar: data.avatar,
                 modList: data.modList,
                 modPts: data.modPts
@@ -117,11 +115,10 @@ angular.module('86cup.services', [])
       })
     };
 
-    var getStats = function(racer) {
+    var getStats = function() {
       return $http({
         method: 'GET',
-        url: '/events/getEvents',
-        params: racer
+        url: '/events/getEvents'
       })
     };
 
@@ -153,11 +150,14 @@ angular.module('86cup.services', [])
         dataType: "json"
       })
       .then(function (resp) {
-        console.log(resp)
-        // Saving a global username to be used throughout app
         $window.localStorage.setItem('username', resp.config.data.username);
-        $window.localStorage.setItem('racepro', resp.data.token);
         $location.path('/main');
+        isAdmin().then(function() {
+            console.log('You are admin!');
+            $('.admin-button').show();
+          }).catch(function(error) {
+            $('.admin-button').hide();
+          })
       })
     };
 
@@ -171,32 +171,41 @@ angular.module('86cup.services', [])
       .then(function (resp) {
         // Saving a global username to be used throughout app
         $window.localStorage.setItem('username', resp.config.data.username);
-        return resp.data.token;
+        $location.path('/main');
+        // return resp.data.token;
       });
     };
 
     // helper to check if users are authorized
     var isAuth = function () {
-      return !!$window.localStorage.getItem('racepro');
+      return $http({
+        method: 'GET',
+        url: '/auth/isAuth'
+      })
+      // return !!$window.localStorage.getItem('racepro');
     };
 
     // signs out users
-    var logout = function () {
+    var logout = function (user) {
       $window.localStorage.clear();
       // $window.localStorage.removeItem('racepro');
-      $location.path('/login');
+      // $location.path('/login');
       
-      // return $http({
-      //   method: 'POST',
-      //   url: '/auth/logout',
-      //   data: user,
-      //   contentType: "application/json; charset=utf-8",
-      //   dataType: "json"
-      // })
-      // .then(function (resp) {
-      //   return resp.data.token;
-      // });
+      return $http({
+        method: 'POST',
+        url: '/auth/logout',
+        data: user,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+      })
 
+    };
+
+    var isAdmin = function () {
+      return $http({
+        method: 'GET',
+        url: '/auth/isAdmin'
+      })
     };
 
     var email = function(email) {
@@ -221,6 +230,7 @@ angular.module('86cup.services', [])
       signup: signup,
       isAuth: isAuth,
       logout: logout,
+      isAdmin: isAdmin,
       email: email,
       changePassword: changePassword
     };

@@ -1,12 +1,14 @@
 angular.module('86cup.admin', [])
-  .controller('AdminController', function ($scope, $window, $location, Racers, Events) {
+  .controller('AdminController', function ($scope, $window, $location, Racers, Events, Auth) {
     $("body").scrollTop(0);
-    if(!$window.localStorage.racepro){
-      $location.path('/');
-    }
+
+    Auth.isAdmin().then(function() {
+        console.log('You are admin!')
+      }).catch(function(error) {
+        $location.path('/main')
+      })
+
     if($window.localStorage.username !== 'admin') {
-      $location.path('/main');
-      alert("You do not have access to this feature!");
     }
     $scope.trackEvent = {stock: {}, street: {}, limited: {}, unlimited: {}};
     $scope.trackEvent.stock.racers = [];

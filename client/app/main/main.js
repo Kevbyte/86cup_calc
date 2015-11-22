@@ -4,15 +4,15 @@ angular.module('86cup.main', [])
       $('.vertical_nav').removeClass('vertical_nav__opened');
     })
     $("body").scrollTop(0);
-    if(!$window.localStorage.racepro){
-      console.log("no token")
-      $location.path('/')
-    }
-    if($window.localStorage.username !== 'admin'){
-      $('.admin-button').hide();
-    }else{
-      $('.admin-button').show();
-    }
+
+    Auth.isAdmin().then(function() {
+        console.log('You are admin!');
+      }).catch(function(error) {
+        $(".intro-admin a").click(function(event){
+            event.preventDefault();
+        });
+    })
+    
     var user = $window.localStorage.username.toLowerCase();
     $scope.username = {name: user};
     // $scope.foobar = {name: 'FOOBAR'};

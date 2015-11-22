@@ -1,12 +1,6 @@
 angular.module('86cup.archive', [])
-  .controller('ArchiveController', function ($scope, $window, $location, Racers) {
+  .controller('ArchiveController', function ($scope, $window, $location, Racers, Auth) {
     $("body").scrollTop(0);
-    if(!$window.localStorage.racepro || $window.localStorage.racepro === 'undefined'){
-      $location.path('/')
-    }
-    if($window.localStorage.username !== 'admin'){
-      $('.admin-button').hide();
-    }
     
     $scope.archive = [];
 
@@ -21,8 +15,12 @@ angular.module('86cup.archive', [])
 
     $scope.revealButton = false;
 
+    Auth.isAdmin().then(function() {
+        $scope.revealButton = true;
+        console.log('You are admin!');
+    })
+
     if($window.localStorage.username === 'admin'){
-      $scope.revealButton = true;
     }
 
     $scope.nukesRevealed = false;

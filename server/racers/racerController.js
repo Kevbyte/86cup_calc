@@ -7,11 +7,20 @@ var nodemailer = require('nodemailer');
 
 var ranks = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th', '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th']
 
+var createSession = function(req, res, newUser) {
+  console.log('newUser ', newUser)
+  // return req.session.regenerate(function() {
+      req.session.user = newUser;
+      req.session.save();
+    // });
+
+};
+
 module.exports = {
   //get all registered users and send them to standings and admin controllers on front end
   racerList: function (req, res) {
     // console.log('in racerController!!!==============================')
-
+    console.log('racerList', req.session)
     Racer.find({})
       .select('-_id -salt -password')
       .sort({total: -1})
@@ -50,8 +59,7 @@ module.exports = {
 
   //get a single user's information and send it to front end
   getModList: function (req, res) {
-    console.log('req.query.name', req.query.name)
-    var racer = req.query.name.toLowerCase();
+    var racer = req.session.user.username;
     Racer.findOne({username: racer})
       .select('-_id -salt -password')
       .then(function (result) {
@@ -206,7 +214,7 @@ module.exports = {
   },
 
   updateModListAndPts: function(req, res) {
-    var username = req.body.racer.name.toLowerCase();
+    var username = req.session.user.username;
     var avatar = req.body.avatar
     var modList = req.body.modList.mods;
     var modPts = req.body.modPts;
@@ -238,8 +246,6 @@ module.exports = {
   },
 
   signup: function (req, res, next) {
-    console.log('req.body.username === ', req.body.username)
-    console.log('req.body.password === ', req.body.password)
     var username  = req.body.username.toLowerCase(),
         password  = req.body.password,
         email = req.body.email,
@@ -270,12 +276,14 @@ module.exports = {
               }
             })
             .then(function (racer) {
-              
               racer.save();
+              createSession(req, res, racer);
+              console.log('req.session = ', req.session)
 
               // create token to send back for auth
-              var token = jwt.encode(racer, 'secret');
-              res.json({token: token});
+              // var token = jwt.encode(racer, 'secret');
+              // res.json({token: token});
+              res.status(200).send('You have signed up and are logged in!')
             })
         }
       })
@@ -300,58 +308,56 @@ module.exports = {
             .then(function(foundUser) {
               console.log("foundUser === ", foundUser)
               if (foundUser) {
-                var token = jwt.encode(racer, 'secret');
-                res.json({token: token});
+                // createSession(req, res, racer);
+                createSession(req, res, racer);
+                console.log('req.session = ', req.session)
+                // var token = jwt.encode(racer, 'secret');
+                // res.json({token: token});
 
                 //Set the user to be online
                 racer.save();
+                res.status(200).send('You are logged in!')
 
               } else {
                 res.status(500).send('Invalid password!')
               }
             });
         }
+        // createSession(req, res, racer);
       })
       // .fail(function (error) {
       //   next(error);
       // });
   },
 
-  checkAuth: function (req, res) {
-    // checking to see if the user is authenticated
-    // grab the token in the header is any
-    // then decode the token, which we end up being the user object
-    // check to see if that user exists in the database
-    var token = req.headers['x-access-token'];
-    if (!token) {
-      next(new Error('No token'));
-    } else {
-      var user = jwt.decode(token, 'secret');
-      var findUser = Q.nbind(Racer.findOne, Racer);
-      findUser({username: user.username})
-        .then(function (foundUser) {
-          if (foundUser) {
-            res.send(200);
-          } else {
-            res.send(401);
-          }
-        })
-        // .fail(function (error) {
-        //   next(error);
-        // });
+  isAuth: function (req, res) {
+    if(req.session.user) {
+      res.status(200).send('User is Auth!')
+    }else{
+      res.status(500).send('User is not Auth!')
     }
   },
 
   logout: function (req, res) {
-    console.log("this is req.body",req.body.username);
-    var username = req.body.username.toLowerCase();
+    var username = req.session.user
     var findUser = Q.nbind(Racer.findOne, Racer);
+    req.session.destroy();
+    console.log('req.session in logout = ', req.session)
+    res.status(200).send('you are logged out');
     
-    findUser({username: username})
-      .then(function (user) {
+    // findUser({username: username})
+    //   .then(function (user) {
+    //     user.save();
+    //     res.status(200).send('you are logged out');
+    //   });
+  },
 
-        user.save();
-      });
+  isAdmin: function (req, res) {
+    if(req.session.user.username === 'admin') {
+      res.status(200).send('User is Admin!')
+    }else{
+      res.status(500).send('User is not Admin!')
+    }
   },
 
   email: function (req, res) {

@@ -1,14 +1,14 @@
 angular.module('86cup.stats', [])
   .controller('StatsController', function ($scope, $window, $location, Racers, Events) {
     $("body").scrollTop(0);
-    if(!$window.localStorage.racepro){
-      $location.path('/')
-    }
+    // if(!$window.localStorage.racepro){
+    //   $location.path('/')
+    // }
     if($window.localStorage.username !== 'admin'){
       $('.admin-button').hide();
     }
     $scope.user = {};
-    $scope.user.username = $window.localStorage.username.toLowerCase();
+    $scope.user.username;
     $scope.events;
     $scope.stats = [];
     $scope.tracks = {BWR:{events:[]},MRLS:{events:[]},SRW:{events:[]},THR2:{events:[]},THR3C:{events:[]},THR3B:{events:[]},THR3:{events:[]},THR5:{events:[]}};

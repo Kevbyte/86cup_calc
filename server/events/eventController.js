@@ -63,7 +63,7 @@ module.exports = {
       // .select('-_id -salt -password')
       .sort({round: -1})
       .then(function(events) {
-        res.send(events);
+        res.send();
       })
   },
 

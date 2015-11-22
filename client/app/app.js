@@ -177,23 +177,25 @@ angular.module('86cup',
 // run the style
 ////////////////////////////////////////////////////////////
 
-// .run(function ($rootScope, $window, $location, Auth, Racers) {
+.run(function ($rootScope, $window, $location, Auth, Racers) {
 
 
-//   ////////////////////////////////////////////////////////////
-//   // handle auth stuffs
-//   ////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////
+  // handle auth stuffs
+  ////////////////////////////////////////////////////////////
 
-//   $rootScope.$on('$stateChangeStart', function (evt, next, current) {
-//     // redirect home if auth required and user isn't auth
-//     console.log("next.authenticate === ", next.authenticate)
-//     if (next && next.authenticate && !Auth.isAuth()) {
-//       $location.path('/');
-//     }
+  $rootScope.$on('$stateChangeStart', function (evt, next, current) {
+    // redirect home if auth required and user isn't auth
 
-//     // redirect to dashboard if user is auth and tries to access home page
-//     if (next && next.url === '/' && Auth.isAuth()) {
-//       $location.path('/');
-//     }
-//   });
-// });
+    Auth.isAuth().then(function(resp) {
+      console.log(resp.data)
+      if($location.path() === '/login' || $location.path() === '/signup') {
+        $window.location.assign('/#/main');
+      }
+    }).catch(function(error) {
+      console.error(error.data);
+      $window.location.assign('/#/login');
+    })
+
+  });
+});

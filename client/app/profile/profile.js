@@ -2,9 +2,9 @@ angular.module('86cup.profile', [])
   .controller('ProfileController', function ($scope, $window, $location, $window, Racers) {
     $("body").scrollTop(0);
 
-    if(!$window.localStorage.racepro){
-      $location.path('/')
-    }
+    // if(!$window.localStorage.racepro){
+    //   $location.path('/')
+    // }
     if($window.localStorage.username !== 'admin'){
       $('.admin-button').hide();
     }
@@ -19,7 +19,7 @@ angular.module('86cup.profile', [])
     $scope.getModList = function() {
       //fetch user modlist data
       // console.log('username === ', $scope.username);
-      Racers.getModList($scope.username)
+      Racers.getModList()
         .then(function(resp){
           // console.log('resp === ', resp.data)
           if(resp.data.avatar !== "../assets/car-placeholder.png") {
@@ -233,7 +233,7 @@ angular.module('86cup.profile', [])
     }; //adds image data to $scope.avatar
 
     $scope.updateMods = function() {
-      Racers.updateModListAndPts({racer: $scope.username, avatar: $scope.avatar, modList: $scope.modList, modPts: $scope.modPts}).then(function(resp){
+      Racers.updateModListAndPts({avatar: $scope.avatar, modList: $scope.modList, modPts: $scope.modPts}).then(function(resp){
         console.log("modlist and pts updated!");
         alert("Successfully updated modifications and picture!")
       })
