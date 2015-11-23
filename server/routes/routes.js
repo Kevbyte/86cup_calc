@@ -22,8 +22,8 @@ var checkUser = function(req, res, next) {
 var checkAdmin = function(req, res, next) {
   if(req.session.username !== 'admin') {
     console.log('not admin');
-    // res.status(500).send('not admin');
-    res.redirect(301, '/main')
+    res.status(500).send('not admin');
+    // res.redirect(301, '/main')
   }else{
     next();
   }
@@ -46,11 +46,11 @@ module.exports = function (app) {
   app.get('/events/getStats', checkUser, eventController.getStats);
   app.post('/events/deleteTrackEvents', checkAdmin, eventController.deleteTrackEvents);
 
-  app.post('/auth/signup', checkUser, racerController.signup);
-  app.post('/auth/login', checkUser, racerController.login);
+  app.post('/auth/signup', racerController.signup);
+  app.post('/auth/login', racerController.login);
   app.get('/auth/isAuth', checkUser, racerController.isAuth);
-  app.post('/auth/logout', checkUser, racerController.logout);
+  app.post('/auth/logout', racerController.logout);
   app.get('/auth/isAdmin', checkAdmin, racerController.isAdmin);
-  app.post('/auth/email', checkUser, racerController.email);
-  app.post('/auth/changePassword', checkUser, racerController.changePassword);
+  app.post('/auth/email', racerController.email);
+  app.post('/auth/changePassword', racerController.changePassword);
 };

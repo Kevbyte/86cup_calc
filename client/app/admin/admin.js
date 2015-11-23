@@ -6,7 +6,7 @@ angular.module('86cup.admin', [])
         console.log('You are admin!')
       }).catch(function(error) {
         console.error('you are not admin')
-        // $location.path('/main')
+        $location.path('/main')
       })
 
     $scope.trackEvent = {stock: {}, street: {}, limited: {}, unlimited: {}};
