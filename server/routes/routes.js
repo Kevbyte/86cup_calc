@@ -38,19 +38,19 @@ module.exports = function (app) {
   app.post('/racers/updateModListAndPts', checkUser, racerController.updateModListAndPts);
   app.post('/racers/deleteUsers', checkAdmin, racerController.deleteUsers);
   app.post('/standings/archiveStandings', checkAdmin, standingsController.archiveStandings);
-  app.get('/standings/getArchive', standingsController.getArchive);
+  app.get('/standings/getArchive', checkUser, standingsController.getArchive);
   app.post('/standings/deleteArchive', checkAdmin, standingsController.deleteArchive);
 
   app.post('/events/addTrackEvent', checkAdmin, eventController.addTrackEvent);
-  app.get('/events/getEvents', eventController.getEvents);
-  app.get('/events/getStats', eventController.getStats);
+  app.get('/events/getEvents', checkUser, eventController.getEvents);
+  app.get('/events/getStats', checkUser, eventController.getStats);
   app.post('/events/deleteTrackEvents', checkAdmin, eventController.deleteTrackEvents);
 
-  app.post('/auth/signup', racerController.signup);
-  app.post('/auth/login', racerController.login);
-  app.get('/auth/isAuth', racerController.isAuth);
-  app.post('/auth/logout', racerController.logout);
+  app.post('/auth/signup', checkUser, racerController.signup);
+  app.post('/auth/login', checkUser, racerController.login);
+  app.get('/auth/isAuth', checkUser, racerController.isAuth);
+  app.post('/auth/logout', checkUser, racerController.logout);
   app.get('/auth/isAdmin', checkAdmin, racerController.isAdmin);
-  app.post('/auth/email', racerController.email);
-  app.post('/auth/changePassword', racerController.changePassword);
+  app.post('/auth/email', checkUser, racerController.email);
+  app.post('/auth/changePassword', checkUser, racerController.changePassword);
 };
