@@ -10,36 +10,47 @@ var isLoggedIn = function(req, res) {
 
 var checkUser = function(req, res, next) {
   if (!isLoggedIn(req)) {
-    console.log('not logged in', req.session)
-    res.redirect('/#/login');
+    // console.log('not logged in', req.session);
+    // res.redirect('/#/login');
+    res.status(500).send('not logged in');
   } else {
-    console.log('checkuser')
+    console.log('checkuser');
     next();
   }
 };
+
+var checkAdmin = function(req, res, next) {
+  if(req.session.username !== 'admin') {
+    console.log('not admin');
+    // res.status(500).send('not admin');
+    res.redirect(301, '/main')
+  }else{
+    next();
+  }
+}
 
 module.exports = function (app) {
   // app.post('/totals', racerController.updateTotals);
   app.get('/racers/racerList', checkUser, racerController.racerList);
   app.get('/racers/modList', checkUser, racerController.getModList);
   app.get('/racers/otherModList', racerController.getOtherModList);
-  app.post('/racers/updateRacerTotals', racerController.updateRacerTotals);
+  app.post('/racers/updateRacerTotals', checkAdmin, racerController.updateRacerTotals);
   app.post('/racers/updateModListAndPts', checkUser, racerController.updateModListAndPts);
-  app.post('/racers/deleteUsers', racerController.deleteUsers);
-  app.post('/standings/archiveStandings', standingsController.archiveStandings);
+  app.post('/racers/deleteUsers', checkAdmin, racerController.deleteUsers);
+  app.post('/standings/archiveStandings', checkAdmin, standingsController.archiveStandings);
   app.get('/standings/getArchive', standingsController.getArchive);
-  app.post('/standings/deleteArchive', standingsController.deleteArchive);
+  app.post('/standings/deleteArchive', checkAdmin, standingsController.deleteArchive);
 
-  app.post('/events/addTrackEvent', eventController.addTrackEvent);
+  app.post('/events/addTrackEvent', checkAdmin, eventController.addTrackEvent);
   app.get('/events/getEvents', eventController.getEvents);
   app.get('/events/getStats', eventController.getStats);
-  app.post('/events/deleteTrackEvents', eventController.deleteTrackEvents);
+  app.post('/events/deleteTrackEvents', checkAdmin, eventController.deleteTrackEvents);
 
   app.post('/auth/signup', racerController.signup);
   app.post('/auth/login', racerController.login);
   app.get('/auth/isAuth', racerController.isAuth);
   app.post('/auth/logout', racerController.logout);
-  app.get('/auth/isAdmin', racerController.isAdmin);
+  app.get('/auth/isAdmin', checkAdmin, racerController.isAdmin);
   app.post('/auth/email', racerController.email);
   app.post('/auth/changePassword', racerController.changePassword);
 };

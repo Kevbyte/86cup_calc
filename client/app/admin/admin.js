@@ -5,11 +5,10 @@ angular.module('86cup.admin', [])
     Auth.isAdmin().then(function() {
         console.log('You are admin!')
       }).catch(function(error) {
-        $location.path('/main')
+        console.error('you are not admin')
+        // $location.path('/main')
       })
 
-    if($window.localStorage.username !== 'admin') {
-    }
     $scope.trackEvent = {stock: {}, street: {}, limited: {}, unlimited: {}};
     $scope.trackEvent.stock.racers = [];
     $scope.trackEvent.street.racers = [];
@@ -263,13 +262,20 @@ angular.module('86cup.admin', [])
     }
 
     $scope.deleteUsers = function() {
-      Racers.deleteUsers();
-      alert("You just deleted all users!")
+      Racers.deleteUsers().then(function() {
+        alert("You just deleted all users!")
+      }).catch(function(error) {
+        alert(error.data)
+      })
+      
     }
 
     $scope.deleteTrackEvents = function() {
-      Events.deleteTrackEvents();
-      alert("You just deleted all events!")
+      Events.deleteTrackEvents().then(function() {
+        alert("You just deleted all events!")
+      }).catch(function(error) {
+        alert(error.data)
+      })
     }
 
     

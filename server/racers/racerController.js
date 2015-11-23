@@ -20,7 +20,6 @@ module.exports = {
   //get all registered users and send them to standings and admin controllers on front end
   racerList: function (req, res) {
     // console.log('in racerController!!!==============================')
-    console.log('racerList', req.session)
     Racer.find({})
       .select('-_id -salt -password')
       .sort({total: -1})

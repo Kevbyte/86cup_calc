@@ -31,7 +31,7 @@ app.use(session({
   resave: true, 
   saveUninitialized: true, 
   secret: 'sdjfasi984riasdf9KJA889sd02-30-secret-cat', 
-  cookie: { maxAge: 2 * 60 * 1000, httpOnly: false },
+  cookie: { maxAge: 2 * 24 * 60 * 60 * 1000, httpOnly: false },
   store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
@@ -39,26 +39,11 @@ app.use(livereload())
 app.use(bodyParser.json({limit: '500mb'}));
 app.use(bodyParser.urlencoded({extended: true, limit: '500mb'}));
 
-
-
-
-// var mongodbUri = 'mongodb://heroku_067m5c1d:gqdu4n5htok8tuvia3manvnok6@ds039624-a0.mongolab.com:39624,ds039624-a1.mongolab.com:39624/heroku_067m5c1d?replicaSet=rs-ds039624';
-// var mongooseUri = uriUtil.formatMongoose(mongodbUri);
-
-
-// if(process.env.MONGOLAB_URI) {
-//   mongoose.connect(mongooseUri, options);
-// }else{
-//   mongoose.connect('mongodb://localhost/86cup');
-// }
-
-// var db = mongoose.connection;
-
-// db.on('error', console.error.bind(console, 'connection error:'));
-
-
-
 app.set('port', (process.env.PORT || 4040));
+
+app.get('/#/admin', function(req, res) {
+  console.log('eurekaaaa!!!!!!!!!!!!!!!!!!!!!!!!')
+})
 
 require('./routes/routes.js')(app);
 

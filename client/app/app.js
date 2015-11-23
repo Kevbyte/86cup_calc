@@ -194,7 +194,9 @@ angular.module('86cup',
       }
     }).catch(function(error) {
       console.error(error.data);
-      $window.location.assign('/#/login');
+      if($location.path() !== '/login' && $location.path() !== '/signup') {
+        $window.location.assign('/#/login');
+      }
     })
 
   });
