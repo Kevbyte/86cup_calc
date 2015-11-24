@@ -21,7 +21,7 @@ module.exports = {
   racerList: function (req, res) {
     // console.log('in racerController!!!==============================')
     Racer.find({})
-      .select('-_id -salt -password')
+      .select('-_id -salt -password -email')
       .sort({total: -1})
       .then(function(list) {
         // console.log('list === ', list)
@@ -60,7 +60,7 @@ module.exports = {
   getModList: function (req, res) {
     var racer = req.session.user.username;
     Racer.findOne({username: racer})
-      .select('-_id -salt -password')
+      .select('-_id -salt -password -email')
       .then(function (result) {
         // console.log('result === ', result)
         res.send(result);
@@ -71,7 +71,7 @@ module.exports = {
     // console.log('req.query', req.query.name)
     var racer = req.query.name.toLowerCase();
     Racer.findOne({username: racer})
-      .select('-_id -salt -password')
+      .select('-_id -salt -password -email')
       .then(function (result) {
         // console.log('result === ', result)
         var activeMods = {};
