@@ -1,4 +1,5 @@
 var Event = require('./eventModel');
+var UpcomingEvent = require('./eventModel');
 var _ = require('underscore');
 var Q = require('q');
 var jwt = require('jwt-simple');
@@ -70,5 +71,41 @@ module.exports = {
   deleteTrackEvents: function(req, res, next) {
     Event.find({}).remove().exec();
     res.sendStatus(200);
+  },
+
+  addUpcomingEvent: function(req, res, next) {
+    console.log('addUpcomingEvent', req.body);
+
+    UpcomingEvent.findOne({round: req.body.round})
+      .then(function (event) {
+        if (event) {
+          next(new Error('Event already exists!'))
+        } else {
+          // make a new event if not one
+          console.log("making new event")
+          newEvent = req.body
+          return UpcomingEvent.create(newEvent);
+        }
+      })
+      .then(function (newEvent) {
+        newEvent.save();
+        res.sendStatus(200);
+        console.log(newEvent)
+      })
+  },
+
+  getUpcomingEvents: function(req, res) {
+    UpcomingEvent.find({})
+      .then(function(events) {
+        res.send(events);
+      })
+  },
+
+  deleteUpcomingEvent: function(req, res, next) {
+    console.log('deleteUpcomingEvent', req.body);
+
+    UpcomingEvent.findOne({round: req.body.round})
+      .remove().exec();
+      res.sendStatus(200);
   },
 }

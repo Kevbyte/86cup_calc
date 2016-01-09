@@ -1,4 +1,49 @@
-<div id="main" ng-controller="MainController">
+<div id="cevent">
+  <center>
+  <div class="maindiv">
+    <input class="button blue" ng-click="enableEditor()" ng-hide="editorEnabled" value="Add Event"></input>
+    <div ng-show="editorEnabled">
+      <input class="button blue" ng-click="addUpcomingEvent()" value="Submit"></input>
+      or
+      <input class="button red" ng-click="disableEditor()" value="Cancel"></input>.
+    </div>
+
+    <div class="intro-profile" ng-hide="editorEnabled" ng-repeat="event in upcomingEvents" style="height:45vmin">
+      <div class="intro-icon" style="height: auto"><a target="_blank" href="http://www.ncracing.org/events.php"><img ng-src="{{event.icon}}"></img></a></div>
+      <div class="inst" style="height: auto">
+        <span class="intro-title">Round {{event.round}}: {{event.track}}</span><br>
+        <span>{{event.date}}</span><br>
+        <span>{{event.organization}}</span><br>
+        <a target="_blank" href="http://www.ncracing.org/events.php">Sign Up!</a><br>
+        <span>{{event.notes}}</span><br>
+        <span><i ng-click="deleteUpcomingEvent($index)" style="color:red;width:auto;font-size:20px;float:right;cursor:pointer" class="fa fa-fw fa-close"></i></span>
+      </div>
+
+    </div>
+
+    <div ng-show="editorEnabled">
+      <input type="number" ng-model="round"><br>
+      <select name="select" ng-model="track">
+        <option>Thunderhill East</option>
+        <option>Mazda Raceway Laguna Seca</option>
+        <option>Buttonwillow Raceway</option>
+        <option>Thunderhill West</option>
+        <option>Thunderhill 5 Mile</option>
+        <option>Sonoma Raceway</option>
+      </select><br>
+      <input type="date" ng-model="date"><br>
+      <select name="select" ng-model="organization">
+        <option>NCRC</option>
+        <option>SpeedSF</option>
+      </select><br>
+      <input type="notes" ng-model="notes">
+
+    </div>
+  </div>
+</center>
+</div>
+
+<!-- <div id="main" ng-controller="MainController">
   <center>
     <div class="maindiv">
 
@@ -22,7 +67,7 @@
               </div>
               <div class="intro-icon"><a target="_blank" href="http://www.ncracing.org/events.php"><image src="../assets/THR3.jpg"></image></a></div>
             </div>
-          </div>
+          </div> -->
 
           <!-- <div class="intro-admin">
             <div>
@@ -53,6 +98,6 @@
               </div>
             </div>
           </div> -->
-    </div>
+<!--     </div>
   </center>
-</div>
+</div> -->

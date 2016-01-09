@@ -7,29 +7,55 @@ var EventSchema = new mongoose.Schema({
   },
 
   track: {
-    type: String,
+    type: String
   },
 
   date: {
-    type: String,
+    type: String
   },
 
   stock: {
-    type: Array,
+    type: Array
   },
 
   street: {
-    type: Array,
+    type: Array
   },
 
   limited: {
-    type: Array,
+    type: Array
   },
 
   unlimited: {
-    type: Array,
+    type: Array
+  }
+
+});
+
+var UpcomingEventSchema = new mongoose.Schema({
+  round: {
+    type: Number,
+    required: true,
+    unique: true
+  },
+
+  track: {
+    type: String
+  },
+
+  date: {
+    type: String
+  },
+
+  organization: {
+    type: String
+  },
+
+  notes: {
+    type: String
   }
 
 });
 
 module.exports = mongoose.model('events', EventSchema);
+module.exports = mongoose.model('upcomingEvents', UpcomingEventSchema);

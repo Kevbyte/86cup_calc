@@ -44,7 +44,11 @@ module.exports = function (app) {
   app.post('/events/addTrackEvent', checkAdmin, eventController.addTrackEvent);
   app.get('/events/getEvents', checkUser, eventController.getEvents);
   app.get('/events/getStats', checkUser, eventController.getStats);
+  app.get('/events/getUpcomingEvents', checkUser, eventController.getUpcomingEvents);
   app.post('/events/deleteTrackEvents', checkAdmin, eventController.deleteTrackEvents);
+  app.post('/events/addUpcomingEvent', eventController.addUpcomingEvent);
+  app.post('/events/deleteUpcomingEvent', eventController.deleteUpcomingEvent);
+
 
   app.post('/auth/signup', racerController.signup);
   app.post('/auth/login', racerController.login);

@@ -129,12 +129,38 @@ angular.module('86cup.services', [])
       })
     };
 
+    var getUpcomingEvents = function() {
+      return $http({
+        method: 'GET',
+        url: '/events/getUpcomingEvents'
+      })
+    };
+
+    var addUpcomingEvent = function(upcomingEvent) {
+      return $http({
+        method: 'POST',
+        url: '/events/addUpcomingEvent',
+        data: upcomingEvent
+      })
+    };
+
+    var deleteUpcomingEvent = function(round) {
+      return $http({
+        method: 'POST',
+        url: '/events/deleteUpcomingEvent',
+        data: round
+      })
+    };
+
 
     return {
       addTrackEvent: addTrackEvent,
       getEvents: getEvents,
       getStats: getStats,
-      deleteTrackEvents: deleteTrackEvents
+      deleteTrackEvents: deleteTrackEvents,
+      addUpcomingEvent: addUpcomingEvent,
+      getUpcomingEvents: getUpcomingEvents,
+      deleteUpcomingEvent: deleteUpcomingEvent
     }
   })
 
