@@ -1,103 +1,65 @@
 <div id="cevent">
-  <center>
-  <div class="maindiv">
-    <input class="button blue" ng-click="enableEditor()" ng-hide="editorEnabled" value="Add Event"></input>
-    <div ng-show="editorEnabled">
-      <input class="button blue" ng-click="addUpcomingEvent()" value="Submit"></input>
-      or
-      <input class="button red" ng-click="disableEditor()" value="Cancel"></input>.
+  <div class="maindiv" style="height:1500px">
+    <div class="controls-container" ng-hide="editorEnabled">
+      <input class="button blue" ng-click="enableEditor()" ng-hide="editorEnabled" value="Add Event"></input>
     </div>
 
-    <div class="intro-profile" ng-hide="editorEnabled" ng-repeat="event in upcomingEvents" style="height:45vmin">
-      <div class="intro-icon" style="height: auto"><a target="_blank" href="http://www.ncracing.org/events.php"><img ng-src="{{event.icon}}"></img></a></div>
-      <div class="inst" style="height: auto">
-        <span class="intro-title">Round {{event.round}}: {{event.track}}</span><br>
+    <div class="cevent-container" ng-hide="editorEnabled" ng-repeat="event in upcomingEvents">
+      <div class="cevent-icon"><a target="_blank" href="http://www.ncracing.org/events.php"><img ng-src="{{event.icon}}"></img></a></div>
+      <div class="cevent-info">
+        <span class="cevent-title">Round {{event.round}}: {{event.track}}</span><br>
         <span>{{event.date}}</span><br>
         <span>{{event.organization}}</span><br>
         <a target="_blank" href="http://www.ncracing.org/events.php">Sign Up!</a><br>
         <span>{{event.notes}}</span><br>
-        <span><i ng-click="deleteUpcomingEvent($index)" style="color:red;width:auto;font-size:20px;float:right;cursor:pointer" class="fa fa-fw fa-close"></i></span>
       </div>
-
+      <div class ="cevent-delete">
+        <span><i ng-click="deleteUpcomingEvent($index)" style="color:red;width:auto;font-size:20px;cursor:pointer" class="fa fa-fw fa-close"></i></span>
+      </div>
     </div>
 
-    <div ng-show="editorEnabled">
-      <input type="number" ng-model="round"><br>
-      <select name="select" ng-model="track">
-        <option>Thunderhill East</option>
-        <option>Mazda Raceway Laguna Seca</option>
-        <option>Buttonwillow Raceway</option>
-        <option>Thunderhill West</option>
-        <option>Thunderhill 5 Mile</option>
-        <option>Sonoma Raceway</option>
-      </select><br>
-      <input type="date" ng-model="date"><br>
-      <select name="select" ng-model="organization">
-        <option>NCRC</option>
-        <option>SpeedSF</option>
-      </select><br>
-      <input type="notes" ng-model="notes">
+    <div class="controls-form" ng-show="editorEnabled">
+      <form ng-submit="addUpcomingEvent()">
+        <label>Round</label> <br>
+        <div class="input">
+          <input type="number" placeholder="#" ng-model="round" required>
+        </div><br>
 
+        <label>Track</label> <br>
+        <div style="margin-bottom:20px" class="select">
+          <span class="arr"></span>
+          <select name="select" ng-model="track" required>
+            <option>Thunderhill East</option>
+            <option>Mazda Raceway Laguna Seca</option>
+            <option>Buttonwillow Raceway</option>
+            <option>Thunderhill West</option>
+            <option>Thunderhill 5 Mile</option>
+            <option>Sonoma Raceway</option>
+          </select>
+        </div><br>
+
+        <label>Date</label> <br>
+        <div class="input">
+          <input type="date" ng-model="date" required>
+        </div><br>
+        <label>Organization</label> <br>
+        <div style="margin-bottom:20px" class="select">
+          <span class="arr"></span>
+          <select name="select" ng-model="organization" required>
+            <option>NCRC</option>
+            <option>SpeedSF</option>
+          </select>
+        </div>
+        <br>
+        <label>Notes</label> <br>
+        <div style="margin-bottom:20px" class="input">
+          <input type="text" ng-model="notes" style="text-align: top">
+        </div>
+        <div ng-show="editorEnabled">
+          <input type="submit" class="button blue" value="Submit"></input>
+          <input class="button red" ng-click="disableEditor()" value="Cancel"></input>.
+        </div>
+      </form>
     </div>
   </div>
-</center>
 </div>
-
-<!-- <div id="main" ng-controller="MainController">
-  <center>
-    <div class="maindiv">
-
-          <div class="intro-profile" style="height:auto">
-        
-              <div>
-                <div class="intro-icon"><a target="_blank" href="http://www.ncracing.org/events.php"><image src="../assets/MRLS.jpg"></image></a></div>
-                <div class="inst">
-                  <span class="intro-title">Round 12: Mazda Raceway Laguna Seca <a target="_blank" href="http://www.ncracing.org/events.php">Sign Up!</a><br></span>
-                  <span>Dec 12 and 13, 2015. This is a 2 day event and will mark the end of the 2015 season. <br> <a target="_blank" href="https://www.google.com/maps/place/Mazda+Raceway+Laguna+Seca/@36.5842902,-121.7556521,17z/data=!3m1!4b1!4m2!3m1!1s0x808df089bfd5341b:0xddbb6644155538c0">Get directions</a></span>
-                </div>
-              </div>
-      
-          </div>
-
-          <div class="intro-standings" style="height:auto">
-            <div>
-              <div class="inst">
-                <span class="intro-title">Round 13: Thunderhill Raceway Park 3 Mile <a target="_blank" href="http://www.ncracing.org/events.php">Sign up!</a><br></span>
-                <span>Jan 27 and 28, 2016. This is a 2 day event and will kick off the 2016 season. <br> <a target="_blank" href="https://www.google.com/maps/place/Thunderhill+Raceway+Park/@39.5398271,-122.3340817,17z/data=!3m1!4b1!4m2!3m1!1s0x808300c80a69468f:0x19fa0a2cd52110fd">Get directions</a></span>
-              </div>
-              <div class="intro-icon"><a target="_blank" href="http://www.ncracing.org/events.php"><image src="../assets/THR3.jpg"></image></a></div>
-            </div>
-          </div> -->
-
-          <!-- <div class="intro-admin">
-            <div>
-              <div class="intro-icon"><a href="/#/admin"><image src="../assets/admin.png"></image></a></div>
-              <div class="inst">
-                <span class="intro-title"> <a href="/#/admin">Administrative</a> controls <br></span>
-                <span>As an administrator, update scores and lap times for event participants.</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="intro-events">
-            <div>
-              <div class="inst">
-                <span class="intro-title">Event details<br></span>
-                <span>See past and upcoming event details.</span>
-              </div>
-              <div class="intro-icon"><a href="/#/main"><image src="../assets/event.png"></image></a></image></div>
-            </div>
-          </div>
-
-          <div class="intro-stats">
-            <div>
-              <div class="intro-icon"><a href="/#/main"><image src="../assets/stats.png"></image></a></div>
-              <div class="inst">
-                <span class="intro-title">Manage your <a href="/#/stats">statistics</a><br></span>
-                <span>Record fastest lap times and enter in notes from the event.</span>
-              </div>
-            </div>
-          </div> -->
-<!--     </div>
-  </center>
-</div> -->

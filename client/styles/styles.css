@@ -709,6 +709,185 @@ PASSED EVENTS (pevents)
 
 /*/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+UPCOMING EVENTS
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+#cevent {
+  background: radial-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.7)), url('../assets/background09.jpg') no-repeat center center fixed !important;
+  background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  min-height: 100vmax;
+  height: 100%;
+}
+
+.controls-container {
+  background-color: rgba(242,242,241,0.7);
+  text-align: center;
+  height: 60px;
+}
+
+.controls-form {
+  background-color: rgba(242,242,241,0.7);
+  text-align: center;
+  height: 100%;
+}
+
+.cevent-container {
+  /*height: 300px;*/
+  width: 100%;
+  display:inline-block;
+  background-color: rgba(242,242,241,0.7);
+  padding: 10px;
+}
+
+.cevent-icon {
+  padding-left: 30px;
+  width: 20%;
+  margin: 10px;
+  display:inline-block;
+  cursor: pointer;
+}
+
+.cevent-icon img{
+  border: 1px solid black;
+  width: 100%;
+  display: inline-block;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
+  /*vertical-align: middle;*/
+}
+
+.cevent-info {
+  display: inline-block;
+  vertical-align: middle;
+  width: 70%;
+  padding-left: 50px;
+  padding-right: 50px;
+}
+
+.cevent-delete {
+  display: inline-block;
+  width: 5%;
+  text-align: center;
+}
+
+.cevent-title {
+  font-weight: 600;
+  font-size: 28px;
+}
+
+.select {
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+.select select {
+  outline: none;
+  -webkit-appearance: none;
+  display: block;
+  padding: 1.2em 3em 1.3em 1.5em;
+  margin: 0;
+
+  transition: border-color 0.2s;
+  border: 5px solid #337AB7;
+  border-radius: 5px;
+
+  background: #fff;
+  color: #555;
+  line-height: normal;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.select .arr {
+  background: #fff;
+  bottom: 5px;
+  position: absolute;
+  right: 0;
+  top: 5px;
+  pointer-events: none;
+}
+.select .arr:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  margin-top: -5px;
+  pointer-events: none;
+  border-top: 10px solid #337AB7;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.select .arr:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  margin-top: -5px;
+  pointer-events: none;
+  border-top: 6px solid #fff;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+}
+
+.input input[type="number"]{
+  height: 72px;
+  width: 100px;
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+  transition: border-color 0.2s;
+  border: 5px solid #337AB7;
+  border-radius: 5px;
+}
+
+.input input[type="date"]{
+  height: 72px;
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+  transition: border-color 0.2s;
+  border: 5px solid #337AB7;
+  border-radius: 5px;
+}
+
+.input input[type="text"]{
+  height: 50px;
+  width: 80%;
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+  transition: border-color 0.2s;
+  border: 5px solid #337AB7;
+  border-radius: 5px;
+}
+
+/*.input input {
+  outline: none;
+  display: block;
+  padding: 1.2em 3em 1.3em 1.5em;
+  margin: 0;
+
+  transition: border-color 0.2s;
+  border: 5px solid #337AB7;
+  border-radius: 5px;
+
+  background: #fff;
+  color: #555;
+  line-height: normal;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}*/
+
+/*/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 AUTH
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -906,8 +1085,59 @@ header h1 {
 
 @media all and (max-width: 737px) {
 
-  .profilediv {
+  .controls-container {
+    background-color: rgba(242,242,241,0.7);
+    text-align: center;
+    height: 60px;
+  }
 
+  .cevent-container {
+    /*height: 300px;*/
+    width: 100%;
+    display:inline-block;
+    background-color: rgba(242,242,241,0.7);
+    padding: 10px;
+  }
+
+  .cevent-icon {
+    padding-left: 0;
+    width: 25%;
+    display:inline-block;
+    cursor: pointer;
+  }
+
+  .cevent-icon img{
+    border: 1px solid black;
+    width: 100%;
+    display: inline-block;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 4px rgba(0,0,0, 0.5);
+    /*vertical-align: middle;*/
+  }
+
+  .cevent-info {
+    display: inline-block;
+    vertical-align: middle;
+    width: 61%;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-size: 16px;
+  }
+
+  .cevent-delete {
+    display: inline-block;
+    width: 5%;
+    text-align: center;
+  }
+
+  .cevent-title {
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+
+
+  .profilediv {
     width: 100%;
     border-radius: 0;
   }

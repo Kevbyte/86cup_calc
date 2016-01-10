@@ -53,6 +53,8 @@ angular.module('86cup.cevent', [])
 
     $scope.disableEditor = function() {
       $scope.editorEnabled = false;
+      $('form')[0].reset();
+      $("body").scrollTop(0);
     };
 
     $scope.save = function() {
