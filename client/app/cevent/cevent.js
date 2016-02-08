@@ -1,11 +1,11 @@
 angular.module('86cup.cevent', [])
   .controller('CeventController', function ($scope, $window, $location, Racers, Events) {
     $("body").scrollTop(0);
-    // if(!$window.localStorage.racepro){
-    //   $location.path('/')
-    // }
+
+    $scope.isAdmin = true;
     if($window.localStorage.username !== 'admin'){
-      $('.admin-button').hide();
+      $scope.isAdmin = false;
+      $('.controls-container').hide();
     }
 
     $scope.upcomingEvents = []
@@ -25,13 +25,16 @@ angular.module('86cup.cevent', [])
         return "../assets/MRLS.jpg";
       }
       else if(track === "Buttonwillow Raceway") {
-        return "../assets/MRLS.jpg";
+        return "../assets/BWR.jpg";
       }
       else if(track === "Sonoma Raceway") {
-        return "../assets/MRLS.jpg";
+        return "../assets/Sonoma1.jpg";
       }
       else if(track === "Thunderhill West") {
-        return "../assets/MRLS.jpg";
+        return "../assets/Thill2mile.jpg";
+      }
+      else if(track === "Thunderhill 5 Mile") {
+        return "../assets/Thill5mile.jpg";
       }
     };
 
@@ -81,6 +84,7 @@ angular.module('86cup.cevent', [])
         _.forEach($scope.upcomingEvents, function(event) {
           event.icon = $scope.determineIcon(event.track)
         })
+        console.log($scope.isAdmin)
       })
     };
 

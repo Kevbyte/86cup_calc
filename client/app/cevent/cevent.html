@@ -1,5 +1,5 @@
 <div id="cevent">
-  <div class="maindiv" style="height:1500px">
+  <div class="maindiv" style="height:100%">
     <div class="controls-container" ng-hide="editorEnabled">
       <input class="button blue" ng-click="enableEditor()" ng-hide="editorEnabled" value="Add Event"></input>
     </div>
@@ -13,7 +13,7 @@
         <a target="_blank" href="http://www.ncracing.org/events.php">Sign Up!</a><br>
         <span>{{event.notes}}</span><br>
       </div>
-      <div class ="cevent-delete">
+      <div class="cevent-delete" ng-show="isAdmin">
         <span><i ng-click="deleteUpcomingEvent($index)" style="color:red;width:auto;font-size:20px;cursor:pointer" class="fa fa-fw fa-close"></i></span>
       </div>
     </div>

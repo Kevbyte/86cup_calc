@@ -352,9 +352,11 @@ module.exports = {
   },
 
   isAdmin: function (req, res) {
+    console.log('req.session.user.username ', req.session.user.username)
     if(req.session.user.username === 'admin') {
       res.status(200).send('User is Admin!')
     }else{
+
       res.status(500).send('User is not Admin!')
     }
   },

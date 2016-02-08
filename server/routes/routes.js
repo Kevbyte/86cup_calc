@@ -20,7 +20,8 @@ var checkUser = function(req, res, next) {
 };
 
 var checkAdmin = function(req, res, next) {
-  if(req.session.username !== 'admin') {
+  console.log('username = ', req.session.user.username)
+  if(req.session.user.username !== 'admin') {
     console.log('not admin');
     res.status(500).send('not admin');
     // res.redirect(301, '/main')
@@ -46,8 +47,8 @@ module.exports = function (app) {
   app.get('/events/getStats', checkUser, eventController.getStats);
   app.get('/events/getUpcomingEvents', checkUser, eventController.getUpcomingEvents);
   app.post('/events/deleteTrackEvents', checkAdmin, eventController.deleteTrackEvents);
-  app.post('/events/addUpcomingEvent', eventController.addUpcomingEvent);
-  app.post('/events/deleteUpcomingEvent', eventController.deleteUpcomingEvent);
+  app.post('/events/addUpcomingEvent', checkAdmin, eventController.addUpcomingEvent);
+  app.post('/events/deleteUpcomingEvent', checkAdmin, eventController.deleteUpcomingEvent);
 
 
   app.post('/auth/signup', racerController.signup);
