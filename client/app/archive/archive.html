@@ -1,0 +1,66 @@
+
+
+<div id="standings">
+  <div class="standingsdiv"> 
+    <div><i style="color:black" class="menu--icon--page  fa fa-fw fa-flag"><h2 style="color:black">Archive</h2></i></div>
+    <div class="archive" ng-repeat="year in archive">
+      <div><h3 style="color: #337AB7">{{year.year}} Standings</h3></i></div>
+      <div class="instructions">Click on a competitor to see their profile</div>
+      <div id="class-header"><h4> Stock </h4></div>
+        <div class="cat">
+          <div ng-repeat="racer in year.stock[0].racers">
+            <div>
+              <div class="racer rank">{{racer.rank}}</div>
+              <div class="racer avatar2" ng-click="redirectToUserStock($index)"><image src="{{racer.avatar}}"></image></div>
+              <div class="racer name" ng-click="redirectToUserStock($index)">{{racer.username}}</div>
+              <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+            </div>
+          </div>
+        </div>
+
+      <div id="class-header"><h4> Street </h4></div>
+        <div class="cat">
+          <div ng-repeat="racer in year.street[0].racers">
+            <div>
+              <div class="racer rank">{{racer.rank}}</div>
+              <div class="racer avatar2" ng-click="redirectToUserStreet($index)"><image src="{{racer.avatar}}"></image></div>
+              <div class="racer name" ng-click="redirectToUserStreet($index)">{{racer.username}}</div>
+              <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+            </div>
+          </div>
+        </div>
+
+      <div id="class-header"><h4> Limited </h4></div>
+        <div class="cat">
+          <div ng-repeat="racer in year.limited[0].racers">
+            <div>
+              <div class="racer rank">{{racer.rank}}</div>
+              <div class="racer avatar2" ng-click="redirectToUserLimited($index)"><image src="{{racer.avatar}}"></image></div>
+              <div class="racer name" ng-click="redirectToUserLimited($index)">{{racer.username}}</div>
+              <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+            </div>
+          </div>
+        </div>
+
+      <div id="class-header"><h4> Unlimited </h4></div>
+        <div class="cat">
+          <div ng-repeat="racer in year.unlimited[0].racers">
+            <div>
+              <div class="racer rank">{{racer.rank}}</div>
+              <div class="racer avatar2" ng-click="redirectToUserUnlimited($index)"><image src="{{racer.avatar}}"></image></div>
+              <div class="racer name" ng-click="redirectToUserUnlimited($index)">{{racer.username}}</div>
+              <div class="racer pts">{{racer.total.toString() + ' pts'}}</div>
+            </div>
+          </div>
+        </div>
+        <br>
+    </div>
+
+    <input class="button red controls" style="margin-top: 20px; color:orange" type="button" value="Reveal Controls" ng-click="nukeControls()" ng-show="revealButton"></input><br>
+    <button class="button red nuke" ng-click="deleteArchive()" ng-show="nukesRevealed">
+      <span><i style="color:orange;width:auto;font-size:20px" class="fa fa-fw fa-exclamation-circle"></i></span>
+      <span style="display:inline-block;width:auto">Delete Archives</span>
+    </button><br>
+
+  </div>
+</div>

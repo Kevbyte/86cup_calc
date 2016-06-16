@@ -1,0 +1,167 @@
+<div id="profile">
+  <center>
+    <div class="profilediv">
+      <div><i class="menu--icon  fa fa-fw fa-user"><h3>{{username.name}}</h3></i></div>
+      <div></div>
+      <center>
+        <label class="circles avatar">
+          <image id="pic" src="{{avatar}}"></image>
+        </label>
+
+        <div class="userinfo">
+          <div class="circles modPts-other"><span>Mod Pts <br> {{modPts}}</span></div>
+          <div class="circles class-other"><span>{{class}}</span></div>
+        </div>
+        
+      </center>
+      <div class="profile1">
+        <div class="instructions">Here are their mods:</div>
+
+        <span class="category-other"><h1> Engine and Drivetrain </h1></span>
+        <div id="mod-container">
+          <div ng-repeat="mod in modList.mods.drivetrain">
+            <div id="mod">
+              <label class="mod">
+                <div class="box-profiles">
+                  <div class="submod name"><div>{{mod.name}}</div></div>
+                  <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <span class="category-other"><h1> Wheels and Tires </h1></span>
+        <div id="mod-container">
+          <div ng-repeat="mod in modList.mods.wheels">
+            <div id="mod">
+              <label class="mod">
+                <div class="box-profiles">
+                  <div class="submod name"><div>{{mod.name}}</div></div>
+                  <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <span class="category-other"><h1> Aerodynamics </h1></span>
+        <div id="mod-container">
+          <div ng-repeat="mod in modList.mods.aero">
+            <div id="mod">
+              <label class="mod">
+                <div class="box-profiles">
+                  <div class="submod name"><div>{{mod.name}}</div></div>
+                  <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <span class="category-other"><h1> Suspension </h1></span>
+        <div id="mod-container">
+          <div ng-repeat="mod in modList.mods.suspension">
+            <div id="mod">
+              <label class="mod">
+                <div class="box-profiles">
+                  <div class="submod name"><div>{{mod.name}}</div></div>
+                  <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <div><i class="menu--icon  fa fa-fw fa-line-chart"><h3>{{username.name}}</h3></i></div>
+      <div id="class-header" ng-show="tracks.BWR.hasEvent"><h4> Buttonwillow Raceway Park </h4></div>
+      <div class="cat" ng-show="tracks.BWR.hasEvent">
+        <div ng-repeat="stat in tracks.BWR.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.MRLS.hasEvent"><h4> Mazda Raceway Laguna Seca </h4></div>
+      <div class="cat" ng-show="tracks.MRLS.hasEvent">
+        <div ng-repeat="stat in tracks.MRLS.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.SRW.hasEvent"><h4> Sonoma Raceway Park </h4></div>
+      <div class="cat" ng-show="tracks.SRW.hasEvent">
+        <div ng-repeat="stat in tracks.SRW.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.THR3C.hasEvent"><h4> T-hill East Cyclone </h4></div>
+      <div class="cat" ng-show="tracks.THR3C.hasEvent">
+        <div ng-repeat="stat in tracks.THR3C.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.THR3B.hasEvent"><h4> T-hill East Bypass </h4></div>
+      <div class="cat" ng-show="tracks.THR3B.hasEvent">
+        <div ng-repeat="stat in tracks.THR3B.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.THR3.hasEvent"><h4> T-hill East </h4></div>
+      <div class="cat" ng-show="tracks.THR3.hasEvent">
+        <div ng-repeat="stat in tracks.THR3.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.THR2.hasEvent"><h4> T-hill West</h4></div>
+      <div class="cat" ng-show="tracks.THR2.hasEvent">
+        <div ng-repeat="stat in tracks.THR2.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.THR5.hasEvent"><h4> T-hill 5-Mile </h4></div>
+      <div class="cat" ng-show="tracks.THR5.hasEvent">
+        <div ng-repeat="stat in tracks.THR5.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </center>
+</div>

@@ -1,0 +1,140 @@
+<!doctype html>
+<html ng-app="86cup">
+  <head>
+      <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+      <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+      <!-- <link rel="stylesheet" type="text/css" href="bower_components/rdash-ui/dist/css/rdash.min.css"> -->
+      <link rel="stylesheet" href="styles/styles.css">
+      <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,500' rel='stylesheet'>
+      <link href='./nav/src/vendor/normalize.css/normalize.css' rel='stylesheet'>
+      <link href='./nav/src/vendor/fontawesome/css/font-awesome.min.css' rel='stylesheet'>
+      <link href="./nav/src/vertical-responsive-menu.css" rel="stylesheet">
+      <link rel="shortcut icon" href="favicon.ico?v=2" type="image/x-icon" />
+  </head>
+
+  <body ng-controller="MasterController">
+      <header class="header clearfix">
+        <button type="button" id="toggleMenu" class="toggle_menu">
+          <i class="fa fa-bars"></i>
+        </button>
+        <a href="/#/main"><img src="/assets/86cup_01.png" id="logo"></img><!-- <h1>86Cup</h1> --></a>
+      </header>
+
+      <nav class="vertical_nav ">
+
+        <ul id="js-menu" class="menu">
+
+          <li class="menu--item">
+
+            <a href="/#/main"><label class="menu--link" title="Item 0">
+              <i class="menu--icon  fa fa-fw fa-home"></i>
+              <span class="menu--label">Home</span>
+            </label></a>
+
+          </li>
+
+          <li class="menu--item">
+
+            <a href="/#/profile"><label class="menu--link" title="Item 1">
+              <i class="menu--icon  fa fa-fw fa-user"></i>
+              <span class="menu--label">Your Profile</span>
+            </label></a>
+
+          </li>
+
+          <li class="menu--item--events menu--item__has_sub_menu">
+            <label class="menu--link" title="Item 2">
+              <i class="menu--icon  fa fa-fw fa-flag"></i>
+              <span class="menu--label">Standings</span>
+            </label>
+            <ul class="sub_menu">
+              <li class="sub_menu--item">
+                <a href="/#/standings" class="sub_menu--link">Standings</a>
+              </li>
+              <li class="sub_menu--item">
+                <a href="/#/archive" class="sub_menu--link">Archive</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu--item--events menu--item__has_sub_menu2">
+            <label class="menu--link" title="Item 3">
+              <i class="menu--icon  fa fa-fw fa-globe"></i>
+              <span class="menu--label">Events</span>
+            </label>
+            <ul class="sub_menu">
+              <li class="sub_menu--item">
+                <a href="/#/cevent" class="sub_menu--link">Upcoming Events</a>
+              </li>
+              <li class="sub_menu--item">
+                <a href="/#/pevents" class="sub_menu--link">Past Events</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu--item">
+
+            <a href="/#/stats" class="menu--link" title="Item 4">
+              <i class="menu--icon  fa fa-fw fa-line-chart"></i>
+              <span class="menu--label">Your Statistics</span>
+            </a>
+          </li>
+
+          <li class="menu--item admin-button">
+            <a href="/#/admin" class="menu--link" title="Item 5">
+              <i class="menu--icon  fa fa-fw fa-cog"></i>
+              <span class="menu--label">Admin</span>
+            </a>
+          </li>
+
+          <li class="menu--item">
+            <a href="/#/logout" class="menu--link" title="Item 6">
+              <i class="menu--icon  fa fa-fw"></i>
+              <span class="menu--label">Logout</span>
+            </a>
+          </li>
+
+        </ul>
+
+        <button id="collapse_menu" class="collapse_menu">
+          <i class="collapse_menu--icon  fa fa-fw"></i>
+          <span class="collapse_menu--label"></span>
+        </button>
+
+      </nav>
+
+      <div class="wrapper">
+        <div class="ui-view"></div>
+        <footer class="footer">
+          <center><div class="container">
+            <!-- <h2 class="footer__heading">An <a href="https://github.com/battlescript/" target="_blank">Urban Cosmonauts</a> Production</h2> -->
+            <p class="footer__copyright">Website created and maintained by <a target="_blank" href="https://www.linkedin.com/in/kevinschweigert">Kevin Schweigert</a>.</p>
+            <p class="footer__copyright">Photos by <a target="_blank" href="http://scottgrassophotography.com/"> Scott Grazzo Photography</a>.</p>
+          </div></center>
+        </footer>
+      </div>
+
+      <script src="./nav/src/vertical-responsive-menu.js"></script>
+      <script src="bower_components/angular/angular.min.js"></script>
+      <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+      <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+      <script src="bower_components/underscore/underscore-min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+
+      <script src="app/app.js"></script>
+      <script src="app/landing/landing.js"></script>
+      <script src="app/main/main.js"></script>
+      <script src="app/standings/standings.js"></script>
+      <script src="app/archive/archive.js"></script>
+      <script src="app/admin/admin.js"></script>
+      <script src="app/profile/profile.js"></script>
+      <script src="app/services/services.js"></script>
+      <script src="app/auth/auth.js"></script>
+      <script src="app/master/master.js"></script>
+      <script src="app/profiles/profiles.js"></script>
+      <script src="app/stats/stats.js"></script>
+      <script src="app/cevent/cevent.js"></script>
+      <script src="app/pevents/pevents.js"></script>
+  </body>
+</html>

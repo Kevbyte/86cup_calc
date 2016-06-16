@@ -1,0 +1,92 @@
+<div id="standings">
+  <div class="standingsdiv">
+    <div><i class="menu--icon  fa fa-fw fa-line-chart"><h3>{{user.username}}</h3></i></div>
+    <div id="class-header" ng-show="tracks.BWR.hasEvent"><h4> Buttonwillow Raceway Park </h4></div>
+      <div class="cat" ng-show="tracks.BWR.hasEvent">
+        <div ng-repeat="stat in tracks.BWR.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.MRLS.hasEvent"><h4> Mazda Raceway Laguna Seca </h4></div>
+      <div class="cat" ng-show="tracks.MRLS.hasEvent">
+        <div ng-repeat="stat in tracks.MRLS.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.SRW.hasEvent"><h4> Sonoma Raceway Park </h4></div>
+      <div class="cat" ng-show="tracks.SRW.hasEvent">
+        <div ng-repeat="stat in tracks.SRW.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.THR3C.hasEvent"><h4> T-hill East Cyclone </h4></div>
+      <div class="cat" ng-show="tracks.THR3C.hasEvent">
+        <div ng-repeat="stat in tracks.THR3C.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.THR3B.hasEvent"><h4> T-hill East Bypass </h4></div>
+      <div class="cat" ng-show="tracks.THR3B.hasEvent">
+        <div ng-repeat="stat in tracks.THR3B.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.THR3.hasEvent"><h4> T-hill East </h4></div>
+      <div class="cat" ng-show="tracks.THR3.hasEvent">
+        <div ng-repeat="stat in tracks.THR3.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.THR2.hasEvent"><h4> T-hill West</h4></div>
+      <div class="cat" ng-show="tracks.THR2.hasEvent">
+        <div ng-repeat="stat in tracks.THR2.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div id="class-header" ng-show="tracks.THR5.hasEvent"><h4> T-hill 5-Mile </h4></div>
+      <div class="cat" ng-show="tracks.THR5.hasEvent">
+        <div ng-repeat="stat in tracks.THR5.events">
+          <div>
+            <div class="racer rank">Round {{stat.round}}</div>
+            <div class="racer pts">{{stat.date}}</div>
+            <div class="racer name">{{stat.racer.time}}</div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

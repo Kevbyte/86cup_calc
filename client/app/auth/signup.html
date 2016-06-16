@@ -1,0 +1,31 @@
+<div id="signup">
+  <center>
+    <div class="container">
+      <div class="signupdiv">      
+        <div class="auth__message" ng-show="!!message">{{ message }}</div>
+        <form class="auth-form" ng-submit="signup()">
+          <h2 class="auth-form__title">Sign up now!</h2>
+          <div class="auth-form__group">
+            <label for="username">Username:</label>
+            <input id="username" type="text" class="form-control" ng-model="user.username" required>
+          </div>
+          <div class="auth-form__group">
+            <label for="username">Email:</label>
+            <input id="username" type="text" class="form-control" ng-model="user.email" required>
+          </div>
+          <div class="auth-form__group">
+            <label for="username">Password:</label>
+            <input class="form-control" type="password" ng-model="user.password" required>
+          </div>
+          <div class="auth-form__footer">
+            <input type="submit" class="button red" value="Sign up">
+          </div>
+        </form>
+        <div class="auth__footer">
+          Already have an account?
+          <a href="#/login">Login!</a>
+        </div>
+      </div>
+    </div>
+  </center>
+</div>

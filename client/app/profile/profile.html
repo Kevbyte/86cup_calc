@@ -1,0 +1,99 @@
+<div id="profile">
+  <header class="header clearfix phead">
+    <button type="button" id="toggleMenu2" class="toggle_menu2">
+      <i class="fa fa-bars"></i>
+    </button>
+    <a href="/#/main"><img src="/assets/86cup_01.png" id="logo"></img><!-- <h1>86Cup</h1> --></a>
+    <div class="info"> 
+      <span class="modPts-head">{{modPts}} pts</span><br>
+      <span class="class-head">{{class}}</span> 
+    </div>
+  </header>
+<center>
+<div class="profilediv">
+  <div><i class="menu--icon  fa fa-fw fa-user"><h3>{{username.name}}</h3></i></div>
+<form ng-submit="updateMods()">
+<center>
+  <label class="circles avatar">
+    <image id="pic" src="{{avatar}}"></image>
+    <input  onchange="angular.element(this).scope().add()" type="file" id="file" name="file">
+  </label>
+
+  <div id="sticky-anchor"></div>
+  <div class="userinfo">
+    <div class="circles modPts"><span>Mod Pts <br> {{modPts}}</span></div>
+    <div class="circles class"><span>{{class}}</span></div>
+  </div>
+  
+</center>
+<div class="profile1">
+  <div class="instructions">Select your modifications and click 'submit'</div>
+  <input class="button blue" type="submit" value="submit">
+  
+
+    <span class="category"><h1> Engine and Drivetrain </h1></span>
+      <div id="mod-container">
+        <div ng-repeat="mod in modList.mods.drivetrain">
+          <div id="mod">
+            <label class="mod">
+              <input type="checkbox" name="toggle" class="drivetrain {{$index}}">
+              <div class="box" ng-click="toggleActiveDrivetrain($index, $event)">
+                <div class="submod name"><div>{{mod.name}}</div></div>
+                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+    <span class="category"><h1> Wheels and Tires </h1></span>
+      <div id="mod-container">
+        <div ng-repeat="mod in modList.mods.wheels">
+          <div id="mod">
+            <label class="mod">
+              <input type="checkbox" name="toggle" class="wheels {{$index}}">
+              <div ng-click="toggleActiveWheels($index)">
+                <div class="submod name"><div>{{mod.name}}</div></div>
+                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+    <span class="category"><h1> Aerodynamics </h1></span>
+      <div id="mod-container">
+        <div ng-repeat="mod in modList.mods.aero">
+          <div id="mod">
+            <label class="mod">
+              <input type="checkbox" name="toggle" class="aero {{$index}}">
+              <div ng-click="toggleActiveAero($index)">
+                <div class="submod name"><div>{{mod.name}}</div></div>
+                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+
+    <span class="category"><h1> Suspension </h1></span>
+      <div id="mod-container">
+        <div ng-repeat="mod in modList.mods.suspension">
+          <div id="mod">
+            <label class="mod">
+              <input type="checkbox" name="toggle" class="suspension {{$index}}">
+              <div ng-click="toggleActiveSuspension($index)">
+                <div class="submod name"><div>{{mod.name}}</div></div>
+                <div class="submod value"><div class="circ"><div>{{mod.value}}</div></div></div>
+              </div>
+            </label>
+          </div>
+        </div>
+      </div>
+      
+    <input class="button blue" type="submit" value="submit">
+</div>
+</form>
+</div>
+</center>
+</div>

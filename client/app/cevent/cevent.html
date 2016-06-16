@@ -1,0 +1,65 @@
+<div id="cevent">
+  <div class="maindiv" style="height:100%">
+    <div class="controls-container" ng-hide="editorEnabled">
+      <input class="button blue" ng-click="enableEditor()" ng-hide="editorEnabled" value="Add Event"></input>
+    </div>
+
+    <div class="cevent-container" ng-hide="editorEnabled" ng-repeat="event in upcomingEvents">
+      <div class="cevent-icon"><a target="_blank" href="http://www.ncracing.org/events.php"><img ng-src="{{event.icon}}"></img></a></div>
+      <div class="cevent-info">
+        <span class="cevent-title">Round {{event.round}}: {{event.track}}</span><br>
+        <span>{{event.date}}</span><br>
+        <span>{{event.organization}}</span><br>
+        <a target="_blank" href="http://www.ncracing.org/events.php">Sign Up!</a><br>
+        <span>{{event.notes}}</span><br>
+      </div>
+      <div class="cevent-delete" ng-show="isAdmin">
+        <span><i ng-click="deleteUpcomingEvent($index)" style="color:red;width:auto;font-size:20px;cursor:pointer" class="fa fa-fw fa-close"></i></span>
+      </div>
+    </div>
+
+    <div class="controls-form" ng-show="editorEnabled">
+      <form ng-submit="addUpcomingEvent()">
+        <label>Round</label> <br>
+        <div class="input">
+          <input type="number" placeholder="#" ng-model="round" required>
+        </div><br>
+
+        <label>Track</label> <br>
+        <div style="margin-bottom:20px" class="select">
+          <span class="arr"></span>
+          <select name="select" ng-model="track" required>
+            <option>Thunderhill East</option>
+            <option>Mazda Raceway Laguna Seca</option>
+            <option>Buttonwillow Raceway</option>
+            <option>Thunderhill West</option>
+            <option>Thunderhill 5 Mile</option>
+            <option>Sonoma Raceway</option>
+          </select>
+        </div><br>
+
+        <label>Date</label> <br>
+        <div class="input">
+          <input type="date" ng-model="date" required>
+        </div><br>
+        <label>Organization</label> <br>
+        <div style="margin-bottom:20px" class="select">
+          <span class="arr"></span>
+          <select name="select" ng-model="organization" required>
+            <option>NCRC</option>
+            <option>SpeedSF</option>
+          </select>
+        </div>
+        <br>
+        <label>Notes</label> <br>
+        <div style="margin-bottom:20px" class="input">
+          <input type="text" ng-model="notes" style="text-align: top">
+        </div>
+        <div ng-show="editorEnabled">
+          <input type="submit" class="button blue" value="Submit"></input>
+          <input class="button red" ng-click="disableEditor()" value="Cancel"></input>.
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

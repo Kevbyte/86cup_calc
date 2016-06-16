@@ -1,0 +1,51 @@
+<div id="login">
+  <center>
+    <div class="container">
+      <div class="logindiv">  
+        <div class="auth__message" ng-show="!!message">{{ message }}</div>
+        <form class="auth-form" ng-submit="login()">
+          <h2 class="auth-form__title">Login!</h2>
+          <div class="auth-form__group">
+            <label for="username">Username:</label>
+            <input id="username" type="text" class="form-control" ng-model="user.username">
+          </div>
+          <div class="auth-form__group">
+            <label for="username">Password:</label>
+            <input class="form-control" type="password" ng-model="user.password">
+          </div>
+          <div class="auth-form__footer">
+            <input class="button red" type="submit" value="login">
+          </div>
+        </form>
+        <div class="auth__footer">
+          Don't have an account?
+          <a href="#/signup">Sign up!</a>
+        </div>
+        <br>
+        <div class="forgot">
+          <button ng-click="revealForgot()">Forgot your password?</button>
+          <form ng-show="revealChangePass" ng-submit="email()">
+            <br>
+            <label for="username">Email address you signed up with:</label>
+            <input type="text" placeholder="email" ng-model="forgot.email" class="form-control" style="text-align: center"></input>
+            <br>
+            <input type="submit" value="Send Email"></input>
+          </form>
+        <br>
+        </div>
+        
+        <form ng-show="revealChangePass" ng-submit="changePassword()">
+          <span>When you receive the access code continue here:</span>
+          <label for="username">Access Code:</label>
+          <input type="number" placeholder="4 digit code" ng-model="forgot.code" class="form-control" style="text-align: center"></input>
+          <label for="username">Registered Username:</label>
+          <input id="username" type="text" class="form-control" ng-model="forgot.username">
+          <label for="username">New Password:</label>
+          <input type="password" ng-model="forgot.password" class="form-control"></input>
+          <br>
+          <input type="submit" value="Submit New Password"></input>
+        </form>
+      </div>
+    </div>
+  </center>
+</div>
